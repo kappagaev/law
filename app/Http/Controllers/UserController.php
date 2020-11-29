@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->only(['edit', 'update']);
+        $this->middleware('admin')->except(['show']);
     }
 
     public function index()
@@ -22,20 +22,22 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('user/profile')->with('user', $user);
+        return view('user/profile')->with('user', $user)->with('requests', $user->requests);
     }
 
     public function create()
     {
         return view('user/create');
     }
-    public function store(UserCreateRequest $request, User $user)
+    public function store(UserCreateRequest $request)
     {
-        $user->fill($request->all());
-        $user->role_id = 1;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect('/')->with('message', 'Користувач успішно створен!');
+        User::create(
+            array_merge(
+                $request->only('name', 'email', 'role_id'),
+                ['password' => Hash::make($request->password)]
+            )
+        );
+        return redirect('/admin')->with('message', 'Користувач успішно створений!');
     }
 
     public function edit(User $user)
@@ -46,7 +48,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-
 
         return redirect()->route('admin')->with('message', 'Користувач успішно змінен!');
     }

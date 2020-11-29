@@ -14,7 +14,8 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
-
+    'REQUEST_CREATED_MAIL_TO' => env('REQUEST_CREATED_MAIL_TO'),
+    'OUR_MAIL' => env('REQUEST_CREATED_MAIL_TO'),
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -43,6 +44,7 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+
         ],
 
         'ses' => [

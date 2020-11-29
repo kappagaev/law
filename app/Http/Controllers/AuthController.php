@@ -19,14 +19,15 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('admin');
+            return redirect('/')->with(Auth::user()->name . ', вітаємо!');
         }
+        return redirect()->back()->with('message', 'Пароль або пошта неправильні');
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect('/request');
+        return redirect('/');
     }
 }

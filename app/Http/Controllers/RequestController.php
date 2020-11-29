@@ -1,23 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-// RM is stands for request model, since it conflicts with Http\Request
-use App\Http\Requests\RequestStoreRequest;
-use App\Models\Request as RM;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\RequestStoreRequest;
+use App\Mail\RequestCreateMail;
+use App\Models\Request;
+use App\Services\RequestService;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+/**
+ * Class RequestController
+ * @package App\Http\Controllers
+ */
 class RequestController extends Controller
 {
+    /**
+     * RequestController constructor.
+     */
     public function __construct()
     {
         $this->middleware('author')->only(['create', 'store']);
     }
+
     public function index()
     {
-       $requests = RM::whereHas('user', function ($user) {
-           $user->where('status', User::STATUS_NOT_BANNED);
-        })->paginate(15);
+       $requests = Request::whereUserIsNotBanned()
+           ->latest()
+           ->paginate(16);
 
        return view('request/list')->with('requests', $requests)->with('title', 'Пропозиції');
     }
@@ -35,16 +46,20 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\RequestStoreRequest  $request
+     * @param \App\Http\Requests\RequestStoreRequest $request
+     * @param RequestService $requestService
      * @return \Illuminate\Http\Response
      */
     public function store(RequestStoreRequest $request)
     {
-        $request = new RM($request->all());
-        // create observer when it will got bigger
-        $request->user_id = Auth::id();
-        $request->save();
+       $request = Request::create(
+                array_merge(
+                    $request->only('title', 'content'),
+                    ['user_id' => Auth::id()]
+                )
+       );
 
+        Mail::to(config('mail.REQUEST_CREATED_MAIL_TO'))->send(new RequestCreateMail($request));
         return redirect('/')->with('message', 'Успішно створено!');
     }
 
@@ -54,7 +69,7 @@ class RequestController extends Controller
      * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(RM $request)
+    public function show(Request $request)
     {
         return view('request/single')->with('request', $request)->with('title', 'Пропозиція ' . $request->title);
     }

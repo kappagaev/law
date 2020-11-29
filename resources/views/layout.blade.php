@@ -13,27 +13,26 @@
         <a class="p-2 text-dark" href="/">Пропозиції</a>
 
 
-
-    @auth
-            <a class="p-2 text-dark" href="/user/{{ Auth::id() }}">Кабінет</a>
-        @if( Auth::user()->role_id == 3)
-
-                <a class="p-2 text-dark" href="/admin">Адмінка</a>
-
-        @endif
-        @if( Auth::user()->role_id == 1)
-
+        @if( !Auth::check())
             <a href="googleform" class="btn">
                 Форма
             </a>
+        @endif
+
+
+    @auth
+
+            <a class="p-2 text-dark" href="/user/{{ Auth::id() }}">Кабінет</a>
+
+        @if( Auth::user()->role_id == 3)
+                <a class="p-2 text-dark" href="/admin">Адмінка</a>
 
         @endif
 
-        <a class="btn btn-primary" href="/logout">Logout</a>
+        <a class="btn btn-primary" href="/logout">Вийти</a>
     @endauth
     @guest
-        <a class="btn btn-primary" href="/login">Login</a>
-        <a class="btn btn-outline-primary" href="/user/create">Sign up</a>
+        <a class="btn btn-primary" href="/login">Логін</a>
     @endguest
     </nav>
 </div>

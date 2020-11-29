@@ -2,41 +2,49 @@
 
 @section('content')
     <div class="container">
-        <form class="form-horizontal" role="form" method="post" action="/user">
+        <h1>Створити користувача</h1>
+        <form action="/user" method="post">
             @csrf
-            <h2>Registration</h2>
             <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Name*</label>
-                <div class="col-sm-9">
-                    <input type="text" id="firstName" placeholder="Name" class="form-control" autofocus name="name" value="{{old('name')}}">
-                </div>
+                <label for="exampleInputEmail1">Пошта</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email* </label>
-                <div class="col-sm-9">
-                    <input type="email" id="email" placeholder="Email" class="form-control" name= "email" value="{{old('email')}}">
-                </div>
+                <label for="firstName" class="col-sm-3 control-label">Name*</label>
+
+                    <input type="text" id="firstName" placeholder="Name" class="form-control" autofocus name="name" value="{{old('name')}}">
+
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Password*</label>
-                <div class="col-sm-9">
+
                     <input type="password" id="password" placeholder="Password" class="form-control" name="password">
-                </div>
+
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
-                <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control" name="password_confirmation">
-                </div>
+
+                    <input type="password" id="password" placeholder="Password" class="form-control" name="password_confirmation">
+
             </div>
-
-
             <div class="form-group">
-                <div class="col-sm-9 col-sm-offset-3">
-                    <span class="help-block">*Required fields</span>
-                </div>
+                <label for="exampleInputEmail1">Виберіть роль юзера</label>
+                <select class="form-control form-control-lg" name="role_id">
+                    <option value="1" selected>
+                        Звичайний юзер
+                    </option>
+                    <option value="2">
+                        Редактор
+                    </option>
+                    <option value="3">
+                        Адмін
+                    </option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-        </form> <!-- /form -->
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div> <!-- ./container -->
 @endsection

@@ -30,9 +30,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 //})->name('logging-form');
 
 Route::resource('user', UserController::class);
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'create']);
+Route::get('login', [\App\Http\Controllers\AuthController::class, 'create'])->name('login');
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'store']);
 Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
-Route::get('/', [\App\Http\Controllers\RequestController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\RequestController::class, 'index'])->name('requests');
 Route::resource('request', \App\Http\Controllers\RequestController::class)->except(['index']);
 

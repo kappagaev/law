@@ -34,14 +34,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Request::class);
     }
-
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role_id',
-        'status'
-    ];
+    public $guarded = false;
 
     /**
      * The attributes that should be hidden for arrays.

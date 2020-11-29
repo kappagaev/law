@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class AdminController extends Controller
@@ -16,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::with('role')->paginate(32);
+        $users = User::with('role')
+            ->paginate(32);
         return view('admin/panel')->with('users', $users)->with('title', 'Адмінка');
     }
 

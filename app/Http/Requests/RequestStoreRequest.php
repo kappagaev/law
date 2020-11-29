@@ -24,7 +24,8 @@ class RequestStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|max:32'
+            'title' => 'required|string|max:32',
+            'content' => 'required|string|max:1000'
         ];
     }
 }
