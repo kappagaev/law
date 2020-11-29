@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestStoreRequest;
 use App\Models\Request as RM;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
@@ -20,7 +19,7 @@ class RequestController extends Controller
            $user->where('status', User::STATUS_NOT_BANNED);
         })->paginate(15);
 
-       return view('request/list')->with('requests', $requests);
+       return view('request/list')->with('requests', $requests)->with('title', 'Пропозиції');
     }
 
     /**
@@ -30,7 +29,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-        return view('request/create');
+        return view('request/create')->with('title', 'Створити пропозицію');
     }
 
     /**
@@ -57,7 +56,7 @@ class RequestController extends Controller
      */
     public function show(RM $request)
     {
-        return view('request/single')->with('request', $request);
+        return view('request/single')->with('request', $request)->with('title', 'Пропозиція ' . $request->title);
     }
 
     /**

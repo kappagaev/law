@@ -10,7 +10,7 @@ class AuthController extends Controller
 
     public function create(Request $request)
     {
-        return view('user/login');
+        return view('user/login')->with('title', 'Логін');
     }
 
     public function store(Request $request)

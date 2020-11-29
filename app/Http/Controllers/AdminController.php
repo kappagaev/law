@@ -17,11 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::with('role')->paginate(32);
-        return view('admin/panel')->with('users', $users);
+        return view('admin/panel')->with('users', $users)->with('title', 'Адмінка');
     }
 
-    public function editUser(User $user)
-    {
-
-    }
 }
