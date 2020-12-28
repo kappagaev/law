@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Request;
 use App\Models\Request as RM;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,13 +13,35 @@ use Illuminate\Support\Facades\Auth;
 class RequestService
 {
     /**
+     * @var RM
+     */
+    private $model;
+
+    /**
+     * RequestService constructor.
+     */
+    public function __construct()
+    {
+        $this->model = new RM();
+    }
+
+    /**
      * @param $data
-     * @return RM
+     * @return RequestService
      */
     public function create($data)
     {
         $request = new RM($data);
-        $request->save();
-        return $request;
+        $this->model = $request;
+        return $this;
+    }
+
+
+    /**
+     *
+     */
+    public function withFiles()
+    {
+
     }
 }

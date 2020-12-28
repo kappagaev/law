@@ -47,18 +47,16 @@ class RequestController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\RequestStoreRequest $request
-     * @param RequestService $requestService
+     * @param RequestService $service
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestStoreRequest $request)
+    public function store(RequestStoreRequest $request, RequestService $service)
     {
-       $request = Request::create(
-                array_merge(
-                    $request->only('title', 'content'),
-                    ['user_id' => Auth::id()]
-                )
-       );
-
+        $request = $service->create(array_merge(
+            $request->only('title', 'content'),
+            ['user_id' => Auth::id()]
+        ));
+        // make an event
         Mail::to(config('mail.REQUEST_CREATED_MAIL_TO'))->send(new RequestCreateMail($request));
         return redirect('/')->with('message', 'Успішно створено!');
     }

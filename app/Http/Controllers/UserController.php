@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Request as RM;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 
@@ -22,7 +23,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('user/profile')->with('user', $user)->with('requests', $user->requests);
+        return view('user/profile')->with('user', $user)->with('requests', RM::where('user_id', $user->id)->paginate(16));
     }
 
     public function create()
