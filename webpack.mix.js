@@ -14,4 +14,9 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ]);
+    ])
+    .js('resources/js/request-create.js', 'public/js')// our script
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery'],
+    }).js('resources/js/tempusdominus-bootstrap.js', 'public/js');
+

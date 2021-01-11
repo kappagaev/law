@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('admin-layout')
 
 @section('content')
     <div class="container">
-        <a href="/user/create" class="btn btn-secondary">Створити користувача</a>
+        <a href="/admin/user/create" class="btn btn-secondary">Створити користувача</a>
     </div>
     <table class="table">
         <thead>
@@ -19,7 +19,7 @@
         @foreach($users as $user)
             <tr>
                 <th scope="row">{{ $user->id }}</th>
-                <td>{{$user->name}}</td>
+                <td><a href="/admin/user/{{$user->id}}">{{$user->full_name}}</a></td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->role->title}}</td>
                 @if ($user->status)
@@ -31,7 +31,7 @@
                         Забанений
                     </td>
                 @endif
-                <td><a href="/user/{{ $user->id }}/edit" class="btn btn-primary">Редагувати</a></td>
+                <td><a href="/admin/user/{{ $user->id }}/edit" class="btn btn-primary">Редагувати</a></td>
             </tr>
         @endforeach
 

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin-layout')
 
 @section('content')
     <div class="container">
@@ -18,7 +18,7 @@
             </tr>
             </tbody>
         </table>
-        <form action="/user/{{ $user->id }}" method="post">
+        <form action="/admin/user/{{ $user->id }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Пошта</label>
@@ -29,6 +29,36 @@
                 <label for="firstName" class="col-sm-3 control-label">Name*</label>
 
                 <input type="text" id="firstName" placeholder="Name" class="form-control" autofocus name="name" value="{{$user->name}}">
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Surname*</label>
+
+                <input type="text" id="surname" placeholder="Name" class="form-control" autofocus name="surname" value="{{$user->surname}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Patronymic*</label>
+
+                <input type="text" id="patronymic" placeholder="Name" class="form-control" autofocus name="patronymic" value="{{$user->patronymic}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">postcode*</label>
+
+                <input type="text" id="postcode" placeholder="postcode" class="form-control" autofocus name="postcode" value="{{$user->postcode}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">phone*</label>
+
+                <input type="text" id="phone" placeholder="phone" class="form-control" autofocus name="phone" value="{{$user->phone}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">address</label>
+
+                <input type="text" id="address" placeholder="address" class="form-control" autofocus name="address" value="{{$user->address}}" required>
 
             </div>
 {{--            <div class="form-group">--}}
@@ -85,12 +115,49 @@
                     @endif
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="violation_subj">Регіон порушення</label>
+                <select class="form-control" id="region" name="region_id">
+                    <option>Виберіть регіон порушення</option>
+                    @foreach ($regions as $region)
+                        <option value="{{$region->id}}" @if($region->id == $user->region_id)
+                        selected
+                            @endif>{{$region->name}}</option>
 
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="violation_subj">Область порушення</label>
+                <select class="form-control" id="district" name="district_id">
+                    @foreach ($districts as $district)
+                        <option value="{{$district->id}}"
+                        @if($district->id == $user->district_id)
+                            selected
+                            @endif
+                        >{{$district->name}}</option>
+
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="violation_subj">Населений пункт порушення</label>
+                <select class="form-control" id="settlement" name="settlement_id">
+                    @foreach ($settlements as $settlement)
+                        <option value="{{$settlement->id}}"
+                                @if($settlement->id == $user->settlement_id)
+                                    selected
+                                @endif>
+                            {{$settlement->name}}</option>
+
+                    @endforeach
+                </select>
+            </div>
             <input type="hidden" name="_method" value="put" />
 
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
+    <script src="{{asset('js/request-create.js')}}"></script>
 @endsection

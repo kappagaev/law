@@ -4,25 +4,27 @@
         <title>{{$title}}</title>
     @endisset
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/">Пропозиції</a>
-
+        <a class="p-2 text-dark" href="/">Скарги</a>
+        <a class="p-2 text-dark" href="/about">Про нас</a>
 
         @if( !Auth::check())
-            <a href="googleform" class="btn">
-                Форма
+            <a href="/registration" class="btn btn-dark">
+                Реєстрація
             </a>
         @endif
 
 
     @auth
 
-            <a class="p-2 text-dark" href="/user/{{ Auth::id() }}">Кабінет</a>
+            <a class="p-2 text-dark" href="/profile">Кабінет</a>
 
         @if( Auth::user()->role_id == 3)
                 <a class="p-2 text-dark" href="/admin">Адмінка</a>

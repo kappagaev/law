@@ -12,28 +12,21 @@ use Illuminate\Support\Facades\Auth;
  */
 class RequestService
 {
-    /**
-     * @var RM
-     */
-    private $model;
-
-    /**
-     * RequestService constructor.
-     */
-    public function __construct()
-    {
-        $this->model = new RM();
-    }
 
     /**
      * @param $data
-     * @return RequestService
+     * @param $user_id
+     * @param $checkboxes
+     * @return RM
      */
-    public function create($data)
+    public function create($data, $user_id, $checkboxes)
     {
         $request = new RM($data);
-        $this->model = $request;
-        return $this;
+        $request->user_id = $user_id;
+        $request->save();
+        $request->checkboxes()->attach($checkboxes);
+
+        return $request;
     }
 
 
