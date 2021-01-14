@@ -21,6 +21,7 @@ class RequestService
      */
     public function create($data, $user_id, $checkboxes)
     {
+
         $request = new RM($data);
         $request->user_id = $user_id;
         $request->save();

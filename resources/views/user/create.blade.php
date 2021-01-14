@@ -2,11 +2,20 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h1>Створити користувача</h1>
         <form action="/admin/user" method="post">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Пошта</label>
+                <label for="exampleInputEmail1">Пошта*</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="" required>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
@@ -41,8 +50,8 @@
 
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Регіон</label>
-                <select class="form-control" id="region" name="region_id">
+                <label for="violation_subj">Регіон*</label>
+                <select class="form-control" id="region" name="region_id" required>
                     <option>Виберіть регіон порушення</option>
                     @foreach ($regions as $region)
                         <option value="{{$region->id}}">{{$region->name}}</option>
@@ -51,14 +60,14 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Область</label>
-                <select class="form-control" id="district" name="district_id">
+                <label for="violation_subj">Область*</label>
+                <select class="form-control" id="district" name="district_id" required>
 
                 </select>
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Населений пункт</label>
-                <select class="form-control" id="settlement" name="settlement_id">
+                <label for="violation_subj">Населений пункт*</label>
+                <select class="form-control" id="settlement" name="settlement_id" required>
 
                 </select>
             </div>
@@ -81,13 +90,10 @@
 
 {{--            </div>--}}
             <div class="form-group">
-                <label for="exampleInputEmail1">Виберіть роль юзера</label>
-                <select class="form-control form-control-lg" name="role_id">
-                    <option value="1" selected>
-                        Звичайний юзер
-                    </option>
+                <label for="exampleInputEmail1">Виберіть роль юзера*</label>
+                <select class="form-control form-control-lg" name="role_id" required>
                     <option value="2">
-                        Редактор
+                        Звичайний юзер
                     </option>
                     <option value="3">
                         Адмін

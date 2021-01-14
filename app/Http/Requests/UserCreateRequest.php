@@ -26,7 +26,16 @@ class UserCreateRequest extends FormRequest
         return [
             'password' => 'required|string|max:32',
             'name' => 'required|string|max:32',
-            'email' => 'unique:users|email|'
+            'surname' => 'required|string|max:32',
+            'patronymic' => 'required|string|max:32',
+            'postcode' => 'required|digits_between:1,20',
+            'phone' => 'required|string|max:32',
+            'region_id' => 'required|integer',
+            'district_id' => 'required|integer',
+            'settlement_id' => 'required|integer',
+            'address' => 'required|string|max:32',
+            'role_id' => 'required|integer|max:32',
+            'email' => 'unique:users|email|',
         ];
     }
 }

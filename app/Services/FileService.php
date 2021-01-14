@@ -17,12 +17,12 @@ class FileService
 {
 
     /**
-     * @param \App\Http\Requests\RequestStoreRequest $request
+     * @param  $request
      * @param $fileNames array
      * @param $storePrefix
      * @return array
      */
-    public function storeRequestFiles(\App\Http\Requests\RequestStoreRequest $request, $fileNames, $storePrefix)
+    public function storeRequestFiles($request, $fileNames, $storePrefix)
     {
         $res = [];
         foreach ($fileNames as $fileName) {

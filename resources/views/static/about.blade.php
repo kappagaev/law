@@ -23,7 +23,7 @@
                 Трохим Бабич
             </div>
             <div class="col text-center">
-                Євгеній Кротевич
+                Євген Кротевич
             </div>
         </div>
     </div>

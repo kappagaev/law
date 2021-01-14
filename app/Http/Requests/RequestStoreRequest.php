@@ -41,9 +41,9 @@ class RequestStoreRequest extends FormRequest
             'violation_sphere_id' => 'required|integer',
             'violation_type_id' => 'required|integer',
             'violation_subj' => 'required|string|max:64',
-            'violator' => 'required|string|max:64',
+            'violator' => 'nullable|string|max:64',
             'place' => 'required|string|max:64',
-            'place_code' => 'integer',
+            'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
             'violation_time' => 'required|date_format:Y-m-d H:i:s',
             'region_id' => 'required|integer',
@@ -51,7 +51,7 @@ class RequestStoreRequest extends FormRequest
             'settlement_id' => 'required|integer',
             'photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
             'audio.*' => "mimes:mp3,mpga,wav|max:20000",
-            'video.*' => "mimes:mp4,mov,ogg,qt|max:20000",
+            'video.*' => "mimes:mp4,mov,ogg,qt|max:100000",
             'reg_photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
         ];
     }

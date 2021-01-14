@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestFilesStoreRequest;
 use App\Http\Requests\RequestStoreRequest;
 use App\Mail\RequestCreateMail;
 use App\Models\District;
@@ -82,14 +83,17 @@ class RequestController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\RequestStoreRequest $request
+     * @param RequestFilesStoreRequest $filesRequest
      * @param RequestService $service
      * @param RequestMailService $requestMailService
      * @param FileService $fileService
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @throws \PhpOffice\PhpWord\Exception\CopyFileException
+     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
     public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService,FileService $fileService)
     {
-        $rm = $service->create($request->validated(), auth::id(), $request->checkboxes);
+        $rm = $service->create(collect($request->validated())->except('photocopy', 'audio', 'video', 'reg_photocopy')->toArray(), auth::id(), $request->checkboxes);
 
         $files = $fileService->storeRequestFiles($request, [
             'photocopy',

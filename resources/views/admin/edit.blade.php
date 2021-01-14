@@ -76,16 +76,10 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Виберіть роль юзера</label>
                 <select class="form-control form-control-lg" name="role_id" value="{{$user->role_id}}">
-                     <option value="1" @if($user->role_id == 1)
-                                            selected
-                                        @endif
-                         >
-                        Звичайний юзер
-                    </option>
                     <option value="2" @if($user->role_id == 2)
                     selected
                         @endif>
-                        Редактор
+                        Звичайний юзер
                     </option>
                     <option value="3"
                             @if($user->role_id == 3)

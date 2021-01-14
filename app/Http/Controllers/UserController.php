@@ -35,7 +35,7 @@ class UserController extends Controller
     {
         User::create(
             array_merge(
-                $request->all(),
+                $request->validated(),
                 ['password' => Hash::make($request->password)]
             )
         );

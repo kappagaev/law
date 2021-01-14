@@ -8,24 +8,24 @@
         <form action="/" method="get">
             <div class="row">
                 <div class="col">
-                    <label for="violation_subj">4.1 Регіон порушення</label>
+                    <label for="violation_subj">Регіон порушення</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">4.2 Область порушення</label>
+                    <label for="violation_subj">Область порушення</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">4.3 Населений пункт порушення</label>
+                    <label for="violation_subj">Населений пункт порушення</label>
 
                 </div>
 
                 <div class="col">
-                    <label for="violation_subj">1.1 Сфера порушення</label>
+                    <label for="violation_subj">Сфера порушення</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">1.2 Вид порушення</label>
+                    <label for="violation_subj">Вид порушення</label>
 
                 </div>
             </div>
