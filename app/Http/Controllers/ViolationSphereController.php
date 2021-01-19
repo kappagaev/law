@@ -25,4 +25,9 @@ class ViolationSphereController extends Controller
         $spheres = ViolationSphere::paginate(32);
         return view('request_sphere/panel')->with('spheres', $spheres)->with('title', 'Адмінка');
     }
+
+    public function spheres()
+    {
+        return ViolationSphere::all();
+    }
 }

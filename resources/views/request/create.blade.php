@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         @if ($errors->any())
+            <br>
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -17,7 +18,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="title">Заголовок</label>
-                        <input type="text" id="title" placeholder="Заголовок" class="form-control" name="title" value="" required>
+                        <input type="text" id="title" placeholder="Заголовок" class="form-control" name="title" value="{{old('title')}}" required>
                         <div class="invalid-feedback">
                             123
                         </div>
@@ -27,22 +28,30 @@
 
                     <div class="mb-3">
                         <label for="violation_subj">1.1 Сфера порушення</label>
-                        <select class="form-control" id="sphere" name="violation_sphere_id" required>
+                        <select class="form-control" id="sphere" name="violation_sphere_id" required data-sphere-id="{{old('violation_sphere_id')}}">
                             <option>Виберіть сферу порушення</option>
-                            @foreach ($spheres as $sphere)
-                                <option value="{{$sphere->id}}">{{$sphere->description}}</option>
-
-                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="violation_subj">1.2 Вид порушення</label>
-                        <select class="form-control" id="type" name="violation_type_id" required>
+                        <select class="form-control" id="type" name="violation_type_id" required data-type-id="{{old('violation_type_id')}}">
 
                         </select>
                     </div>
-                    <div class="mb-3" id="checkboxes">
+                    <div class="mb-3" id="checkboxes" data-checkboxes="
+                        @if(old('checkboxes'))
 
+                             @for( $i =0; $i < count(old('checkboxes')); $i++)
+                               {{ old('checkboxes.'.$i)}}
+                                @if($i + 1 != count(old('checkboxes')))
+                                    ,
+                                @endif
+
+                            @endfor
+
+                        @endif
+                ">
+                        {{old('checkboxes.0')}}
                     </div>
                     <div class="mb-3">
                         <label for="violation_subj">2.Суб’єкт порушення</label>
@@ -65,24 +74,20 @@
 
 
                     <div class="mb-3">
-                        <label for="violation_subj">4.1 Регіон порушення</label>
-                        <select class="form-control" id="region" name="region_id" required>
-                            <option>Виберіть регіон порушення</option>
-                            @foreach ($regions as $region)
-                                <option value="{{$region->id}}">{{$region->name}}</option>
+                        <label for="violation_subj">4.1 Область порушення</label>
+                        <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>
 
-                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">4.2 Область порушення</label>
-                        <select class="form-control" id="district" name="district_id" required>
+                        <label for="violation_subj">4.2 Регіон порушення</label>
+                        <select class="form-control" id="district" name="district_id" data-district-id="{{old('district_id')}}" required>
 
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="violation_subj">4.3 Населений пункт порушення</label>
-                        <select class="form-control" id="settlement" name="settlement_id" required>
+                        <select class="form-control" id="settlement" name="settlement_id" data-settlement-id="{{old('settlement_id')}}"  required>
 
                         </select>
                     </div>
@@ -124,7 +129,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="address2">6. Обставини порушення</label>
-                        <textarea class="form-control" rows="4" placeholder="Обставини порушення" name="content" value="{{old('content')}}" required></textarea>
+                        <textarea value="" class="form-control" rows="4" placeholder="Обставини порушення" name="content"  required>{{old('content')}}</textarea>
 
                     </div>
                     <div class="input-group mb-3">

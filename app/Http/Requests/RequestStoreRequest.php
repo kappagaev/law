@@ -45,7 +45,7 @@ class RequestStoreRequest extends FormRequest
             'place' => 'required|string|max:64',
             'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
-            'violation_time' => 'required|date_format:Y-m-d H:i:s',
+            'violation_time' => 'required|date_format:Y-m-d H:i:s|before:today',
             'region_id' => 'required|integer',
             'district_id' => 'required|integer',
             'settlement_id' => 'required|integer',
@@ -55,4 +55,33 @@ class RequestStoreRequest extends FormRequest
             'reg_photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
         ];
     }
+
+    /**
+     * Get the validation attributes that apply to the request.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'title' => 'Заголовок: Обов\'язково, до 32 символів',
+            'content' => 'Обставини порушення: Обов\'язково, до 300 символів',
+            'violation_sphere_id' => 'Сфера порушення: Обов\'язково',
+            'violation_type_id' => 'Вид порушення: Обов\'язково',
+            'violation_subj' => 'Суб’єкт порушення: Обов\'язково',
+            'violator' => 'Прізвище, ім’я, по батькові порушника: до 64 символів',
+            'place' => 'Назва органу державної влади: Обов\'язково, до 64 символів',
+            'place_code' => 'Код набір цифр',
+            'place_address' => 'Адреса порушення: Обов\'язково, до 64 символів',
+            'violation_time' => 'Час порушення: Обов\'язково, не можна обрати дату порушення пізніше сьогоднішнього дня',
+            'region_id' => 'Область: Обов\'язково',
+            'district_id' => 'Область порушення: Обов\'язково',
+            'settlement_id' => 'Населений пункт порушення: Обов\'язково',
+            'photocopy.*' => "Фотокопія документа: формат jpg,png,jpeg, до 20мб",
+            'audio.*' => "Аудіозапис: формат mp3,mpga,wav, до 20мб",
+            'video.*' => "Відеозапис: формат mp4,mov,ogg,qt до 100мб",
+            'reg_photocopy.*' => "Фотокопія установчих та реєстраційних документів: формат jpg,png,jpeg, до 20мб",
+        ];
+    }
+
 }

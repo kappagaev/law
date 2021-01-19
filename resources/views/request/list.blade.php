@@ -31,112 +31,60 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <select class="form-control" id="region" name="region_id">
-                        <option value="">Виберіть регіон порушення</option>
-                        @if(request()->input('region_id'))
-                            @foreach($regions as $region)
-                                <option
-                                    @if(request()->input('region_id') == $region->id)
-                                    selected
-                                    @endif
-                                    value="{{$region->id}}"
-                                >
-                                    {{$region->name}}
-                                </option>
-
-                            @endforeach
-
-                        @else
-                            @foreach ($regions as $region)
-                                <option value="{{$region->id}}">{{$region->name}}</option>
-
-                            @endforeach
-                        @endif
+                    <select class="form-control" id="region" name="region_id" data-region-id="{{request()->input('region_id')}}">
 
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="district" name="district_id">
-                        <option value="">
-                            Виберіть область порушення
-                        </option>
-                        @if(request()->input('district_id'))
+                    <select class="form-control" id="district" name="district_id" data-district-id="{{request()->input('district_id')}}">
 
-                            @foreach($districts as $district)
-                                <option
-                                    @if(request()->input('district_id') == $district->id)
-                                        selected
-                                    @endif
-                                    value="{{$district->id}}"
-                                >
-                                    {{$district->name}}
-                                </option>
-
-                            @endforeach
-                        @endif
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="settlement" name="settlement_id">
-                        <option value="">
-                            Виберіть населений пункт порушення
-                        </option>
-                        @if(request()->input('settlement_id'))
+                    <select class="form-control" id="settlement" name="settlement_id" data-settlement-id="{{request()->input('settlement_id')}}">
 
-                            @foreach($settlements as $settlement)
-                                <option
-                                    @if(request()->input('settlement_id') == $settlement->id)
-                                    selected
-                                    @endif
-                                    value="{{$settlement->id}}"
-                                >
-                                    {{$settlement->name}}
-                                </option>
-
-                            @endforeach
-                        @endif
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="sphere" name="violation_sphere_id">
+                    <select class="form-control" id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}">
                         <option value="">Виберіть сферу порушення</option>
-                        @if(request()->input('violation_sphere_id'))
-                            @foreach($spheres as $sphere)
-                                <option
-                                    @if(request()->input('violation_sphere_id') == $sphere->id)
-                                    selected
-                                    @endif
-                                    value="{{$sphere->id}}"
-                                >
-                                    {{$sphere->description}}
-                                </option>
+{{--                        @if(request()->input('violation_sphere_id'))--}}
+{{--                            @foreach($spheres as $sphere)--}}
+{{--                                <option--}}
+{{--                                    @if(request()->input('violation_sphere_id') == $sphere->id)--}}
+{{--                                    selected--}}
+{{--                                    @endif--}}
+{{--                                    value="{{$sphere->id}}"--}}
+{{--                                >--}}
+{{--                                    {{$sphere->description}}--}}
+{{--                                </option>--}}
 
-                            @endforeach
-                        @else
-                            @foreach ($spheres as $sphere)
-                                <option value="{{$sphere->id}}">{{$sphere->description}}</option>
+{{--                            @endforeach--}}
+{{--                        @else--}}
+{{--                            @foreach ($spheres as $sphere)--}}
+{{--                                <option value="{{$sphere->id}}">{{$sphere->description}}</option>--}}
 
-                            @endforeach
-                        @endif
+{{--                            @endforeach--}}
+{{--                        @endif--}}
 
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="type" name="violation_type_id">
+                    <select class="form-control" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}">
                         <option value="">Виберіть сферу порушення</option>
-                        @if(request()->input('violation_type_id'))
-                            @foreach($types as $type)
-                                <option
-                                    @if(request()->input('violation_type_id') == $type->id)
-                                    selected
-                                    @endif
-                                    value="{{$type->id}}"
-                                >
-                                    {{$type->description}}
-                                </option>
+{{--                        @if(request()->input('violation_type_id'))--}}
+{{--                            @foreach($types as $type)--}}
+{{--                                <option--}}
+{{--                                    @if(request()->input('violation_type_id') == $type->id)--}}
+{{--                                    selected--}}
+{{--                                    @endif--}}
+{{--                                    value="{{$type->id}}"--}}
+{{--                                >--}}
+{{--                                    {{$type->description}}--}}
+{{--                                </option>--}}
 
-                            @endforeach
-                        @endif
+{{--                            @endforeach--}}
+{{--                        @endif--}}
                     </select>
                 </div>
             </div>

@@ -22,19 +22,19 @@
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Ім'я*</label>
 
-                    <input type="text" id="name" placeholder="Name" class="form-control" autofocus name="name" value="{{old('name')}}" required>
+                    <input type="text" id="name" placeholder="Ім'я" class="form-control" autofocus name="name" value="{{old('name')}}" required>
 
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Прізвище*</label>
 
-                <input type="text" id="surname" placeholder="Name" class="form-control" autofocus name="surname" value="{{old('surname')}}" required>
+                <input type="text" id="surname" placeholder="Прізвище" class="form-control" autofocus name="surname" value="{{old('surname')}}" required>
 
             </div>
             <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">По батькові*</label>
+                <label for="firstName" class="col-sm-3 control-label">По батькові</label>
 
-                <input type="text" id="patronymic" placeholder="Name" class="form-control" autofocus name="patronymic" value="{{old('patronymic')}}" required>
+                <input type="text" id="patronymic" placeholder="По батькові" class="form-control" autofocus name="patronymic" value="{{old('patronymic')}}">
 
             </div>
             <div class="form-group">
@@ -50,24 +50,20 @@
 
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Регіон*</label>
-                <select class="form-control" id="region" name="region_id" required>
-                    <option>Виберіть регіон порушення</option>
-                    @foreach ($regions as $region)
-                        <option value="{{$region->id}}">{{$region->name}}</option>
+                <label for="violation_subj">Область*</label>
+                <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>
 
-                    @endforeach
                 </select>
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Область*</label>
-                <select class="form-control" id="district" name="district_id" required>
+                <label for="violation_subj">Регіон*</label>
+                <select class="form-control" id="district" name="district_id"  data-district-id="{{old('district_id')}}" required>
 
                 </select>
             </div>
             <div class="mb-3">
                 <label for="violation_subj">Населений пункт*</label>
-                <select class="form-control" id="settlement" name="settlement_id" required>
+                <select class="form-control" id="settlement" name="settlement_id" required  data-settlement-id="{{old('settlement_id')}}">
 
                 </select>
             </div>

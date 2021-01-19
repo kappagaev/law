@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         @if ($errors->any())
+            <br>
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -17,7 +18,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="description">Опис</label>
-                    <textarea class="form-control" rows="4" name="description" value="{{old('description')}}"></textarea>
+                    <textarea class="form-control" rows="4" name="description" value="{{old('description')}}" required></textarea>
 
                 </div>
 

@@ -25,9 +25,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/requests">Скарги</a>
             </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="/logout">Вийти</a>
+            </li>
         </ul>
         <span class="navbar-text">
-      Navbar text with an inline element
+
     </span>
     </div>
 </nav>

@@ -10,12 +10,25 @@
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">Mova team</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Скарги</a>
         <a class="p-2 text-dark" href="/about">Про нас</a>
 
-        @if( !Auth::check())
+        @if( !Auth::check())/**
+     * Get the validation attributes that apply to the request.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'username'            => trans('userpasschange.username'),
+            'oldpassword'             => trans('userpasschange.oldpassword'),
+            'newpassword'             => trans('userpasschange.newpassword'),
+            'newpasswordagain'       => trans('userpasschange.newpasswordagain'),
+        ];
+    }
             <a href="/registration" class="btn btn-dark">
                 Реєстрація
             </a>

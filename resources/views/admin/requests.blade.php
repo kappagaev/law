@@ -1,9 +1,7 @@
 @extends('admin-layout')
 
 @section('content')
-    <div class="container">
-        <a href="/user/create" class="btn btn-secondary">Створити користувача</a>
-    </div>
+
     <table class="table">
         <thead>
         <tr>

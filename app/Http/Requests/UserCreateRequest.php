@@ -27,7 +27,7 @@ class UserCreateRequest extends FormRequest
             'password' => 'required|string|max:32',
             'name' => 'required|string|max:32',
             'surname' => 'required|string|max:32',
-            'patronymic' => 'required|string|max:32',
+            'patronymic' => 'string|max:32',
             'postcode' => 'required|digits_between:1,20',
             'phone' => 'required|string|max:32',
             'region_id' => 'required|integer',

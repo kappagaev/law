@@ -54,11 +54,13 @@ Route::resource('request', \App\Http\Controllers\RequestController::class)->exce
 Route::get('violation/type/{violationType}/checkboxes', [\App\Http\Controllers\RequestCheckboxController::class, 'get']);
 
 Route::get('violation/sphere/{violationSphere}/types', [\App\Http\Controllers\ViolationTypeController::class, 'sphereTypes']);
+Route::get('violation/spheres/', [\App\Http\Controllers\ViolationSphereController::class, 'spheres']);
 Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']);
 
 Route::get('registration', [\App\Http\Controllers\StaticPageController::class, 'registration']);
 
 Route::get('region/{regionId}/districts', [\App\Http\Controllers\AddressController::class, 'districts']);
 Route::get('district/{districtId}/settlements', [\App\Http\Controllers\AddressController::class, 'settlements']);
+Route::get('regions', [\App\Http\Controllers\AddressController::class, 'regions']);
 
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
