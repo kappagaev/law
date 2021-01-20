@@ -14,7 +14,7 @@ class RequestViolationTime extends Migration
     public function up()
     {
         Schema::table('requests', function (Blueprint $table) {
-            $table->timestamp('violation_time');
+            $table->timestamp('violation_time')->nullable();
 
         });
 
