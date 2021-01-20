@@ -15,20 +15,8 @@
         <a class="p-2 text-dark" href="/">Скарги</a>
         <a class="p-2 text-dark" href="/about">Про нас</a>
 
-        @if( !Auth::check())/**
-     * Get the validation attributes that apply to the request.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'username'            => trans('userpasschange.username'),
-            'oldpassword'             => trans('userpasschange.oldpassword'),
-            'newpassword'             => trans('userpasschange.newpassword'),
-            'newpasswordagain'       => trans('userpasschange.newpasswordagain'),
-        ];
-    }
+        @if( !Auth::check())
+
             <a href="/registration" class="btn btn-dark">
                 Реєстрація
             </a>
