@@ -117,11 +117,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="sm-3">
-                        <label>Завершити пошук</label>
-
-                    </div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Відправити</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Шукати</button>
                 </div>
             </div>
         </form>
