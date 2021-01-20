@@ -8,11 +8,11 @@
         <form action="/" method="get">
             <div class="row">
                 <div class="col">
-                    <label for="violation_subj">Регіон порушення</label>
+                    <label for="violation_subj">Область порушення</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">Область порушення</label>
+                    <label for="violation_subj">Регіон порушення</label>
 
                 </div>
                 <div class="col">
