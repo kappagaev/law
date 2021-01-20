@@ -117,6 +117,7 @@
                     </div>
                 </div>
                 <div class="col">
+                    <br>
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Шукати</button>
                 </div>
             </div>
