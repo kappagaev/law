@@ -11017,7 +11017,7 @@ return jQuery;
         $('#checkboxes').empty();
         console.log(data);
 
-        if (selected[0] != NaN) {
+        if (selected[0].isNaN()) {
           data.forEach(function (checkbox) {
             if (selected.includes(checkbox.id)) {
               $('#checkboxes').append('<label><input type="checkbox" name="checkboxes[]" value="' + checkbox.id + '" checked>' + checkbox.description + '<br>');

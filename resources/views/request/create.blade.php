@@ -17,7 +17,7 @@
                 <form class="form-horizontal" role="form" method="post" action="/request" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="title">Заголовок</label>
+                        <label for="title">Заголовок*</label>
                         <input type="text" id="title" placeholder="Заголовок" class="form-control" name="title" value="{{old('title')}}" required>
                         <div class="invalid-feedback">
                             123
@@ -27,13 +27,13 @@
 
 
                     <div class="mb-3">
-                        <label for="violation_subj">1.1 Сфера порушення</label>
+                        <label for="violation_subj">1.1 Сфера порушення*</label>
                         <select class="form-control" id="sphere" name="violation_sphere_id" required data-sphere-id="{{old('violation_sphere_id')}}">
                             <option>Виберіть сферу порушення</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">1.2 Вид порушення</label>
+                        <label for="violation_subj">1.2 Вид порушення*</label>
                         <select class="form-control" id="type" name="violation_type_id" required data-type-id="{{old('violation_type_id')}}">
 
                         </select>
@@ -54,7 +54,7 @@
                         {{old('checkboxes.0')}}
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">2.Суб’єкт порушення</label>
+                        <label for="violation_subj">2.Суб’єкт порушення*</label>
                         <input type="text" id="violation_subj" placeholder="Суб’єкт порушення" name="violation_subj" class="form-control" value="{{old('violation_subj')}}" required>
                         <div class="invalid-feedback">
                             Valid last name is required.
@@ -74,26 +74,26 @@
 
 
                     <div class="mb-3">
-                        <label for="violation_subj">4.1 Область порушення</label>
+                        <label for="violation_subj">4.1 Область порушення*</label>
                         <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>
 
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">4.2 Регіон порушення</label>
+                        <label for="violation_subj">4.2 Регіон порушення*</label>
                         <select class="form-control" id="district" name="district_id" data-district-id="{{old('district_id')}}" required>
 
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">4.3 Населений пункт порушення</label>
+                        <label for="violation_subj">4.3 Населений пункт порушення*</label>
                         <select class="form-control" id="settlement" name="settlement_id" data-settlement-id="{{old('settlement_id')}}"  required>
 
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label for="place">4.4.	Назва органу державної влади, органу місцевого самоврядування, підприємства, установи, чи організації</label>
+                        <label for="place">4.4.	Назва органу державної влади, органу місцевого самоврядування, підприємства, установи, чи організації*</label>
                         <input type="text" id="place" placeholder="Назва органу державної влади, органу місцевого самоврядування, підприємства, установи, чи організації" class="form-control"  name="place" value="{{old('place')}}" required>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
@@ -110,14 +110,14 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="place_address">4.6.	Адреса розташування де відбулось порушення</label>
+                        <label for="place_address">4.6.	Адреса розташування де відбулось порушення*</label>
                         <input type="text" id="place_address" placeholder="Адреса розташування де відбулось порушення" class="form-control"  name="place_address" value="{{old('place_address')}}" required>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_time">5.	Дата і час порушення</label>
+                        <label for="violation_time">5.	Дата і час порушення*</label>
 
                     </div>
                     <div class="mb-3">
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="address2">6. Обставини порушення</label>
+                        <label for="address2">6. Обставини порушення*</label>
                         <textarea value="" class="form-control" rows="4" placeholder="Обставини порушення" name="content"  required>{{old('content')}}</textarea>
 
                     </div>

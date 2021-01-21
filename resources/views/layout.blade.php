@@ -24,8 +24,7 @@
 
 
     @auth
-
-            <a class="p-2 text-dark" href="/profile">Кабінет</a>
+            <a class="p-2 text-dark" href="/profile">Вітаю, {{auth()->user()->name}}</a>
 
         @if( Auth::user()->role_id == 3)
                 <a class="p-2 text-dark" href="/admin">Адмінка</a>
