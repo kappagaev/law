@@ -28,6 +28,6 @@ class ViolationSphereController extends Controller
 
     public function spheres()
     {
-        return ViolationSphere::all();
+        return ViolationSphere::orderBy('description')->get();
     }
 }

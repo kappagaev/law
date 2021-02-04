@@ -28,7 +28,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('violation/sphere/create', [\App\Http\Controllers\ViolationSphereController::class, 'create']);
     Route::post('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'store']);
     Route::get('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'index']);
-
+    Route::get('/registrations',[\App\Http\Controllers\AdminController::class, 'userRegistrations']);
+    Route::get('/registration/{registration}',[\App\Http\Controllers\AdminController::class, 'userRegistration']);
+    Route::get('/registration/{registration}/prove',[\App\Http\Controllers\AdminController::class, 'userRegistrationProve']);
+    Route::get('/registration/{registration}/disprove',[\App\Http\Controllers\AdminController::class, 'userRegistrationDisprove']);
 
     Route::get('violation/type/create', [\App\Http\Controllers\ViolationTypeController::class, 'create']);
     Route::post('violation/type', [\App\Http\Controllers\ViolationTypeController::class, 'store']);
@@ -55,12 +58,23 @@ Route::get('violation/type/{violationType}/checkboxes', [\App\Http\Controllers\R
 
 Route::get('violation/sphere/{violationSphere}/types', [\App\Http\Controllers\ViolationTypeController::class, 'sphereTypes']);
 Route::get('violation/spheres/', [\App\Http\Controllers\ViolationSphereController::class, 'spheres']);
-Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']);
 
-Route::get('registration', [\App\Http\Controllers\StaticPageController::class, 'registration']);
+Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']);
+Route::get('rules', [\App\Http\Controllers\StaticPageController::class, 'rules']);
+
+Route::get('registration', [\App\Http\Controllers\UserRegistrationController::class, 'create']);
+Route::post('registration', [\App\Http\Controllers\UserRegistrationController::class, 'store']);
+Route::get('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirmForm']);
+Route::post('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirm']);
+
+Route::get('feedback', [\App\Http\Controllers\FeedbackController::class, 'create']);
+Route::post('feedback', [\App\Http\Controllers\FeedbackController::class, 'store']);
 
 Route::get('region/{regionId}/districts', [\App\Http\Controllers\AddressController::class, 'districts']);
 Route::get('district/{districtId}/settlements', [\App\Http\Controllers\AddressController::class, 'settlements']);
 Route::get('regions', [\App\Http\Controllers\AddressController::class, 'regions']);
+Route::get('territory/', [\App\Http\Controllers\TerritoryController::class, 'index']);
+Route::get('territory/{territoryId}/children', [\App\Http\Controllers\TerritoryController::class, 'children']);
+Route::get('territory/{territory}/similar', [\App\Http\Controllers\TerritoryController::class, 'territoriesWithSimilarNameParents']);
 
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');

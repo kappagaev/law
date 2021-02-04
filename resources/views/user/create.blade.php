@@ -49,23 +49,46 @@
                 <input type="text" id="phone" placeholder="phone" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
 
             </div>
+{{--            <div class="mb-3">--}}
+{{--                <label for="violation_subj">Область*</label>--}}
+{{--                <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>--}}
+
+{{--                </select>--}}
+{{--            </div>--}}
+{{--            <div class="mb-3">--}}
+{{--                <label for="violation_subj">Регіон*</label>--}}
+{{--                <select class="form-control" id="district" name="district_id"  data-district-id="{{old('district_id')}}" required>--}}
+
+{{--                </select>--}}
+{{--            </div>--}}
+{{--            <div class="mb-3">--}}
+{{--                <label for="violation_subj">Населений пункт*</label>--}}
+{{--                <select class="form-control" id="settlement" name="settlement_id" required  data-settlement-id="{{old('settlement_id')}}">--}}
+
+{{--                </select>--}}
+{{--            </div>--}}
+            <input type="hidden" name="territory_id" id="territory_id">
             <div class="mb-3">
-                <label for="violation_subj">Область*</label>
-                <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>
+                <label for="violation_subj">Територія*</label>
+                <select class="form-control" id="territory1" required>
 
                 </select>
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Регіон*</label>
-                <select class="form-control" id="district" name="district_id"  data-district-id="{{old('district_id')}}" required>
+                <div class="mb-3">
+                    <label for="violation_subj">Територія Рівень 2</label>
+                    <select class="form-control" id="territory2" required>
 
-                </select>
+                    </select>
+                </div>
             </div>
             <div class="mb-3">
-                <label for="violation_subj">Населений пункт*</label>
-                <select class="form-control" id="settlement" name="settlement_id" required  data-settlement-id="{{old('settlement_id')}}">
+                <div class="mb-3">
+                    <label for="violation_subj">Територія Рівень 3</label>
+                    <select class="form-control" id="territory3" required>
 
-                </select>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Адреса*</label>
@@ -76,7 +99,13 @@
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Пароль*</label>
 
-                    <input type="password" id="password" placeholder="Password" class="form-control" name="password">
+                    <input type="password" id="password" placeholder="Password" class="form-control" name="password" required>
+
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Підтвердити пароль*</label>
+
+                <input type="password" id="password" placeholder="Підтвердити пароль" class="form-control" name="password_confirmation" required>
 
             </div>
 {{--            <div class="form-group">--}}

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserAddressFields extends Migration
+class UserRegistrationsStreetHouseFlatFields extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class UserAddressFields extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('region_id');
-            $table->integer('district_id');
-            $table->integer('settlement_id');
+        Schema::table('user_registrations', function (Blueprint $table) {
+            $table->integer('flat')->nullable();
+            $table->integer('house');
+            $table->string('street');
         });
     }
 

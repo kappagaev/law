@@ -13,4 +13,9 @@ class StaticPageController extends Controller
     {
         return view('static/registration')->with('title', 'Реєстрація');
     }
+
+    public function rules()
+    {
+        return view('static/rules');
+    }
 }

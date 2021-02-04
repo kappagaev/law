@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettlementsTable extends Migration
+class CreateTerritoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSettlementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settlements', function (Blueprint $table) {
+        Schema::create('territories', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('code');
+            $table->integer('level');
             $table->string('name');
-            $table->bigInteger('district_id');
+            $table->integer('territory_id')->nullable();
+            $table->char('type')->nullable();
         });
     }
 
@@ -27,6 +30,6 @@ class CreateSettlementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settlements');
+        Schema::dropIfExists('territories');
     }
 }

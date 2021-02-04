@@ -53,6 +53,8 @@ class RequestStoreRequest extends FormRequest
             'audio.*' => "mimes:mp3,mpga,wav|max:20000",
             'video.*' => "mimes:mp4,mov,ogg,qt|max:100000",
             'reg_photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
+            'witness_reg_photo.*' => "mimes:jpg,png,jpeg|max:20000",
+            'show_content' => 'accepted'
         ];
     }
 
@@ -81,6 +83,7 @@ class RequestStoreRequest extends FormRequest
             'audio.*' => "Аудіозапис: формат mp3,mpga,wav, до 20мб",
             'video.*' => "Відеозапис: формат mp4,mov,ogg,qt до 100мб",
             'reg_photocopy.*' => "Фотокопія установчих та реєстраційних документів: формат jpg,png,jpeg, до 20мб",
+
         ];
     }
 

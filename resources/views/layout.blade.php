@@ -10,10 +10,12 @@
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Mova team</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="text-dark" href="/">Mova team</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/">Скарги</a>
-        <a class="p-2 text-dark" href="/about">Про нас</a>
+        <a class="p-2 text-dark" href="/">Всі звернення</a>
+        <a class="p-2 text-dark" href="/rules">Правила</a>
+        <a class="p-2 text-dark" href="/about">Про проєкт</a>
+        <a class="p-2 text-dark" href="/feedback">Зворотній зв'язок</a>
 
         @if( !Auth::check())
 
@@ -25,16 +27,16 @@
 
     @auth
             <a class="p-2 text-dark" href="/profile">Вітаю, {{auth()->user()->name}}</a>
-
+            <a class="btn btn-outline-dark" href="/request/create">Створити пропозицію</a>
         @if( Auth::user()->role_id == 3)
-                <a class="p-2 text-dark" href="/admin">Адмінка</a>
+                <a class="p-2 btn btn-info" href="/admin">Адмінка</a>
 
         @endif
 
-        <a class="btn btn-primary" href="/logout">Вийти</a>
+        <a class="p-2 btn btn-primary" href="/logout">Вийти</a>
     @endauth
     @guest
-        <a class="btn btn-primary" href="/login">Логін</a>
+        <a class=" p-2 btn btn-primary" href="/login">Логін</a>
     @endguest
     </nav>
 </div>
@@ -49,5 +51,18 @@
 <div class="container">
     @yield('content')
 </div>
+{{--<footer class="footer" style="    position: absolute;--}}
+{{--    bottom: 0;--}}
+{{--    width: 100%;--}}
+{{--    height: 60px;--}}
+{{--    line-height: 60px;--}}
+{{--    background-color: #f5f5f5;">--}}
+{{--    <!-- Copyright -->--}}
+{{--    <div class="text-center p-3" >--}}
+{{--        © 2021 Copyright:--}}
+{{--        Фідо та Асоціація--}}
+{{--    </div>--}}
+{{--    <!-- Copyright -->--}}
+{{--</footer>--}}
 </body>
 </html>

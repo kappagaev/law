@@ -60,27 +60,11 @@ class Request extends Model
     {
         return $this->belongsToMany(ViolationTypeCheckbox::class, 'checkbox_request', 'request_id', 'violation_type_checkbox_id');
     }
-    public function region()
-    {
-        return $this->belongsTo(Region::class);
-    }
 
-    public function settlement()
-    {
-        return $this->belongsTo(Settlement::class);
-    }
-
-    public function district()
-    {
-        return $this->belongsTo(District::class);
-    }
 
     public function getFullAddressAttribute()
     {
 
-        return $this->region->name . " область "
-            . $this->district->name . " район "
-            . $this->settlement->name . " "
-            . $this->place_address;
+        return $this->place_address;
     }
 }

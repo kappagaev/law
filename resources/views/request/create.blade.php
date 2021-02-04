@@ -72,24 +72,28 @@
                         </div>
                     </div>
 
-
+                    <input type="hidden" name="territory_id" id="territory_id">
                     <div class="mb-3">
-                        <label for="violation_subj">4.1 Область порушення*</label>
-                        <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>
+                        <label for="violation_subj">Область/Місто*</label>
+                        <select class="form-control" id="territory1">
 
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">4.2 Регіон порушення*</label>
-                        <select class="form-control" id="district" name="district_id" data-district-id="{{old('district_id')}}" required>
+                        <div class="mb-3">
+                            <label for="violation_subj">Регіон/Місто</label>
+                            <select class="form-control" id="territory2">
 
-                        </select>
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="violation_subj">4.3 Населений пункт порушення*</label>
-                        <select class="form-control" id="settlement" name="settlement_id" data-settlement-id="{{old('settlement_id')}}"  required>
+                        <div class="mb-3">
+                            <label for="violation_subj">Село/Селище...</label>
+                            <select class="form-control" id="territory3" >
 
-                        </select>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -127,10 +131,15 @@
                             Please enter your shipping address.
                         </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="address2">6. Обставини порушення*</label>
                         <textarea value="" class="form-control" rows="4" placeholder="Обставини порушення" name="content"  required>{{old('content')}}</textarea>
 
+                    </div>
+                    <div class="mb-3">
+                        <label for="address2">Показувати на сайті обставини порушення?</label>
+                        <input type="checkbox" name="show_content"  value="{{old('show_content')}}">
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-group">
@@ -161,7 +170,13 @@
                         </div>
 
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Фотокопія акта, підписаного свідками</label>
+                            <input type="file" class="form-control-file" id="reg_photocopy" name="witness_reg_photo[]" multiple>
+                        </div>
 
+                    </div>
                     <script>
                         $.datetimepicker.setLocale('ua');
                         $('#datetimepicker').datetimepicker({

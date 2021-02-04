@@ -39,30 +39,14 @@ class RequestController extends Controller
     {
 
        $requests = $search->setValues($request->only(
-                           ['region_id', 'district_id', 'settlement_id', 'violation_sphere_id', 'violation_type_id']
+                           ['region_id', 'district_id', 'settlement_id', 'violation_sphere_id', 'violation_type_id', 'territory_id']
                        ))
                         ->setTimestamps($request->only( 'created_at', 'violation_time'))
                         ->get();
-           ;
 
-       $spheres = ViolationSphere::all();
-       $regions = Region::all();
 
-       $view = view('request/list')->with('requests', $requests)
-           ->with('title', 'Пропозиції')
-           ->with('spheres', $spheres)
-           ->with('regions', $regions);
-       if($request->region_id) {
-           $view->with('districts', District::where('region_id', $request->region_id)->get());
-       }
-       if($request->district_id) {
-           $view->with('settlements', Settlement::where('district_id', $request->district_id)->get());
-       }
-
-        if($request->violation_sphere_id) {
-            $view->with('types', ViolationType::where('violation_sphere_id', $request->violation_sphere_id)->get());
-        }
-       return $view;
+        return view('request/list')->with('requests', $requests)
+            ->with('title', 'Пропозиції');
     }
 
     /**
@@ -72,11 +56,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-        $spheres = ViolationSphere::all();
-        $regions = Region::all();
-        return view('request/create')->with('title', 'Створити пропозицію')
-            ->with('spheres', $spheres)
-            ->with('regions', $regions);
+        return view('request/create')->with('title', 'Створити пропозицію');
     }
 
     /**
@@ -93,13 +73,14 @@ class RequestController extends Controller
      */
     public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService,FileService $fileService)
     {
-        $rm = $service->create(collect($request->validated())->except('photocopy', 'audio', 'video', 'reg_photocopy')->toArray(), auth::id(), $request->checkboxes);
+        $rm = $service->create(collect($request->validated())->except('photocopy', 'audio', 'video', 'reg_photocopy', 'witness_reg_photo')->toArray(), auth::id(), $request->checkboxes);
 
         $files = $fileService->storeRequestFiles($request, [
             'photocopy',
             'audio',
             'video',
-            'reg_photocopy'
+            'reg_photocopy',
+            'witness_reg_photo'
         ],"request_$rm->id");
 
         $requestMailService->created($rm, $files);
@@ -107,11 +88,10 @@ class RequestController extends Controller
         $docxTemplate = new DocxService('template.docx', 'request_' . $rm->id);
 
         $docx = $docxTemplate
-            ->setValues(array_map(function ($fileArray) {
+            ->handleFiles(array_map(function ($fileArray) {
                 $fileArray = array_map(function ($val) {
                     return substr($val, strpos($val, "/") + 1);
                 }, $fileArray);
-
                 return implode(', ', $fileArray);
             }, $files))
             ->handleRequestModel($rm)
@@ -133,44 +113,4 @@ class RequestController extends Controller
     {
         return view('request/single')->with('request', $request)->with('title', 'Пропозиція ' . $request->title);
     }
-
-    public function search(Request $request)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit(Request $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(Request $request, Request $request)
-    // {
-    //     //
-    // }
-
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  \App\Models\Request  $request
-//     * @return \Illuminate\Http\Response
-//     */
-//     public function destroy(RM $request)
-//     {
-//         //$request->delete();
-//         return redirect('/')->with('message', 'Успішно видалено');
-//     }
 }

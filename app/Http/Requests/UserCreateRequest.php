@@ -24,15 +24,13 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required|string|max:32',
+            'password' => 'required|string|confirmed|max:32',
             'name' => 'required|string|max:32',
             'surname' => 'required|string|max:32',
             'patronymic' => 'string|max:32',
             'postcode' => 'required|digits_between:1,20',
             'phone' => 'required|string|max:32',
-            'region_id' => 'required|integer',
-            'district_id' => 'required|integer',
-            'settlement_id' => 'required|integer',
+            'territory_id' => 'required|integer',
             'address' => 'required|string|max:32',
             'role_id' => 'required|integer|max:32',
             'email' => 'unique:users|email|',

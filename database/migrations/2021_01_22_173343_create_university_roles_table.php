@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RequestAddress extends Migration
+class CreateUniversityRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class RequestAddress extends Migration
      */
     public function up()
     {
-        Schema::table('requests', function (Blueprint $table) {
-            $table->integer('region_id');
-            $table->integer('district_id');
-            $table->integer('settlement_id');
+        Schema::create('university_roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class RequestAddress extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('university_roles');
     }
 }

@@ -8,19 +8,6 @@
         <form action="/" method="get">
             <div class="row">
                 <div class="col">
-                    <label for="violation_subj">Область порушення</label>
-
-                </div>
-                <div class="col">
-                    <label for="violation_subj">Регіон порушення</label>
-
-                </div>
-                <div class="col">
-                    <label for="violation_subj">Населений пункт порушення</label>
-
-                </div>
-
-                <div class="col">
                     <label for="violation_subj">Сфера порушення</label>
 
                 </div>
@@ -28,65 +15,53 @@
                     <label for="violation_subj">Вид порушення</label>
 
                 </div>
+                <div class="col">
+                    <label for="violation_subj">Територія Рівень 1</label>
+
+                </div>
+                <div class="col">
+                    <label for="violation_subj">Територія Рівень 2</label>
+
+                </div>
+                <div class="col">
+                    <label for="violation_subj">Територія Рівень 3</label>
+
+                </div>
+
+
             </div>
             <div class="row">
                 <div class="col">
-                    <select class="form-control" id="region" name="region_id" data-region-id="{{request()->input('region_id')}}">
+                    <select class="form-control" id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}"  value="{{request()->input('violation_sphere_id')}}">
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}"  value="{{request()->input('violation_type_id')}}">
+
+                    </select>
+                </div>
+                <input type="hidden" name="territory_id" id="territory_id">
+                <div class="col">
+                    <select class="form-control" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
 
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="district" name="district_id" data-district-id="{{request()->input('district_id')}}">
+                    <div class="mb-3">
 
-                    </select>
+                        <select class="form-control" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
+
+                        </select>
+                    </div>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="settlement" name="settlement_id" data-settlement-id="{{request()->input('settlement_id')}}">
+                    <div class="mb-3">
+                        <select class="form-control" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
 
-                    </select>
+                        </select>
+                    </div>
                 </div>
-                <div class="col">
-                    <select class="form-control" id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}">
-                        <option value="">Виберіть сферу порушення</option>
-{{--                        @if(request()->input('violation_sphere_id'))--}}
-{{--                            @foreach($spheres as $sphere)--}}
-{{--                                <option--}}
-{{--                                    @if(request()->input('violation_sphere_id') == $sphere->id)--}}
-{{--                                    selected--}}
-{{--                                    @endif--}}
-{{--                                    value="{{$sphere->id}}"--}}
-{{--                                >--}}
-{{--                                    {{$sphere->description}}--}}
-{{--                                </option>--}}
 
-{{--                            @endforeach--}}
-{{--                        @else--}}
-{{--                            @foreach ($spheres as $sphere)--}}
-{{--                                <option value="{{$sphere->id}}">{{$sphere->description}}</option>--}}
-
-{{--                            @endforeach--}}
-{{--                        @endif--}}
-
-                    </select>
-                </div>
-                <div class="col">
-                    <select class="form-control" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}">
-                        <option value="">Виберіть сферу порушення</option>
-{{--                        @if(request()->input('violation_type_id'))--}}
-{{--                            @foreach($types as $type)--}}
-{{--                                <option--}}
-{{--                                    @if(request()->input('violation_type_id') == $type->id)--}}
-{{--                                    selected--}}
-{{--                                    @endif--}}
-{{--                                    value="{{$type->id}}"--}}
-{{--                                >--}}
-{{--                                    {{$type->description}}--}}
-{{--                                </option>--}}
-
-{{--                            @endforeach--}}
-{{--                        @endif--}}
-                    </select>
-                </div>
             </div>
             <div class="row">
                 <div class="col">

@@ -66,32 +66,21 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getInitialsAttribute()
+    {
+        return $this->surname . ' ' . mb_substr($this->name, 0, 1) . '.' . mb_substr($this->patronymic, 0, 1).'.';
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name . ' '. $this->surname . ' ' . $this->patronymic;
     }
 
-    public function region()
-    {
-        return $this->belongsTo(Region::class);
-    }
-
-    public function settlement()
-    {
-        return $this->belongsTo(Settlement::class);
-    }
-
-    public function district()
-    {
-        return $this->belongsTo(District::class);
-    }
 
     public function getFullAddressAttribute()
     {
 
-        return $this->region->name . " область "
-            . $this->district->name . " район "
-            . $this->settlement->name . " "
-            . $this->address;
+        return
+            $this->address;
     }
 }

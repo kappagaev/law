@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ])
     .js('resources/js/request-create.js', 'public/js')// our script
+    .js('resources/js/registration.js', 'public/js')// our script
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery'],
     }).js('resources/js/tempusdominus-bootstrap.js', 'public/js');

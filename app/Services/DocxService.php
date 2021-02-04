@@ -104,14 +104,35 @@ class DocxService
         foreach ($rm->checkboxes as $checkbox) {
             $violation_type .= ' ' . $checkbox->description;
         }
-
         //$docx = $fileService->createDocx($rm, $rm->user, $files);
         return $this
             ->setValues($rm->getAttributes())
             ->setValues($rm->user->getAttributes())
+            ->setValue('initials', $rm->user->initials)
             ->setValues($rm->violationType->getAttributes())
             ->setValue('violation_type', $violation_type)
             ->setValue('full_address', $rm->full_address)
             ->setValue('user_full_address', $rm->user->full_address);
+    }
+
+    public function handleFiles(array $files): DocxService
+    {
+        $additions = [
+            'photocopy' => 'фотокопія документа',
+            'audio'=> 'аудіозапис',
+            'video'=> 'відеозапис',
+            'reg_photocopy'=>'фотокопія установчих та реєстраційних документів',
+            'witness_reg_photo' => 'фотокопія акта, підписаного свідками'
+        ];
+        $i = 1;
+        foreach ($additions as $key => $addition) {
+            if(isset($files[$key])) {
+                $this->setValue('addition'. ($i), ($i) . ') ' . $addition . ' ' . $files[$key]);
+                $i++;
+            }
+        }
+
+
+        return $this;
     }
 }

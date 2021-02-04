@@ -6,9 +6,6 @@
         {{--            <p>{{ Str::limit($request->content, 10) }}</p>--}}
 
         <hr>
-        @if(Auth::id() == $user->id)
-            <a class="btn btn-primary" href="/request/create">Створити пропозицію</a>
-        @endif
         @foreach ($requests as $request)
             <h2><a href="/request/{{$request->id}}" class="">{{ $request->title }}</a></h2>
             <p>{{ Str::limit($request->content, 10) }}</p>

@@ -35,6 +35,6 @@ class ViolationTypeController extends Controller
 
     public function sphereTypes(ViolationSphere $violationSphere)
     {
-        return $violationSphere->types;
+        return ViolationType::where('violation_sphere_id', $violationSphere->id)->orderBy('description')->get();
     }
 }

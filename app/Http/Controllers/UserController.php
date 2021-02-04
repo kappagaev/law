@@ -28,8 +28,8 @@ class UserController extends Controller
 
     public function create()
     {
-        $regions = Region::all();
-        return view('user/create')->with('regions', $regions);
+
+        return view('user/create');
     }
     public function store(UserCreateRequest $request)
     {
@@ -44,10 +44,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $regions = Region::all();
-        $districts = District::where('region_id', $user->region_id)->get();
-        $settlements = Settlement::where('district_id', $user->district_id)->get();
-        return view('admin/edit', ['user' => $user])->with('regions', $regions)->with('districts', $districts)->with('settlements', $settlements);
+        return view('admin/edit', ['user' => $user]);
     }
 
     public function update(Request $request, User $user)

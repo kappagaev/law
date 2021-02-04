@@ -15,6 +15,7 @@ return [
 
     'default' => env('MAIL_MAILER', 'smtp'),
     'REQUEST_CREATED_MAIL_TO' => env('REQUEST_CREATED_MAIL_TO'),
+    'FEEDBACK_EMAIL' => env('FEEDBACK_EMAIL'),
     'OUR_MAIL' => env('REQUEST_CREATED_MAIL_TO'),
     /*
     |--------------------------------------------------------------------------
