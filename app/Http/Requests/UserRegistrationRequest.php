@@ -32,6 +32,9 @@ class UserRegistrationRequest extends FormRequest
             'university_role_id' => 'required_if:is_naukma,1|integer|between:1,3',
             'kmamail' => 'required_if:is_naukma,1|email|regex:/(.*)ukma\.edu\.ua$/i|nullable',
             'territory_id' => 'required|integer',
+            'street' => 'required|string|max:32',
+            'house' => 'required|integer',
+            'flat' => 'integer',
 
         ];
     }

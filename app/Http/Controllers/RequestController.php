@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\RequestStatusIsPublic;
 use App\Http\Requests\RequestFilesStoreRequest;
 use App\Http\Requests\RequestStoreRequest;
 use App\Mail\RequestCreateMail;
@@ -33,6 +34,7 @@ class RequestController extends Controller
     public function __construct()
     {
         $this->middleware('author')->only(['create', 'store']);
+        $this->middleware(RequestStatusIsPublic::class)->only('show');
     }
 
     public function index(Request $request, RequestSearchService $search)
@@ -71,34 +73,9 @@ class RequestController extends Controller
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService,FileService $fileService)
+    public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService)
     {
-        $rm = $service->create(collect($request->validated())->except('photocopy', 'audio', 'video', 'reg_photocopy', 'witness_reg_photo')->toArray(), auth::id(), $request->checkboxes);
-
-        $files = $fileService->storeRequestFiles($request, [
-            'photocopy',
-            'audio',
-            'video',
-            'reg_photocopy',
-            'witness_reg_photo'
-        ],"request_$rm->id");
-
-        $requestMailService->created($rm, $files);
-
-        $docxTemplate = new DocxService('template.docx', 'request_' . $rm->id);
-
-        $docx = $docxTemplate
-            ->handleFiles(array_map(function ($fileArray) {
-                $fileArray = array_map(function ($val) {
-                    return substr($val, strpos($val, "/") + 1);
-                }, $fileArray);
-                return implode(', ', $fileArray);
-            }, $files))
-            ->handleRequestModel($rm)
-            ->save()
-            ->getName();
-
-        Mail::to(config('mail.REQUEST_CREATED_MAIL_TO'))->send(new RequestCreateMail($rm, $docx, $files));
+        $rm = $service->create($request, auth::id(), $request->checkboxes);
 
         return redirect('/')->with('message', 'успішно створено!');
     }

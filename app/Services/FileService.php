@@ -51,9 +51,7 @@ class FileService
             $guessExtension = $file->guessExtension();
             $name =  $storePrefix . '_' . $dir . ($i+1) . '.' . $guessExtension;
             $file->move(storage_path($dir), $name);
-
-            $path = $dir . '/' . $name;
-            array_push($res, $path);
+            array_push($res, $name);
         }
         return $res;
     }

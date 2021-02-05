@@ -49,6 +49,32 @@
                 <input type="text" id="phone" placeholder="phone" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
 
             </div>
+            <div class="mb-3">
+                <label for="address2">Чи має стосунок до НаУКМА</label>
+                <input type="checkbox" id="is_naukma" name="is_naukma" value="1" {{ old('is_naukma') ? 'checked' : '' }} >
+
+            </div>
+            <div id="isNaukmaFields">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1">Роль в НаУКМА*</label>
+                    <select class="form-control form-control-lg" name="university_role_id" id="university_role_id">
+                        <option value="1" {{ old('university_role_id') == 1 ? 'selected' : '' }}>
+                            Викладач_ка/Співробітник_ця
+                        </option>
+                        <option value="2" {{ old('university_role_id') == 2 ? 'selected' : '' }}>
+                            Студент_ка
+                        </option>
+                        <option value="3" {{ old('university_role_id') == 3 ? 'selected' : '' }}>
+                            Випускник_ця
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"> Корпоративна пошта НаУКМА*</label>
+                    <input type="email" class="form-control" id="kmamail" aria-describedby="emailHelp" placeholder="Пошта" name="kmamail" value="{{old('kmamail')}}">
+
+                </div>
+            </div>
 {{--            <div class="mb-3">--}}
 {{--                <label for="violation_subj">Область*</label>--}}
 {{--                <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>--}}
@@ -67,33 +93,45 @@
 
 {{--                </select>--}}
 {{--            </div>--}}
-            <input type="hidden" name="territory_id" id="territory_id">
+            <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
             <div class="mb-3">
-                <label for="violation_subj">Територія*</label>
-                <select class="form-control" id="territory1" required>
+                <label for="violation_subj">Місто/Область*</label>
+                <select class="form-control" id="territory1" required data-selected="{{old('territory1')}}">
 
                 </select>
             </div>
             <div class="mb-3">
                 <div class="mb-3">
-                    <label for="violation_subj">Територія Рівень 2</label>
-                    <select class="form-control" id="territory2" required>
+                    <label for="violation_subj">Місто/Регіон</label>
+                    <select class="form-control" id="territory2" data-selected="{{old('territory2')}}">
 
                     </select>
                 </div>
             </div>
             <div class="mb-3">
                 <div class="mb-3">
-                    <label for="violation_subj">Територія Рівень 3</label>
-                    <select class="form-control" id="territory3" required>
+                    <label for="violation_subj">Село</label>
+                    <select class="form-control" id="territory3" data-selected="{{old('territory3')}}">
 
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Адреса*</label>
+                <label for="firstName" class="col-sm-3 control-label">Вулиця*</label>
 
-                <input type="text" id="address" placeholder="address" class="form-control" autofocus name="address" value="{{old('address')}}" required>
+                <input type="text" id="street" placeholder="Вулиця" class="form-control" autofocus name="street" value="{{old('street')}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Дім*</label>
+
+                <input type="number" id="house" placeholder="Дім" class="form-control" autofocus name="house" value="{{old('house')}}" required>
+
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Квартира</label>
+
+                <input type="number" id="flat" placeholder="Квартира" class="form-control" autofocus name="flat" value="{{old('flat')}}" >
 
             </div>
             <div class="form-group">
@@ -130,5 +168,6 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div> <!-- ./container -->
+    <script src="{{asset('js/registration.js')}}"></script>
     <script src="{{asset('js/request-create.js')}}"></script>
 @endsection

@@ -16,15 +16,15 @@
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">Територія Рівень 1</label>
+                    <label for="violation_subj">Місто/Область</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">Територія Рівень 2</label>
+                    <label for="violation_subj">Місто/Регіон</label>
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">Територія Рівень 3</label>
+                    <label for="violation_subj">Село</label>
 
                 </div>
 
@@ -102,10 +102,10 @@
             Головна
         </h1>
         @foreach ($requests as $request)
-            <h2><a href="/request/{{$request->id}}" class="">{{ $request->title }}</a></h2>
-            <p>{{ Str::limit($request->content, 270) }}</p>
+            <h2><a href="/request/{{$request->id}}" class="">{{ $request->place }}</a></h2>
+            <p>{{$request->violationSphere->description }}</p>
             <div>
-                <span class="badge">{{ $request->created_at->format('Y-m-d') }}</span>
+                <span class="badge">Дата порушення: {{  Carbon\Carbon::parse($request->violation_time)->format('Y-m-d') }}</span>
             </div>
             <hr>
         @endforeach

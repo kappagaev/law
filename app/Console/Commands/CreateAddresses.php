@@ -101,8 +101,51 @@ class CreateAddresses extends Command
             $center->delete();
         }
 
+        foreach (Territory::where('name', 'like', '%/М.%')->get() as $territory) {
+            $territory->name = explode('/', $territory->name)[0];
+            $territory->save();
+        }
+        foreach (Territory::where('name', 'like', '%/СМТ%')->get() as $territory) {
+            $territory->name = explode('/', $territory->name)[0];
+            $territory->save();
+        }
 
+        for ($i = 1; $i <= 39430; $i++) {
+            $territory = Territory::where('id', $i)->first();
+            if (!$territory) {
+                echo $i;
+                continue;
+            }
+            echo $i . ' ';
+            $nameWords = preg_split('/[.\s]/', $territory->name);
+            $name = '';
+            foreach ($nameWords as $word) {
+                if(in_array($word, ['ОБЛАСТЬ', 'РАЙОН', 'M'])) {
+                    if($word == 'M') {
+                        $name .= 'м.';
+                    } else {
+                        $name .= mb_strtolower($word);
+                    }
+                } else {
+                    $name .= mb_strtoupper(mb_substr($word, 0, 1, 'UTF-8'), 'UTF-8') .
+                        mb_strtolower(mb_substr($word, 1, mb_strlen($word, 'UTF-8'), 'UTF-8'));
+                }
+                $name .= ' ';
+            }
+            echo $name . PHP_EOL;
 
+            $territory->name = $name;
+            $territory->save();
+        }
+        foreach (Territory::where('name', 'like', '%М %')->get() as $territory) {
+            echo $territory->name;
+            $name = mb_strtolower(mb_substr($territory->name, 0, 1, 'UTF-8'), 'UTF-8') .
+                      mb_substr($territory->name, 1, mb_strlen($territory->name, 'UTF-8'), 'UTF-8');
+            echo $name . PHP_EOL;
+           // $territory->save();
+        }
+        Territory::where('name', 'М Севастополь')->first()->delete();
+        Territory::where('name', 'М Київ')->update(['type' => 'М']);
         return 0;
     }
 

@@ -99,7 +99,7 @@ class DocxService
     public function handleRequestModel(Request $rm)
     {
 
-        $violation_type = $rm->violationType->description;
+        $violation_type = $rm->violationType->full_description;
 
         foreach ($rm->checkboxes as $checkbox) {
             $violation_type .= ' ' . $checkbox->description;
@@ -107,6 +107,7 @@ class DocxService
         //$docx = $fileService->createDocx($rm, $rm->user, $files);
         return $this
             ->setValues($rm->getAttributes())
+            ->handleFiles($rm->all_files)
             ->setValues($rm->user->getAttributes())
             ->setValue('initials', $rm->user->initials)
             ->setValues($rm->violationType->getAttributes())
@@ -115,7 +116,7 @@ class DocxService
             ->setValue('user_full_address', $rm->user->full_address);
     }
 
-    public function handleFiles(array $files): DocxService
+    public function handleFiles($files): DocxService
     {
         $additions = [
             'photocopy' => 'фотокопія документа',

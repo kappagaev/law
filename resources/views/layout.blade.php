@@ -16,6 +16,7 @@
         <a class="p-2 text-dark" href="/rules">Правила</a>
         <a class="p-2 text-dark" href="/about">Про проєкт</a>
         <a class="p-2 text-dark" href="/feedback">Зворотній зв'язок</a>
+        <a class="p-2 text-dark" href="/donate">Підтримати проєкт</a>
 
         @if( !Auth::check())
 
@@ -27,7 +28,7 @@
 
     @auth
             <a class="p-2 text-dark" href="/profile">Вітаю, {{auth()->user()->name}}</a>
-            <a class="btn btn-outline-dark" href="/request/create">Створити пропозицію</a>
+            <a class="btn btn-outline-dark" href="/request/create">Створити звернення</a>
         @if( Auth::user()->role_id == 3)
                 <a class="p-2 btn btn-info" href="/admin">Адмінка</a>
 

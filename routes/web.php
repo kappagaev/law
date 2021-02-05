@@ -25,6 +25,12 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/',[\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('/requests',[\App\Http\Controllers\AdminController::class, 'requests']);
+    Route::get('/requests/approve',[\App\Http\Controllers\AdminController::class, 'requestsApprove']);
+    Route::get('/request/{request}',[\App\Http\Controllers\AdminController::class, 'request']);
+    Route::get('/request/{request}/disprove',[\App\Http\Controllers\AdminController::class, 'requestDisprove']);
+    Route::get('/request/{request}/approve',[\App\Http\Controllers\AdminController::class, 'requestApprove']);
+
+
     Route::get('violation/sphere/create', [\App\Http\Controllers\ViolationSphereController::class, 'create']);
     Route::post('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'store']);
     Route::get('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'index']);
@@ -37,10 +43,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('violation/type', [\App\Http\Controllers\ViolationTypeController::class, 'store']);
     Route::get('violation/type', [\App\Http\Controllers\ViolationTypeController::class, 'index']);
     Route::get('violation/type/{violationType}', [\App\Http\Controllers\ViolationTypeController::class, 'show']);
-
-
     Route::get('violation/type/{violationType}/checkbox/create', [\App\Http\Controllers\RequestCheckboxController::class, 'create']);
     Route::post('violation/type/checkbox', [\App\Http\Controllers\RequestCheckboxController::class, 'store']);
+
     Route::resource('user', UserController::class);
 });
 //Route::post('/loging/submit', function () {
@@ -61,6 +66,7 @@ Route::get('violation/spheres/', [\App\Http\Controllers\ViolationSphereControlle
 
 Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']);
 Route::get('rules', [\App\Http\Controllers\StaticPageController::class, 'rules']);
+Route::get('donate', [\App\Http\Controllers\StaticPageController::class, 'donate']);
 
 Route::get('registration', [\App\Http\Controllers\UserRegistrationController::class, 'create']);
 Route::post('registration', [\App\Http\Controllers\UserRegistrationController::class, 'store']);
@@ -70,9 +76,6 @@ Route::post('registration/{registration:key}', [\App\Http\Controllers\UserRegist
 Route::get('feedback', [\App\Http\Controllers\FeedbackController::class, 'create']);
 Route::post('feedback', [\App\Http\Controllers\FeedbackController::class, 'store']);
 
-Route::get('region/{regionId}/districts', [\App\Http\Controllers\AddressController::class, 'districts']);
-Route::get('district/{districtId}/settlements', [\App\Http\Controllers\AddressController::class, 'settlements']);
-Route::get('regions', [\App\Http\Controllers\AddressController::class, 'regions']);
 Route::get('territory/', [\App\Http\Controllers\TerritoryController::class, 'index']);
 Route::get('territory/{territoryId}/children', [\App\Http\Controllers\TerritoryController::class, 'children']);
 Route::get('territory/{territory}/similar', [\App\Http\Controllers\TerritoryController::class, 'territoriesWithSimilarNameParents']);

@@ -36,24 +36,25 @@ class RequestStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:32',
             'content' => 'required|string|max:300',
             'violation_sphere_id' => 'required|integer',
             'violation_type_id' => 'required|integer',
-            'violation_subj' => 'required|string|max:64',
             'violator' => 'nullable|string|max:64',
             'place' => 'required|string|max:64',
             'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
             'violation_time' => 'required|date_format:Y-m-d H:i:s|before:today',
-            'region_id' => 'required|integer',
-            'district_id' => 'required|integer',
-            'settlement_id' => 'required|integer',
-            'photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
-            'audio.*' => "mimes:mp3,mpga,wav|max:20000",
-            'video.*' => "mimes:mp4,mov,ogg,qt|max:100000",
-            'reg_photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
-            'witness_reg_photo.*' => "mimes:jpg,png,jpeg|max:20000",
+            'territory_id' => 'required|integer',
+//            'photocopy.*' => "required|mimes:jpg,png,jpeg|max:20000",
+//            'audio.*' => "required|mimes:mp3,mpga,wav|max:20000",
+//            'video.*' => "required|mimes:mp4,mov,ogg,qt|max:100000",
+//            'reg_photocopy.*' => "required|mimes:jpg,png,jpeg|max:20000",
+//            'witness_reg_photo.*' => "required|mimes:jpg,png,jpeg|max:20000",
+            'photocopy.*' => "required|max:20000",
+            'audio.*' => "required|max:20000",
+            'video.*' => "required|max:100000",
+            'reg_photocopy.*' => "required|max:20000",
+            'witness_reg_photo.*' => "required|max:20000",
             'show_content' => 'accepted'
         ];
     }

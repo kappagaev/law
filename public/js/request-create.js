@@ -11151,6 +11151,8 @@ return jQuery;
     }
 
     $('#territory2').on('change', function () {
+      $('#territory3').empty();
+
       if ($(this).find('option:selected').data('type') !== '') {
         $('#territory_id').val($('#territory2').val());
       } else {

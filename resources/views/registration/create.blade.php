@@ -3,6 +3,7 @@
     <h1>
         Реєстрація
     </h1>
+    <hr>
     <form action="/registration" method="post">
         @csrf
         @if ($errors->any())
@@ -65,16 +66,34 @@
 
             </div>
         </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Вулиця*</label>
+
+            <input type="text" id="street" placeholder="Вулиця" class="form-control" autofocus name="street" value="{{old('street')}}" required>
+
+        </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Дім*</label>
+
+            <input type="number" id="house" placeholder="Дім" class="form-control" autofocus name="house" value="{{old('house')}}" required>
+
+        </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Квартира</label>
+
+            <input type="number" id="flat" placeholder="Квартира" class="form-control" autofocus name="flat" value="{{old('flat')}}" >
+
+        </div>
         <input type="hidden" name="territory_id" id="territory_id">
         <div class="mb-3">
-            <label for="violation_subj">Територія*</label>
+            <label for="violation_subj">Місто/Область*</label>
             <select class="form-control" id="territory1" required>
 
             </select>
         </div>
         <div class="mb-3">
             <div class="mb-3">
-                <label for="violation_subj">Територія Рівень 2</label>
+                <label for="violation_subj">Місто/Регіон</label>
                 <select class="form-control" id="territory2" required>
 
                 </select>
@@ -82,12 +101,15 @@
         </div>
         <div class="mb-3">
             <div class="mb-3">
-                <label for="violation_subj">Територія Рівень 3</label>
+                <label for="violation_subj">Село</label>
                 <select class="form-control" id="territory3" required>
 
                 </select>
             </div>
         </div>
+        <br>
+        <span>Чи ви згодні з <a href="/rules">правилами сайту</a>? <input type="checkbox" name="" id="" required> </span>
+        <hr>
         <button type="submit" class="btn btn-primary">Відправити</button>
     </form>
     <script src="{{asset('js/request-create.js')}}"></script>

@@ -13,7 +13,7 @@ class UserRegistration extends Model
 
     function getUserAttributes(): array
     {
-        return $this->only(['name', 'surname', 'patronymic', 'email', 'kmamail', 'university_role_id', 'is_naukma']);
+        return $this->only(['name', 'surname', 'patronymic', 'email', 'kmamail', 'university_role_id', 'is_naukma', 'territory_id', 'house', 'street', 'flat']);
     }
 
     function universityRole()

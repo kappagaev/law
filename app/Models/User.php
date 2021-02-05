@@ -76,11 +76,14 @@ class User extends Authenticatable
         return $this->name . ' '. $this->surname . ' ' . $this->patronymic;
     }
 
+    public function territory()
+    {
+        return $this->belongsTo(Territory::class);
+    }
 
     public function getFullAddressAttribute()
     {
 
-        return
-            $this->address;
+        return $this->territory->full_address;
     }
 }

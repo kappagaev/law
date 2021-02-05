@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RequestApproveMail;
+use App\Mail\RequestDisproveMail;
 use App\Mail\UserRegistrationDisproveMail;
 use App\Mail\UserRegistrationProveMail;
 use App\Models\Request;
 use App\Models\User;
 use App\Models\UserRegistration;
+use App\Services\RequestMailService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
@@ -26,11 +29,43 @@ class AdminController extends Controller
     }
 
 
+    public function request(Request $request)
+    {
+        return view('admin/request')->with('request', $request)->with('title', 'Адмінка');
+    }
+
     public function requests()
     {
-        $requests = Request::with(['violationType', 'violationSphere', 'user', 'district', 'region', 'settlement'])
+        $requests = Request::with(['violationType', 'violationSphere', 'user', 'territory'])
             ->paginate(32);
         return view('admin/requests')->with('requests', $requests)->with('title', 'Адмінка');
+    }
+
+    public function requestsApprove()
+    {
+        $requests = Request::with(['violationType', 'violationSphere', 'user', 'territory'])
+            ->where('status', 0)
+            ->paginate(32);
+        return view('admin/requests-approve')->with('requests', $requests)->with('title', 'Адмінка');
+    }
+
+
+    public function requestApprove(Request $request, RequestMailService $requestMailService)
+    {
+        $request->status = 1;
+        $request->save();
+
+        Mail::to($request->user->email)->send(new RequestApproveMail($request));
+        $requestMailService->created($request);
+        return redirect('/admin/requests/approve')->with('message', 'Успішно схвалено');
+    }
+
+    public function requestDisprove(Request $request)
+    {
+        $request->status = 2;
+        $request->save();
+        Mail::to($request->user->email)->send(new RequestDisproveMail());
+        return redirect('/admin/requests/approve')->with('message', 'Успішно заперечино');
     }
 
     public function userRegistrations()

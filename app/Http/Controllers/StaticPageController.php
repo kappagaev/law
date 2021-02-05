@@ -18,4 +18,9 @@ class StaticPageController extends Controller
     {
         return view('static/rules');
     }
+
+    public function donate()
+    {
+        return view('static/donate');
+    }
 }

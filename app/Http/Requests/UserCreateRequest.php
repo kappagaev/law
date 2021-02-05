@@ -29,11 +29,17 @@ class UserCreateRequest extends FormRequest
             'surname' => 'required|string|max:32',
             'patronymic' => 'string|max:32',
             'postcode' => 'required|digits_between:1,20',
-            'phone' => 'required|string|max:32',
+            'phone' => 'required|phone:UA',
             'territory_id' => 'required|integer',
-            'address' => 'required|string|max:32',
             'role_id' => 'required|integer|max:32',
             'email' => 'unique:users|email|',
+            'street' => 'required|string|max:32',
+            'house' => 'required|integer',
+            'flat' => 'integer',
+            'is_naukma' => 'in:1',
+            'university_role_id' => 'required_if:is_naukma,1|integer|between:1,3',
+            'kmamail' => 'required_if:is_naukma,1|email|regex:/(.*)ukma\.edu\.ua$/i|nullable',
+
         ];
     }
 }

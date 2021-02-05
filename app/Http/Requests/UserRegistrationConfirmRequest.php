@@ -13,7 +13,7 @@ class UserRegistrationConfirmRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class UserRegistrationConfirmRequest extends FormRequest
         return [
             'password' => 'required|string|confirmed|max:32',
             'postcode' => 'required|digits_between:1,20',
-            'phone' => 'required|string|max:32',
+            'phone' => 'required|phone:UA'
         ];
     }
 }

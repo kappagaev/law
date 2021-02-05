@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Request;
 use App\Models\Request as RM;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 /**
  * Class RequestService
@@ -12,22 +13,33 @@ use Illuminate\Support\Facades\Auth;
  */
 class RequestService
 {
+    /**
+     * @var FileService
+     */
+    private $fileService;
+
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
 
     /**
-     * @param $data
+     * @param $request
      * @param $user_id
      * @param $checkboxes
      * @return RM
      */
-    public function create($data, $user_id, $checkboxes)
+    public function create($request, $user_id, $checkboxes)
     {
+        $rm = new RM($request->validated());
 
-        $request = new RM($data);
-        $request->user_id = $user_id;
-        $request->save();
-        $request->checkboxes()->attach($checkboxes);
+        $files = $this->fileService->storeRequestFiles($request, Request::$files,Str::random());
+        $rm->user_id = $user_id;
+        $rm->fill($files);
+        $rm->save();
+        $rm->checkboxes()->attach($checkboxes);
 
-        return $request;
+        return $rm;
     }
 
 

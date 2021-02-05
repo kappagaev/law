@@ -36,6 +36,7 @@ class RequestSearchService
     {
         return $this->model
             ->latest()
+            ->where('status', 1)
             ->paginate(16);
     }
 

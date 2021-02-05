@@ -17,21 +17,21 @@
            <b> Місце порушення:</b>
         </h7>
         <p>
-           <b> 4.1.</b>  {{$request->place}}
+           <b> 1. Назва органу державної влади, органу місцевого самоврядування, підприємства, установи, чи організації: </b>  {{$request->place}}
         </p>
         <p>
-           <b> 4.2. Код ЄДРПОУ (з наявності)</b> {{$request->place_code}}
+           <b> 2. Код ЄДРПОУ (з наявності)</b> {{$request->place_code}}
         </p>
         <p>
-           <b> 4.3.	Адреса розташування де відбулось порушення</b> {{$request->full_address}}
+           <b> 3.	Адреса розташування де відбулось порушення</b> {{$request->full_address}}
         </p>
         <p>
-            <b>5.	Дата і час порушення: </b> {{ \Carbon\Carbon::parse($request->violation_time)->format('d/m/Y')}}
+            <b>	Дата і час порушення: </b> {{ \Carbon\Carbon::parse($request->violation_time)->format('d/m/Y')}}
         </p>
         @if($request->show_content)
 
             <h7>
-                <b>6.	Обставини порушення</b>
+                <b>	Обставини порушення</b>
             </h7>
             <p>{{$request->content}}</p>
 

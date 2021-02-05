@@ -12,6 +12,21 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Request extends Model
 {
+    /** @const */
+    public static $files = [
+        'photocopy',
+        'audio',
+        'video',
+        'reg_photocopy',
+        'witness_reg_photo'
+    ];
+    protected $casts = [
+        'photocopy' => 'array',
+        'audio' => 'array',
+        'video' => 'array',
+        'reg_photocopy' => 'array',
+        'witness_reg_photo' => 'array',
+    ];
 
     public $guarded = false;
 
@@ -61,10 +76,40 @@ class Request extends Model
         return $this->belongsToMany(ViolationTypeCheckbox::class, 'checkbox_request', 'request_id', 'violation_type_checkbox_id');
     }
 
+    public function territory()
+    {
+        return $this->belongsTo(Territory::class);
+    }
 
     public function getFullAddressAttribute()
     {
 
-        return $this->place_address;
+        return $this->territory->full_address .' '. $this->place_address;
+    }
+
+    public function getAllFilesPathsAttribute()
+    {
+        $paths = [];
+        foreach (self::$files as $file) {
+            if($this->$file != null) {
+                foreach ($this->$file as $modelFile) {
+                    $paths[] = $file . '/' . $modelFile;
+                }
+            }
+
+        }
+        return $paths;
+    }
+    public function getAllFilesAttribute()
+    {
+        $files = [];
+        foreach (self::$files as $file) {
+
+            if($this->$file != null) {
+                $files[$file] = implode(', ', $this->$file);
+            }
+
+        }
+        return $files;
     }
 }

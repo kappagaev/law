@@ -50,12 +50,11 @@ class RequestCreateMail extends Mailable
     private function attachFiles()
     {
         $this->attach(storage_path($this->docx));
-
         if (!empty($this->files)) {
-            foreach ($this->files as $fileArray) {
-                foreach ($fileArray as $file) {
-                    $this->attach(storage_path($file));
-                }
+            foreach ($this->files as $file) {
+
+                $this->attach(storage_path($file));
+
             }
         }
         return $this;

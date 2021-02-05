@@ -14,7 +14,7 @@ class TerritoryController extends Controller
 
     public function children($territoryId)
     {
-        return Territory::where('territory_id', $territoryId)->orderBy('type', 'ASC')
+        return Territory::where('territory_id', $territoryId)->orderBy('type', 'DESC')
         ->orderBy('name', 'ASC')->get();
     }
 

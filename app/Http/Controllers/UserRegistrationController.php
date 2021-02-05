@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegistrationConfirmRequest;
 use App\Http\Requests\UserRegistrationRequest;
+use App\Models\User;
 use App\Models\UserRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

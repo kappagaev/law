@@ -7,10 +7,10 @@
 
         <hr>
         @foreach ($requests as $request)
-            <h2><a href="/request/{{$request->id}}" class="">{{ $request->title }}</a></h2>
-            <p>{{ Str::limit($request->content, 10) }}</p>
+            <h2><a href="/request/{{$request->id}}" class="">{{ $request->place }}</a></h2>
+            <p>{{$request->violationSphere->description }}</p>
             <div>
-                <span class="badge">{{ $request->created_at }}</span>
+                <span class="badge">Дата порушення: {{  Carbon\Carbon::parse($request->violation_time)->format('Y-m-d') }}</span>
             </div>
             <hr>
         @endforeach
