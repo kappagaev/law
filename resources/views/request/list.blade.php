@@ -116,10 +116,11 @@
     {{ $requests->links('pagination::bootstrap-4') }}
 
     <script>
-        $.datetimepicker.setLocale('ua');
+
         $('#violation_time').datetimepicker({
             datepicker:true,
             timepicker:false,
+            language: 'ua',
             i18n: {
                 ua: {
                     months: [
@@ -136,7 +137,6 @@
 
             format: 'Y-m-d'
         });
-        $.datetimepicker.setLocale('ua');
         $('#created_at').datetimepicker({
             datepicker:true,
             timepicker:false,

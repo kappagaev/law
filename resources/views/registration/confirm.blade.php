@@ -18,13 +18,13 @@
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Номер телефону*</label>
 
-            <input type="text" id="phone" placeholder="phone" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
+            <input type="text" id="phone" placeholder="Номер телефону" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
 
         </div>
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Поштовий індекс*</label>
 
-            <input type="text" id="postcode" placeholder="postcode" class="form-control" autofocus name="postcode" value="{{old('postcode')}}" required>
+            <input type="text" id="postcode" placeholder="Поштовий індекс" class="form-control" autofocus name="postcode" value="{{old('postcode')}}" required>
 
         </div>
         <div class="form-group">

@@ -12,7 +12,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal"><a class="text-dark" href="/">Mova team</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/">Всі звернення</a>
+        <a class="p-2 text-dark" href="/">Всі скарги</a>
         <a class="p-2 text-dark" href="/rules">Правила</a>
         <a class="p-2 text-dark" href="/about">Про проєкт</a>
         <a class="p-2 text-dark" href="/feedback">Зворотній зв'язок</a>
@@ -28,7 +28,7 @@
 
     @auth
             <a class="p-2 text-dark" href="/profile">Вітаю, {{auth()->user()->name}}</a>
-            <a class="btn btn-outline-dark" href="/request/create">Створити звернення</a>
+            <a class="btn btn-outline-dark" href="/request/create">Створити скаргу</a>
         @if( Auth::user()->role_id == 3)
                 <a class="p-2 btn btn-info" href="/admin">Адмінка</a>
 

@@ -34,7 +34,7 @@
         </p>
         <hr>
             <p><a href="/admin/registration/{{$registration->id}}/prove" class="btn btn-success">Схвалити</a>
-                <a href="/admin/registration/{{$registration->id}}/disprove" class="btn btn-danger">Заперечити</a></p>
+                <a href="/admin/registration/{{$registration->id}}/disprove" class="btn btn-danger">Відхилити</a></p>
             <p></p>
         </div>
 

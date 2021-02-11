@@ -21,6 +21,6 @@ class FeedbackController extends Controller
 
         Mail::to(config('mail.FEEDBACK_EMAIL'))->send(new FeedbackEmail($feedback));
 
-        return redirect('/')->with('message', 'Success!');
+        return redirect('/')->with('message', 'Відправлено');
     }
 }

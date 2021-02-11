@@ -48,7 +48,7 @@ class RequestController extends Controller
 
 
         return view('request/list')->with('requests', $requests)
-            ->with('title', 'Пропозиції');
+            ->with('title', 'Скарги');
     }
 
     /**
@@ -58,7 +58,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-        return view('request/create')->with('title', 'Створити пропозицію');
+        return view('request/create')->with('title', 'Створити скаргу');
     }
 
     /**
@@ -88,6 +88,6 @@ class RequestController extends Controller
      */
     public function show(RM $request)
     {
-        return view('request/single')->with('request', $request)->with('title', 'Пропозиція ' . $request->title);
+        return view('request/single')->with('request', $request)->with('title', 'Скарга');
     }
 }

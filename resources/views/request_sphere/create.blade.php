@@ -17,7 +17,7 @@
             <form class="form-horizontal" role="form" method="post" action="/admin/violation/sphere" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="description">Опис</label>
+                    <label for="description">Опис*</label>
                     <textarea class="form-control" rows="4" name="description" value="{{old('description')}}" required></textarea>
 
                 </div>

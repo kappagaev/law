@@ -43,7 +43,7 @@ class RequestStoreRequest extends FormRequest
             'place' => 'required|string|max:64',
             'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
-            'violation_time' => 'required|date_format:Y-m-d H:i:s|before:today',
+            'violation_time' => 'required|date_format:Y-m-d H:i:s|before:tomorrow',
             'territory_id' => 'required|integer',
 //            'photocopy.*' => "required|mimes:jpg,png,jpeg|max:20000",
 //            'audio.*' => "required|mimes:mp3,mpga,wav|max:20000",
@@ -64,7 +64,7 @@ class RequestStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function attributes()
+    public function messages()
     {
         return [
             'title' => 'Заголовок: Обов\'язково, до 32 символів',

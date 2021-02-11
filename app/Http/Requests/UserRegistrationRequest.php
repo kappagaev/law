@@ -34,7 +34,7 @@ class UserRegistrationRequest extends FormRequest
             'territory_id' => 'required|integer',
             'street' => 'required|string|max:32',
             'house' => 'required|integer',
-            'flat' => 'integer',
+            'flat' => 'integer|nullable',
 
         ];
     }

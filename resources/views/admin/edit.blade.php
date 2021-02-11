@@ -151,7 +151,7 @@
 {{--            <input type="hidden" name="_method" value="put" />--}}
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Змінити</button>
         </form>
     </div>
     <script src="{{asset('js/request-create.js')}}"></script>

@@ -45,7 +45,7 @@
         </div>
         <hr>
         <p><a href="/admin/request/{{$request->id}}/approve" class="btn btn-success">Схвалити</a>
-            <a href="/admin/request/{{$request->id}}/disprove" class="btn btn-danger">Заперечити</a></p>
+            <a href="/admin/request/{{$request->id}}/disprove" class="btn btn-danger">Відхилити</a></p>
         <p></p>
 
 

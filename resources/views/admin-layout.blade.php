@@ -14,7 +14,10 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Адмінка</a>
+               <span class="nav-link">Вітаю, {{auth()->user()->name}}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Користувачі</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/violation/type">Види порушень</a>

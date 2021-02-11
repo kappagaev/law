@@ -83,7 +83,10 @@ class User extends Authenticatable
 
     public function getFullAddressAttribute()
     {
-
-        return $this->territory->full_address;
+        $fullAddress =  $this->territory->full_address . ' Вулиця ' . $this->street . ' Дім ' . $this->house ;
+        if($this->flat) {
+            $fullAddress .= ' Квартира ' . $this->flat;
+        }
+        return $fullAddress;
     }
 }

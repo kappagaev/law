@@ -17,12 +17,12 @@
             <form class="form-horizontal" role="form" method="post" action="/admin/violation/type" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="description">Опис</label>
+                    <label for="description">Опис*</label>
                     <textarea class="form-control" rows="4" name="description" value="{{old('description')}}" required></textarea>
 
                 </div>
                 <div class="mb-3">
-                    <label for="violation_sphere_id">Сфера</label>
+                    <label for="violation_sphere_id">Сфера*</label>
                     <select class="form-control" id="sel1" name="violation_sphere_id" required>
 
                         @foreach ($spheres as $sphere)

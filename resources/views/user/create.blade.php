@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Пошта*</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="" required>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <small id="emailHelp" class="form-text text-muted">Ми не будемо ділитися вашим електронним листом з кимось іншим.</small>
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Ім'я*</label>
@@ -40,13 +40,13 @@
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Поштовий індекс*</label>
 
-                <input type="text" id="postcode" placeholder="postcode" class="form-control" autofocus name="postcode" value="{{old('postcode')}}" required>
+                <input type="text" id="postcode" placeholder="Поштовий індекс" class="form-control" autofocus name="postcode" value="{{old('postcode')}}" required>
 
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Номер телефону*</label>
 
-                <input type="text" id="phone" placeholder="phone" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
+                <input type="text" id="phone" placeholder="Номер телефону" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
 
             </div>
             <div class="mb-3">
@@ -154,7 +154,7 @@
 {{--            </div>--}}
             <div class="form-group">
                 <label for="exampleInputEmail1">Виберіть роль юзера*</label>
-                <select class="form-control form-control-lg" name="role_id" required>
+                <select class="form-control" name="role_id" required>
                     <option value="2">
                         Звичайний юзер
                     </option>
@@ -165,7 +165,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Створити</button>
         </form>
     </div> <!-- ./container -->
     <script src="{{asset('js/registration.js')}}"></script>

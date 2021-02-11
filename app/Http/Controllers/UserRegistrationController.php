@@ -23,7 +23,7 @@ class UserRegistrationController extends Controller
         $registration->key = Str::random(40);
         $registration->save();
 
-        return  redirect('/')->with('message', 'Дякуємо, Вашу заявку прийнято. Найближчим часо ми відповімо на зазначену Вам адересу електронної пошти.');
+        return  redirect('/')->with('message', 'Дякуємо, Вашу заявку прийнято. Найближчим часом ми відповімо на зазначену вами адересу електронної пошти.');
     }
 
     public function confirmForm(UserRegistration $registration)

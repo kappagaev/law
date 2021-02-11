@@ -25,8 +25,17 @@ class UserRegistrationConfirmRequest extends FormRequest
     {
         return [
             'password' => 'required|string|confirmed|max:32',
-            'postcode' => 'required|digits_between:1,20',
+            'postcode' => 'required|digits_between:1,6',
             'phone' => 'required|phone:UA'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'password' => 'Обов\'язково, паролі майть співпадати',
+            'postcode' => 'Обов\'язково, поштоврий індекс до 6 цифр',
+            'phone' => 'Обов\'язково, телефон українського формату'
+
         ];
     }
 }
