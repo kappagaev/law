@@ -66,6 +66,7 @@ Route::get('violation/spheres/', [\App\Http\Controllers\ViolationSphereControlle
 Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']);
 Route::get('rules', [\App\Http\Controllers\StaticPageController::class, 'rules']);
 Route::get('donate', [\App\Http\Controllers\StaticPageController::class, 'donate']);
+Route::get('registration', [\App\Http\Controllers\StaticPageController::class, 'registration']);
 
 //Route::get('registration', [\App\Http\Controllers\UserRegistrationController::class, 'create']);
 Route::middleware('guest')->group(function () {

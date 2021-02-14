@@ -19,9 +19,11 @@
         <a class="p-2 text-dark" href="/donate">Підтримати проєкт</a>
 
         @if( !Auth::check())
-
-            <a href="/auth/office365/redirect" class="btn btn-dark">
-                Вхід через Office 365
+            <a href="/registration" class="btn btn-primary">
+                Реєстрація
+            </a>
+            <a href="/auth/office365/redirect" class="btn btn-success">
+                Логін
             </a>
         @endif
 
