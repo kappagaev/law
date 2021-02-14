@@ -137,7 +137,7 @@
 
                     <div class="input-group mb-3">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Фотокопія документа*</label>
+                            <label for="exampleFormControlFile1">Фотокопія документа</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photocopy[]" multiple value="{{old('photocopy')}}">
                         </div>
 
@@ -145,7 +145,7 @@
 
                     <div class="input-group mb-3">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Аудіозапис*</label>
+                            <label for="exampleFormControlFile1">Аудіозапис</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="audio[]" multiple value="{{old('audio')}}">
                         </div>
 
@@ -153,20 +153,20 @@
 
                     <div class="input-group mb-3">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Відеозапис*</label>
+                            <label for="exampleFormControlFile1">Відеозапис</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="video[]" multiple value="{{old('video')}}">
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Фотокопія установчих та реєстраційних документів*</label>
+                            <label for="exampleFormControlFile1">Фотокопія установчих та реєстраційних документів</label>
                             <input type="file" class="form-control-file" id="reg_photocopy" name="reg_photocopy[]" multiple value="{{old('reg_photocopy')}}">
                         </div>
 
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Фотокопія акта, підписаного свідками*</label>
+                            <label for="exampleFormControlFile1">Фотокопія акта, підписаного свідками</label>
                             <input type="file" class="form-control-file" id="reg_photocopy" name="witness_reg_photo[]" multiple value="{{old('witness_reg_photo')}}">
                         </div>
 
