@@ -127,10 +127,18 @@
                         <label for="address2">Показувати на сайті обставини порушення?</label>
                         <input type="checkbox" name="show_content"  value="1" {{old('show_content') ? 'checked': ''}}>
                     </div>
+
+                    <div class="input-group mb-3">
+                        <div class="form-group">
+                            <b>Обов'язково має бути прикріплене хоча б одне медіа</b>
+                        </div>
+
+                    </div>
+
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Фотокопія документа*</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photocopy[]" multiple required value="{{old('photocopy')}}">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photocopy[]" multiple value="{{old('photocopy')}}">
                         </div>
 
                     </div>
@@ -138,7 +146,7 @@
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Аудіозапис*</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="audio[]" multiple required value="{{old('audio')}}">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="audio[]" multiple value="{{old('audio')}}">
                         </div>
 
                     </div>
@@ -146,20 +154,20 @@
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Відеозапис*</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="video[]" multiple required value="{{old('video')}}">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="video[]" multiple value="{{old('video')}}">
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Фотокопія установчих та реєстраційних документів*</label>
-                            <input type="file" class="form-control-file" id="reg_photocopy" name="reg_photocopy[]" multiple required value="{{old('reg_photocopy')}}">
+                            <input type="file" class="form-control-file" id="reg_photocopy" name="reg_photocopy[]" multiple value="{{old('reg_photocopy')}}">
                         </div>
 
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Фотокопія акта, підписаного свідками*</label>
-                            <input type="file" class="form-control-file" id="reg_photocopy" name="witness_reg_photo[]" multiple required value="{{old('witness_reg_photo')}}">
+                            <input type="file" class="form-control-file" id="reg_photocopy" name="witness_reg_photo[]" multiple value="{{old('witness_reg_photo')}}">
                         </div>
 
                     </div>
