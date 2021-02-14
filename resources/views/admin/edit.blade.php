@@ -74,22 +74,22 @@
 {{--                <input type="password" id="password" placeholder="Password" class="form-control" name="password_confirmation">--}}
 
 {{--            </div>--}}
-{{--            <div class="form-group">--}}
-{{--                <label for="exampleInputEmail1">Виберіть роль юзера</label>--}}
-{{--                <select class="form-control form-control-lg" name="role_id" value="{{$user->role_id}}">--}}
-{{--                    <option value="2" @if($user->role_id == 2)--}}
-{{--                    selected--}}
-{{--                        @endif>--}}
-{{--                        Звичайний юзер--}}
-{{--                    </option>--}}
-{{--                    <option value="3"--}}
-{{--                            @if($user->role_id == 3)--}}
-{{--                            selected--}}
-{{--                        @endif>--}}
-{{--                        Адмін--}}
-{{--                    </option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Виберіть роль юзера</label>
+                <select class="form-control form-control-lg" name="role_id" value="{{$user->role_id}}">
+                    <option value="2" @if($user->role_id == 2)
+                    selected
+                        @endif>
+                        Звичайний юзер
+                    </option>
+                    <option value="3"
+                            @if($user->role_id == 3)
+                            selected
+                        @endif>
+                        Адмін
+                    </option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Статус</label>
                 <select class="form-control form-control-lg" name="status" >

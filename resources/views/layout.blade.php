@@ -20,8 +20,8 @@
 
         @if( !Auth::check())
 
-            <a href="/registration" class="btn btn-dark">
-                Реєстрація
+            <a href="/auth/office365/redirect" class="btn btn-dark">
+                Вхід через Office 365
             </a>
         @endif
 
@@ -36,9 +36,6 @@
 
         <a class="p-2 btn btn-primary" href="/logout">Вийти</a>
     @endauth
-    @guest
-        <a class=" p-2 btn btn-primary" href="/login">Логін</a>
-    @endguest
     </nav>
 </div>
 @if(session('message'))

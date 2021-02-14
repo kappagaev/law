@@ -50,41 +50,12 @@ class RequestStoreRequest extends FormRequest
 //            'video.*' => "required|mimes:mp4,mov,ogg,qt|max:100000",
 //            'reg_photocopy.*' => "required|mimes:jpg,png,jpeg|max:20000",
 //            'witness_reg_photo.*' => "required|mimes:jpg,png,jpeg|max:20000",
-            'photocopy.*' => "required|max:20000",
-            'audio.*' => "required|max:20000",
-            'video.*' => "required|max:100000",
-            'reg_photocopy.*' => "required|max:20000",
-            'witness_reg_photo.*' => "required|max:20000",
+//            'photocopy.*' => "required|max:20000",
+//            'audio.*' => "required|max:20000",
+//            'video.*' => "required|max:100000",
+//            'reg_photocopy.*' => "required|max:20000",
+//            'witness_reg_photo.*' => "required|max:20000",
             'show_content' => 'accepted'
-        ];
-    }
-
-    /**
-     * Get the validation attributes that apply to the request.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'title' => 'Заголовок: Обов\'язково, до 32 символів',
-            'content' => 'Обставини порушення: Обов\'язково, до 300 символів',
-            'violation_sphere_id' => 'Сфера порушення: Обов\'язково',
-            'violation_type_id' => 'Вид порушення: Обов\'язково',
-            'violation_subj' => 'Суб’єкт порушення: Обов\'язково',
-            'violator' => 'Прізвище, ім’я, по батькові порушника: до 64 символів',
-            'place' => 'Назва органу державної влади: Обов\'язково, до 64 символів',
-            'place_code' => 'Код набір цифр',
-            'place_address' => 'Адреса порушення: Обов\'язково, до 64 символів',
-            'violation_time' => 'Час порушення: Обов\'язково, не можна обрати дату порушення пізніше сьогоднішнього дня',
-            'region_id' => 'Область: Обов\'язково',
-            'district_id' => 'Область порушення: Обов\'язково',
-            'settlement_id' => 'Населений пункт порушення: Обов\'язково',
-            'photocopy.*' => "Фотокопія документа: формат jpg,png,jpeg, до 20мб",
-            'audio.*' => "Аудіозапис: формат mp3,mpga,wav, до 20мб",
-            'video.*' => "Відеозапис: формат mp4,mov,ogg,qt до 100мб",
-            'reg_photocopy.*' => "Фотокопія установчих та реєстраційних документів: формат jpg,png,jpeg, до 20мб",
-
         ];
     }
 

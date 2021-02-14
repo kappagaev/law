@@ -19,7 +19,8 @@ class UserIsNotBannedMiddleware
     {
         if (Auth::check()) {
             if(Auth::user()->status == 0) {
-                abort(403);
+                Auth::logout();
+
             }
         }
         return $next($request);

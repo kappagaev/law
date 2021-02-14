@@ -9,6 +9,7 @@ use App\Models\UserRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class UserRegistrationController extends Controller
 {
@@ -19,6 +20,7 @@ class UserRegistrationController extends Controller
 
     public function store(UserRegistrationRequest $request)
     {
+
         $registration = new UserRegistration($request->validated());
         $registration->key = Str::random(40);
         $registration->save();
@@ -38,4 +40,6 @@ class UserRegistrationController extends Controller
 
         return redirect('/')->with('message', 'Успішно зареєстровано');
     }
+
+
 }

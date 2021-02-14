@@ -53,9 +53,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 //})->name('logging-form');
 
 
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'create'])->name('login');
-Route::post('login', [\App\Http\Controllers\AuthController::class, 'store']);
-Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+//Route::get('login', [\App\Http\Controllers\AuthController::class, 'create'])->name('login');
+
 Route::get('/', [\App\Http\Controllers\RequestController::class, 'index'])->name('requests');
 Route::resource('request', \App\Http\Controllers\RequestController::class)->except(['index']);
 
@@ -68,10 +67,23 @@ Route::get('about', [\App\Http\Controllers\StaticPageController::class, 'about']
 Route::get('rules', [\App\Http\Controllers\StaticPageController::class, 'rules']);
 Route::get('donate', [\App\Http\Controllers\StaticPageController::class, 'donate']);
 
-Route::get('registration', [\App\Http\Controllers\UserRegistrationController::class, 'create']);
-Route::post('registration', [\App\Http\Controllers\UserRegistrationController::class, 'store']);
-Route::get('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirmForm']);
-Route::post('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirm']);
+//Route::get('registration', [\App\Http\Controllers\UserRegistrationController::class, 'create']);
+Route::middleware('guest')->group(function () {
+
+});
+Route::get('auth/office365/redirect', [\App\Http\Controllers\AuthController::class, 'redirectToProvider']);
+
+//Route::post('login', [\App\Http\Controllers\AuthController::class, 'store']);
+Route::get('auth/office365', [\App\Http\Controllers\AuthController::class, 'handleProviderCallback']);
+
+Route::get('registration/office365/{registration:key}', [\App\Http\Controllers\AzureRegistrationController::class, 'confirmForm']);
+Route::post('registration/office365/{registration:key}', [\App\Http\Controllers\AzureRegistrationController::class, 'confirm']);
+
+Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+//
+//Route::post('registration', [\App\Http\Controllers\UserRegistrationController::class, 'store']);
+//Route::get('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirmForm']);
+//Route::post('registration/{registration:key}', [\App\Http\Controllers\UserRegistrationController::class, 'confirm']);
 
 Route::get('feedback', [\App\Http\Controllers\FeedbackController::class, 'create']);
 Route::post('feedback', [\App\Http\Controllers\FeedbackController::class, 'store']);
@@ -81,3 +93,5 @@ Route::get('territory/{territoryId}/children', [\App\Http\Controllers\TerritoryC
 Route::get('territory/{territory}/similar', [\App\Http\Controllers\TerritoryController::class, 'territoriesWithSimilarNameParents']);
 
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
+
+

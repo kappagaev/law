@@ -36,7 +36,7 @@ class UserController extends Controller
         User::create(
             array_merge(
                 $request->validated(),
-                ['password' => Hash::make($request->password)]
+                ['password' => Hash::make(env('AZURE_DEFAULT_PASSWORD'))]
             )
         );
         return redirect('/admin')->with('message', 'Користувач успішно створений!');

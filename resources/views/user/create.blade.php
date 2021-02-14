@@ -49,32 +49,32 @@
                 <input type="text" id="phone" placeholder="Номер телефону" class="form-control" autofocus name="phone" value="{{old('phone')}}" required>
 
             </div>
-            <div class="mb-3">
-                <label for="address2">Чи має стосунок до НаУКМА</label>
-                <input type="checkbox" id="is_naukma" name="is_naukma" value="1" {{ old('is_naukma') ? 'checked' : '' }} >
+{{--            <div class="mb-3">--}}
+{{--                <label for="address2">Чи має стосунок до НаУКМА</label>--}}
+{{--                <input type="checkbox" id="is_naukma" name="is_naukma" value="1" {{ old('is_naukma') ? 'checked' : '' }} >--}}
 
-            </div>
-            <div id="isNaukmaFields">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1">Роль в НаУКМА*</label>
-                    <select class="form-control form-control-lg" name="university_role_id" id="university_role_id">
-                        <option value="1" {{ old('university_role_id') == 1 ? 'selected' : '' }}>
-                            Викладач_ка/Співробітник_ця
-                        </option>
-                        <option value="2" {{ old('university_role_id') == 2 ? 'selected' : '' }}>
-                            Студент_ка
-                        </option>
-                        <option value="3" {{ old('university_role_id') == 3 ? 'selected' : '' }}>
-                            Випускник_ця
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1"> Корпоративна пошта НаУКМА*</label>
-                    <input type="email" class="form-control" id="kmamail" aria-describedby="emailHelp" placeholder="Пошта" name="kmamail" value="{{old('kmamail')}}">
+{{--            </div>--}}
+{{--            <div id="isNaukmaFields">--}}
+{{--                <div class="mb-3">--}}
+{{--                    <label for="exampleInputEmail1">Роль в НаУКМА*</label>--}}
+{{--                    <select class="form-control form-control-lg" name="university_role_id" id="university_role_id">--}}
+{{--                        <option value="1" {{ old('university_role_id') == 1 ? 'selected' : '' }}>--}}
+{{--                            Викладач_ка/Співробітник_ця--}}
+{{--                        </option>--}}
+{{--                        <option value="2" {{ old('university_role_id') == 2 ? 'selected' : '' }}>--}}
+{{--                            Студент_ка--}}
+{{--                        </option>--}}
+{{--                        <option value="3" {{ old('university_role_id') == 3 ? 'selected' : '' }}>--}}
+{{--                            Випускник_ця--}}
+{{--                        </option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--                <div class="form-group">--}}
+{{--                    <label for="exampleInputEmail1"> Корпоративна пошта НаУКМА*</label>--}}
+{{--                    <input type="email" class="form-control" id="kmamail" aria-describedby="emailHelp" placeholder="Пошта" name="kmamail" value="{{old('kmamail')}}">--}}
 
-                </div>
-            </div>
+{{--                </div>--}}
+{{--            </div>--}}
 {{--            <div class="mb-3">--}}
 {{--                <label for="violation_subj">Область*</label>--}}
 {{--                <select class="form-control" id="region" name="region_id" data-region-id="{{old('region_id')}}" required>--}}
@@ -134,18 +134,18 @@
                 <input type="number" id="flat" placeholder="Квартира" class="form-control" autofocus name="flat" value="{{old('flat')}}" >
 
             </div>
-            <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Пароль*</label>
+{{--            <div class="form-group">--}}
+{{--                <label for="password" class="col-sm-3 control-label">Пароль*</label>--}}
 
-                    <input type="password" id="password" placeholder="Password" class="form-control" name="password" required>
+{{--                    <input type="password" id="password" placeholder="Password" class="form-control" name="password" required>--}}
 
-            </div>
-            <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Підтвердити пароль*</label>
+{{--            </div>--}}
+{{--            <div class="form-group">--}}
+{{--                <label for="password" class="col-sm-3 control-label">Підтвердити пароль*</label>--}}
 
-                <input type="password" id="password" placeholder="Підтвердити пароль" class="form-control" name="password_confirmation" required>
+{{--                <input type="password" id="password" placeholder="Підтвердити пароль" class="form-control" name="password_confirmation" required>--}}
 
-            </div>
+{{--            </div>--}}
 {{--            <div class="form-group">--}}
 {{--                <label for="password" class="col-sm-3 control-label">Confirm Password*</label>--}}
 
