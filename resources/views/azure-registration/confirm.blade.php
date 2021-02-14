@@ -107,7 +107,7 @@
         <div class="mb-3">
             <div class="mb-3">
                 <label for="violation_subj">Місто/Регіон</label>
-                <select class="form-control" id="territory2" required>
+                <select class="form-control" id="territory2">
 
                 </select>
             </div>

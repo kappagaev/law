@@ -145,7 +145,26 @@ class CreateAddresses extends Command
            // $territory->save();
         }
         Territory::where('name', 'М Севастополь')->first()->delete();
+        Territory::where('name', 'Автономна Республіка Крим ')->first()->delete();
         Territory::where('name', 'М Київ')->update(['type' => 'М']);
+        Territory::where('name', 'Дніпро')->update(['type' => 'М']);
+        Territory::where('name', 'Маріуполь')->update(['type' => 'М']);
+        Territory::where('name', 'Донецьк')->update(['type' => 'М']);
+        Territory::where('name', 'Житомир')->update(['type' => 'М']);
+        Territory::where('name', 'Одеса')->update(['type' => 'М']);
+        Territory::where('name', 'Миколаїв')->update(['type' => 'М']);
+        Territory::where('name', 'Львів')->update(['type' => 'М']);
+        Territory::where('name', 'Кропивницький')->update(['type' => 'М']);
+        Territory::where('name', 'Запоріжжя')->update(['type' => 'М']);
+        Territory::where('name', 'Горлівка')->update(['type' => 'М']);
+        Territory::where('name', 'Макіївка')->update(['type' => 'М']);
+        Territory::where('name', 'Кременчук')->update(['type' => 'М']);
+        Territory::where('name', 'Полтава')->update(['type' => 'М']);
+        Territory::where('name', 'Суми')->update(['type' => 'М']);
+        Territory::where('name', 'Харків')->update(['type' => 'М']);
+        Territory::where('name', 'Херсон')->update(['type' => 'М']);
+        Territory::where('name', 'Черкаси')->update(['type' => 'М']);
+        Territory::where('name', 'Чернігів')->update(['type' => 'М']);
         return 0;
     }
 
