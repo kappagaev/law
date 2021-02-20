@@ -45,17 +45,33 @@ class RequestStoreRequest extends FormRequest
             'place_address' => 'required|string|max:64',
             'violation_time' => 'required|date_format:Y-m-d H:i:s|before:tomorrow',
             'territory_id' => 'required|integer',
-            'photocopy.*' => "required_without_all:audio,video,reg_photocopy,witness_reg_photo|mimes:jpg,png,jpeg|max:20000",
-            'audio.*' => "required_without_all:photocopy,video,reg_photocopy,witness_reg_photo|mimes:mp3,mpga,wav|max:20000",
-            'video.*' => "required_without_all:photocopy,audio,reg_photocopy,witness_reg_photo|mimes:mp4,mov,ogg,qt|max:100000",
-            'reg_photocopy.*' => "required_without_all:photocopy,audio,video,witness_reg_photo|mimes:jpg,png,jpeg|max:20000",
-            'witness_reg_photo.*' => "required_without_all:photocopy,audio,video,reg_photocopy|mimes:jpg,png,jpeg|max:20000",
+            'photocopy' => 'required_without:audio,video,reg_photocopy,witness_reg_photo|array',
+            'audio' => 'required_without:photocopy,video,reg_photocopy,witness_reg_photo|array',
+            'video' => 'required_without:photocopy,audio,reg_photocopy,witness_reg_photo|array',
+            'reg_photocopy' => 'required_without:photocopy,audio,video,witness_reg_photo|array',
+            'witness_reg_photo' => 'required_without:photocopy,audio,video,reg_photocopy|array',
+            'photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
+            'audio.*' => "mimes:mp3,mpga,wav|max:20000",
+            'video.*' => "mimes:mp4,mov,ogg,qt|max:100000",
+            'reg_photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
+            'witness_reg_photo.*' => "mimes:jpg,png,jpeg|max:20000",
 //            'photocopy.*' => "required|max:20000",
 //            'audio.*' => "required|max:20000",
 //            'video.*' => "required|max:100000",
 //            'reg_photocopy.*' => "required|max:20000",
 //            'witness_reg_photo.*' => "required|max:20000",
-            'show_content' => 'accepted'
+            'show_content' => 'min:1|max:1|nullable'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'photocopy' => 'Фотокопія документа',
+            'audio' => 'Аудіозапис',
+            'video' => 'Відеозапис',
+            'reg_photocopy' => 'Фотокопія установчих та реєстраційних документів',
+            'witness_reg_photo' => 'Фотокопія акта, підписаного свідками'
         ];
     }
 

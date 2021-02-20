@@ -71,6 +71,11 @@ class Request extends Model
         return $this->orderBy($column, 'desc');
     }
 
+    public function scopeConfirmed($query)
+    {
+        return $query->where('status', 1);
+    }
+
     public function checkboxes()
     {
         return $this->belongsToMany(ViolationTypeCheckbox::class, 'checkbox_request', 'request_id', 'violation_type_checkbox_id');

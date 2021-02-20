@@ -31,9 +31,9 @@ class AzureRegistrationConfirmRequest extends FormRequest
             'phone' => 'required|phone:UA',
             'territory_id' => 'required|integer',
             'email' => 'unique:users|email|',
-            'street' => 'required|string|max:32',
-            'house' => 'required|integer',
-            'flat' => 'integer|nullable',
+            'street' => 'required|string|min:1|max:32',
+            'house' => 'required|integer|min:1',
+            'flat' => 'integer|nullable|min:1',
 
         ];
     }

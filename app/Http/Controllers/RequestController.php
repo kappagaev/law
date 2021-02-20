@@ -39,11 +39,13 @@ class RequestController extends Controller
 
     public function index(Request $request, RequestSearchService $search)
     {
-
        $requests = $search->setValues($request->only(
-                           ['region_id', 'district_id', 'settlement_id', 'violation_sphere_id', 'violation_type_id', 'territory_id']
+                           ['violation_sphere_id', 'violation_type_id']
                        ))
                         ->setTimestamps($request->only( 'created_at', 'violation_time'))
+                        ->setTerritory($request->only(
+                               ['territory1', 'territory2', 'territory2']
+                        ))
                         ->get();
 
 
@@ -65,19 +67,15 @@ class RequestController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\RequestStoreRequest $request
-     * @param RequestFilesStoreRequest $filesRequest
      * @param RequestService $service
      * @param RequestMailService $requestMailService
-     * @param FileService $fileService
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
-     * @throws \PhpOffice\PhpWord\Exception\CopyFileException
-     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
     public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService)
     {
         $rm = $service->create($request, auth::id(), $request->checkboxes);
-
-        return redirect('/')->with('message', 'успішно створено!');
+        dd($request->validated());
+        return redirect('/')->with('message', 'Успішно створено!');
     }
 
     /**
