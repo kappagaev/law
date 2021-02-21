@@ -74,7 +74,7 @@ class RequestController extends Controller
     public function store(RequestStoreRequest $request, RequestService $service, RequestMailService $requestMailService)
     {
         $rm = $service->create($request, auth::id(), $request->checkboxes);
-        dd($request->validated());
+
         return redirect('/')->with('message', 'Успішно створено!');
     }
 
