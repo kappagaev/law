@@ -19,7 +19,8 @@
         "phpoffice/phpword": "^0.17.0",
         "propaganistas/laravel-phone": "^4.2",
         "socialiteproviders/microsoft-azure": "^4.2",
-        "socialiteproviders/zoho": "^4.1"
+        "socialiteproviders/zoho": "^4.1",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

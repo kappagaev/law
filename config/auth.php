@@ -41,10 +41,11 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+        'guards' => [
+            'api' => [
+                'driver' => 'jwt',
+                'provider' => 'users',
+            ],
         ],
     ],
 

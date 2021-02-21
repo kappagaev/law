@@ -1,26 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Middleware\RequestStatusIsPublic;
-use App\Http\Requests\RequestFilesStoreRequest;
 use App\Http\Requests\RequestStoreRequest;
-use App\Mail\RequestCreateMail;
-use App\Models\District;
-use App\Models\Region;
 use App\Models\Request as RM;
-use App\Models\Settlement;
-use App\Models\ViolationSphere;
-use App\Models\ViolationType;
 use App\Services\RequestSearchService;
 use Illuminate\Http\Request;
-use App\Services\DocxService;
-use App\Services\FileService;
 use App\Services\RequestMailService;
 use App\Services\RequestService;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 /**
  * Class RequestController
@@ -39,17 +29,17 @@ class RequestController extends Controller
 
     public function index(Request $request, RequestSearchService $search)
     {
-       $requests = $search->setValues($request->only(
-                           ['violation_sphere_id', 'violation_type_id']
-                       ))
-                        ->setTimestamps($request->only( 'created_at', 'violation_time'))
-                        ->setTerritory($request->only(
-                               ['territory1', 'territory2', 'territory2']
-                        ))
-                        ->get();
+        $requests = $search->setValues($request->only(
+            ['violation_sphere_id', 'violation_type_id']
+        ))
+            ->setTimestamps($request->only( 'created_at', 'violation_time'))
+            ->setTerritory($request->only(
+                ['territory1', 'territory2', 'territory2']
+            ))
+            ->get();
 
 
-       return view('request/list')->with('requests', $requests)
+        return view('request/list')->with('requests', $requests)
             ->with('title', 'Скарги');
     }
 
