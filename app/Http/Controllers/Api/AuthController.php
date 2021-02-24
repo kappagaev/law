@@ -6,6 +6,10 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\AzureService;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -20,21 +24,48 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
+     * Redirect the user to the o365 authentication page.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * References to env('GRAPH_TENANT_ID') can be changed to
+     * config('services.graph.tenant_id') which bypasses the Laravel
+     * config cache.
+     *
+     * See https://github.com/SocialiteProviders/Providers/issues/337
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function redirectToProvider()
     {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return $this->respondWithToken($token);
+        return Socialite::driver('azure')->redirect();
     }
 
+    /**
+     * Obtain the user information from o365.
+     *
+     * @param AzureService $azureService
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handleProviderCallback(AzureService $azureService)
+    {
+
+        $user = Socialite::driver('azure')->stateless()
+            ->user();
+        $userData = [
+            'email' => $user->email,
+            'socialite_id' => $user->id
+        ];
+        $credentials = array_merge($userData, [
+            'password' => env('AZURE_DEFAULT_PASSWORD')
+        ]);
+        if (auth()->attempt($credentials)) {
+            $token = JWTAuth::fromUser(auth()->user());
+            return $this->respondWithToken($token);
+        }
+        $registration = $azureService->getRegistration($userData);
+
+        return response()->json(['registration' => $registration->key]);
+
+    }
     /**
      * Get the authenticated User.
      *

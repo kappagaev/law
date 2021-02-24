@@ -6,6 +6,7 @@ use App\Services\AzureService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -89,7 +90,7 @@ class AuthController extends Controller
         $credentials = array_merge($userData, [
             'password' => env('AZURE_DEFAULT_PASSWORD')
         ]);
-        if (Auth::attempt($credentials)) {
+        if (auth()->attempt($credentials)) {
             return redirect('/')->with(Auth::user()->name . ', вітаємо!');
         }
         $registration = $azureService->getRegistration($userData);
