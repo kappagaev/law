@@ -54,6 +54,13 @@ class UserController extends Controller
         return redirect()->route('admin')->with('message', 'Користувач успішно змінен!');
     }
 
+    public function deactivate()
+    {
+        Auth::user()->deactivate();
+        Auth::logout();
+        return redirect("/")->with('message', 'Ви деактувували всій акаунт');
+    }
+
     public function profile()
     {
         return view('user/profile')->with('user', Auth::user())->with('requests', RM::where('user_id', Auth::id())->paginate(16));

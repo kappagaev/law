@@ -3,6 +3,10 @@
     <div class="container">
 
         <h1>{{ $user->full_name }}</h1>
+        @if( Auth::user()->id == $user->id)
+            <a href="/user/deactivate">Деактивувати акаунт</a>
+
+        @endif
         {{--            <p>{{ Str::limit($request->content, 10) }}</p>--}}
         @if( Auth::user()->role_id == 3)
             <div class="">Пошта: {{$user->email}}</div>

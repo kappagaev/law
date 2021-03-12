@@ -76,6 +76,7 @@ Route::get('auth/office365/redirect', [\App\Http\Controllers\AuthController::cla
 
 //Route::post('login', [\App\Http\Controllers\AuthController::class, 'store']);
 Route::get('auth/office365', [\App\Http\Controllers\AuthController::class, 'handleProviderCallback']);
+Route::get('user/deactivate', [\App\Http\Controllers\UserController::class, 'deactivate']);
 
 Route::get('registration/office365/{registration:key}', [\App\Http\Controllers\AzureRegistrationController::class, 'confirmForm']);
 Route::post('registration/office365/{registration:key}', [\App\Http\Controllers\AzureRegistrationController::class, 'confirm']);

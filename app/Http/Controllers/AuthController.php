@@ -91,7 +91,11 @@ class AuthController extends Controller
             'password' => env('AZURE_DEFAULT_PASSWORD')
         ]);
         if (auth()->attempt($credentials)) {
-            return redirect('/')->with(Auth::user()->name . ', вітаємо!');
+            if(auth()->user()->status == 3) {
+                Auth::logout();
+                return redirect('/')->with("message", "Ваш акаунт деактивований");
+            }
+            return redirect('/')->with(Auth::user()->full_name . ', вітаємо!');
         }
         $registration = $azureService->getRegistration($userData);
 

@@ -81,6 +81,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Territory::class);
     }
 
+    public function deactivate()
+    {
+        $this->status = 3;
+        Request::where('user_id', $this->id)->update(['status' => 3]);
+        $this->save();
+    }
+
     public function getFullAddressAttribute()
     {
         $fullAddress =  $this->territory->full_address . ' Вулиця ' . $this->street . ' Дім ' . $this->house ;
