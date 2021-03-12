@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Пошта*</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Пошта" name="email" value="{{old('name')}}" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Пошта" name="email" value="{{old('email')}}" required>
 
         </div>
 

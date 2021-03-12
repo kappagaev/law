@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="territory_id" id="territory_id">
+                    <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
                     <div class="mb-3">
                         <label for="violation_subj">Область/Місто*</label>
                         <select class="form-control" id="territory1">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="mb-3">
-                            <label for="violation_subj">Регіон/Місто</label>
+                            <label for="violation_subj">Район/Місто</label>
                             <select class="form-control" id="territory2">
 
                             </select>
@@ -93,7 +93,7 @@
 
 
                     <div class="mb-3">
-                        <label for="place_code">Код ЄДРПОУ (з наявності)</label>
+                        <label for="place_code">Код ЄДРПОУ (за наявності)</label>
                         <input type="text" id="place_code" placeholder="Код ЄДРПОУ" class="form-control"  name="place_code" value="{{old('place_code')}}">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
@@ -192,7 +192,9 @@
                             format: 'Y-m-d H:i:s'
                         });
                     </script>
-
+                    <div class="mb-3">
+                        Персональні дані  на сайті не оприлюднюються
+                    </div>
                     <hr class="mb-4">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Відправити</button>
                 </form>

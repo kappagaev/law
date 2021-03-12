@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\RequestTimeLimit;
+use App\Rules\TimestampBeforeNow;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RequestStoreRequest extends FormRequest
@@ -43,13 +45,14 @@ class RequestStoreRequest extends FormRequest
             'place' => 'required|string|max:64',
             'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
-            'violation_time' => 'required|date_format:Y-m-d H:i:s|before:tomorrow',
+            'violation_time' => ['required', 'date_format:Y-m-d H:i:s', new TimestampBeforeNow(), new RequestTimeLimit()],
             'territory_id' => 'required|integer',
-            'photocopy' => 'required_without:audio,video,reg_photocopy,witness_reg_photo|array',
-            'audio' => 'required_without:photocopy,video,reg_photocopy,witness_reg_photo|array',
-            'video' => 'required_without:photocopy,audio,reg_photocopy,witness_reg_photo|array',
-            'reg_photocopy' => 'required_without:photocopy,audio,video,witness_reg_photo|array',
-            'witness_reg_photo' => 'required_without:photocopy,audio,video,reg_photocopy|array',
+            'filesFields' => 'required_without_all:audio,video,reg_photocopy,witness_reg_photo,photocopy',
+            'photocopy' => 'array',
+            'audio' => 'array',
+            'video' => 'array',
+            'reg_photocopy' => 'array',
+            'witness_reg_photo' => 'array',
             'photocopy.*' => "mimes:jpg,png,jpeg|max:20000",
             'audio.*' => "mimes:mp3,mpga,wav|max:20000",
             'video.*' => "mimes:mp4,mov,ogg,qt|max:100000",
@@ -67,6 +70,7 @@ class RequestStoreRequest extends FormRequest
     public function attributes()
     {
         return [
+            'filesFields' => 'з файлами',
             'photocopy' => 'Фотокопія документа',
             'audio' => 'Аудіозапис',
             'video' => 'Відеозапис',

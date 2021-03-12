@@ -17,11 +17,15 @@
             <form class="form-horizontal" role="form" method="post" action="/admin/violation/sphere" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="description">Опис*</label>
+                    <label for="description">Скорочений запис*</label>
                     <textarea class="form-control" rows="4" name="description" value="{{old('description')}}" required></textarea>
 
                 </div>
+                <div class="mb-3">
+                    <label for="description">Опис*</label>
+                    <textarea class="form-control" rows="4" name="full_description" value="{{old('full_description')}}" required></textarea>
 
+                </div>
 
 
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Відправити</button>

@@ -18,6 +18,14 @@ class TerritoryController extends Controller
         ->orderBy('name', 'ASC')->get();
     }
 
+    public function parent(Territory $territoryId)
+    {
+        $parent = Territory::where('id', $territoryId->territory_id)->first();
+        if ($parent) {
+            return response()->json($parent->id);
+        }
+        return response()->json();
+    }
 //    public function territoriesWithSimilarNameParents(Territory $territory)
 //    {
 //        $regions = Territory::where('name', $territory->name)->get();

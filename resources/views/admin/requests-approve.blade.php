@@ -1,7 +1,13 @@
 @extends('admin-layout')
 
 @section('content')
-
+    <div class="">
+        <p>
+        <h2>
+            Апрув зверень
+        </h2>
+        </p>
+    </div>
     <table class="table">
         <thead>
         <tr>

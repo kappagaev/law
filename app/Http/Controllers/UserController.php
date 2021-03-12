@@ -56,6 +56,6 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('user/profile')->with('user', Auth::user())->with('requests', RM::where('user_id', Auth::id())->confirmed()->paginate(16));
+        return view('user/profile')->with('user', Auth::user())->with('requests', RM::where('user_id', Auth::id())->paginate(16));
     }
 }

@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="col">
-                    <label for="violation_subj">Місто/Регіон</label>
+                    <label for="violation_subj">Місто/Район</label>
 
                 </div>
                 <div class="col">
@@ -32,31 +32,31 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <select class="form-control" id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}"  value="{{request()->input('violation_sphere_id')}}">
+                    <select class="js-example-basic-single form-control"  id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}"  value="{{request()->input('violation_sphere_id')}}">
                     </select>
                 </div>
                 <div class="col">
-                    <select class="form-control" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}"  value="{{request()->input('violation_type_id')}}">
+                    <select class="form-control js-example-basic-single" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}"  value="{{request()->input('violation_type_id')}}">
 
                     </select>
                 </div>
                 <input type="hidden" name="territory_id" id="territory_id">
                 <div class="col">
-                    <select class="form-control" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
+                    <select class="form-control js-example-basic-single" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
 
                     </select>
                 </div>
                 <div class="col">
                     <div class="mb-3">
 
-                        <select class="form-control" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
+                        <select class="form-control js-example-basic-single" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
 
                         </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <select class="form-control" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
+                        <select class="form-control js-example-basic-single" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
 
                         </select>
                     </div>
@@ -116,6 +116,13 @@
     {{ $requests->links('pagination::bootstrap-4') }}
 
     <script>
+        var today = new Date();
+        var dd = String(today.getDate() + 1).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        tommorow = yyyy + '-' + mm + '-' + dd;
+        $('.js-example-basic-single').select2();
 
         $('#violation_time').datetimepicker({
             datepicker:true,
@@ -134,7 +141,8 @@
                     ]
                 },
             },
-
+            setEndDate: tommorow,
+            setStartDate: "2020-01-01",
             format: 'Y-m-d'
         });
         $('#created_at').datetimepicker({
@@ -153,7 +161,8 @@
                     ]
                 },
             },
-
+            setEndDate: tommorow,
+            setStartDate: "2020-01-01",
             format: 'Y-m-d'
         });
     </script>

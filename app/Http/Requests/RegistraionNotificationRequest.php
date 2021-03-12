@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Ukrainian;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FeedbackRequest extends FormRequest
+class RegistraionNotificationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +24,10 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','string','max:255', new Ukrainian()],
-            'email' => 'required|email|max:255',
-            'message' => 'required|string|max:255'
+            'name' => 'required|string|max:32',
+            'surname' => 'required|string|max:32',
+            'patronymic' => 'string|max:32|nullable',
+            'territory_id' => 'required|integer',
         ];
     }
 }

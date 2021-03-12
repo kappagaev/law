@@ -1,9 +1,17 @@
 @extends('admin-layout')
 
 @section('content')
-    <div class="container">
-        <a href="/admin/user/create" class="btn btn-secondary">Створити користувача</a>
+
+    <div class="">
+        <p>
+        <h2>
+            Користувачі <a href="/admin/user/create" class="btn btn-secondary">Створити користувача</a>
+        </h2>
+        </p>
     </div>
+
+
+
     <table class="table">
         <thead>
         <tr>
@@ -11,7 +19,7 @@
             <th scope="col">Ім'я</th>
             <th scope="col">Пошта</th>
             <th scope="col">Роль</th>
-            <th scope="col">Станус</th>
+            <th scope="col">Статус</th>
             <th scope="col"></th>
         </tr>
         </thead>

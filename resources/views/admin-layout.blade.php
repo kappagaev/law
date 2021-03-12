@@ -28,9 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/requests">Звернення </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/registrations">Реєстрації</a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="/admin/registrations">Реєстрації</a>--}}
+{{--            </li>--}}
             <li class="nav-item">
                 <a class="nav-link" href="/admin/requests/approve">Апрув зверень</a>
             </li>

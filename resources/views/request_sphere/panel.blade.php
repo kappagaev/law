@@ -1,6 +1,13 @@
 @extends('admin-layout')
 
 @section('content')
+    <div class="">
+        <p>
+        <h2>
+            Сфери
+        </h2>
+        </p>
+    </div>
     <div class="container">
         <a href="/admin/violation/sphere/create" class="btn btn-secondary">Створити сферу</a>
     </div>

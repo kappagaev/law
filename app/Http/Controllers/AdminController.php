@@ -65,7 +65,7 @@ class AdminController extends Controller
         $request->status = 2;
         $request->save();
         Mail::to($request->user->email)->send(new RequestDisproveMail());
-        return redirect('/admin/requests/approve')->with('message', 'Успішно заперечино');
+        return redirect('/admin/requests/approve')->with('message', 'Успішно відхилено');
     }
 
     public function userRegistrations()
@@ -93,7 +93,7 @@ class AdminController extends Controller
         $registration->status = 0;
         $registration->save();
 
-        return redirect('/admin/registrations')->with('message', 'Успішно заперечино');
+        return redirect('/admin/registrations')->with('message', 'Успішно відхилено');
     }
 
 }

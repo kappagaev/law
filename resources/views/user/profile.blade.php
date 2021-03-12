@@ -4,7 +4,23 @@
 
         <h1>{{ $user->full_name }}</h1>
         {{--            <p>{{ Str::limit($request->content, 10) }}</p>--}}
+        @if( Auth::user()->role_id == 3)
+            <div class="">Пошта: {{$user->email}}</div>
+            <div class="">Адреса: {{$user->full_address}}</div>
+            <div class="">Поштовий індекс: {{$user->postcode}}</div>
+            <div class="">Телефон: {{$user->phone}}</div>
+            <div class="">Зареєстрований: {{$user->created_at}}</div>
+            @if ($user->status)
+                <div>
+                    Не забанений
+                </div>
+            @else
+                <div>
+                    Забанений
+                </div>
+            @endif
 
+        @endif
         <hr>
         @foreach ($requests as $request)
             <h2><a href="/request/{{$request->id}}" class="">{{ $request->place }}</a></h2>

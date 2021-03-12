@@ -34,7 +34,13 @@ class AzureRegistrationConfirmRequest extends FormRequest
             'street' => 'required|string|min:1|max:32',
             'house' => 'required|integer|min:1',
             'flat' => 'integer|nullable|min:1',
+        ];
+    }
 
+    public function messages()
+    {
+        return [
+            'phone' => 'Телефон обов\'язковий та має бути українського формату',
         ];
     }
 }

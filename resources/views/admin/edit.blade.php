@@ -5,14 +5,14 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Прізвище Ім'я</th>
+                <th scope="col">Повне Ім'я</th>
                 <th scope="col">Електронна пошта</th>
                 <th scope="col">Роль</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->full_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role->title }}</td>
             </tr>

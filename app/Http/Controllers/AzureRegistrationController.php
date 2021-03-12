@@ -31,6 +31,6 @@ class AzureRegistrationController extends Controller
         $user->password = Hash::make(env('AZURE_DEFAULT_PASSWORD'));
         $user->fill($registration->getUserAttributes())->save();
         $registration->delete();
-        return redirect('/')->with('message', 'Успішно зареєстровано');
+        return redirect('/auth/office365/redirect')->with('message', 'Успішно зареєстровано');
     }
 }

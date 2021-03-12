@@ -17,17 +17,18 @@
         @endif
         @csrf
         <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Ім'я*</label>
-
-            <input type="text" id="name" placeholder="Ім'я" class="form-control" autofocus name="name" value="{{old('name')}}" required>
-
-        </div>
-        <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Прізвище*</label>
 
             <input type="text" id="surname" placeholder="Прізвище" class="form-control" autofocus name="surname" value="{{old('surname')}}" required>
 
         </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Ім'я*</label>
+
+            <input type="text" id="name" placeholder="Ім'я" class="form-control" autofocus name="name" value="{{old('name')}}" required>
+
+        </div>
+
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">По батькові</label>
 
@@ -97,7 +98,7 @@
             <input type="text" id="postcode" placeholder="Поштовий індекс" class="form-control" autofocus name="postcode" value="{{old('postcode')}}" required>
 
         </div>
-        <input type="hidden" name="territory_id" id="territory_id">
+        <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
         <div class="mb-3">
             <label for="violation_subj">Місто/Область*</label>
             <select class="form-control" id="territory1" required>
@@ -106,7 +107,7 @@
         </div>
         <div class="mb-3">
             <div class="mb-3">
-                <label for="violation_subj">Місто/Регіон</label>
+                <label for="violation_subj">Місто/Район</label>
                 <select class="form-control" id="territory2">
 
                 </select>
@@ -125,6 +126,9 @@
         <br>
         <span>Чи ви згодні з <a href="/rules">правилами сайту</a>? <input type="checkbox" name="" id="" required> </span>
         <hr>
+        <div class="mb-3">
+            Дані потрібні щоб веріфікувати користувачів та формувати текст зверння до Уповноваженого із заитсу державної мови, який відповідатиме вимогам законодавства
+        </div>
         <button type="submit" class="btn btn-primary">Відправити</button>
     </form>
     <script src="{{asset('js/request-create.js')}}"></script>

@@ -88,9 +88,11 @@ Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 
 Route::get('feedback', [\App\Http\Controllers\FeedbackController::class, 'create']);
 Route::post('feedback', [\App\Http\Controllers\FeedbackController::class, 'store']);
+Route::post('registration-notification', [\App\Http\Controllers\RegistrationNotificationController::class, 'store']);
 
 Route::get('territory/', [\App\Http\Controllers\TerritoryController::class, 'index']);
 Route::get('territory/{territoryId}/children', [\App\Http\Controllers\TerritoryController::class, 'children']);
+Route::get('territory/{territoryId}/parent', [\App\Http\Controllers\TerritoryController::class, 'parent']);
 Route::get('territory/{territory}/similar', [\App\Http\Controllers\TerritoryController::class, 'territoriesWithSimilarNameParents']);
 
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');

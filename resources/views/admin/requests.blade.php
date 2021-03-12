@@ -2,6 +2,12 @@
 
 @section('content')
 
+        <p>
+        <h2>
+            Звертання
+        </h2>
+        </p>
+
     <table class="table">
         <thead>
         <tr>

@@ -10978,6 +10978,33 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($, __webpack_provided_window_dot_jQuery) {try {
+  var retrieveTerritorySelects = function retrieveTerritorySelects() {
+    var territory_id = $("#territory_id").val();
+    var parent = $.getJSON('/territory/' + territory_id + '/parent', function (parent) {
+      console.log(parent);
+
+      if (parent.length === 0) {
+        retrieveTerritory($("#territory1"), territory_id);
+        console.log(territory_id);
+        return;
+      }
+
+      var parentOfParent = $.getJSON('/territory/' + parent + '/parent', function (parentOfParent) {
+        if (parentOfParent.length === 0) {
+          retrieveTerritory($("#territory1"), parent);
+          retrieveTerritory($("#territory2"), territory_id, parent);
+          console.log(2);
+          return;
+        }
+
+        retrieveTerritory($("#territory1"), parentOfParent);
+        retrieveTerritory($("#territory2"), parent, parentOfParent);
+        retrieveTerritory($("#territory3"), territory_id, parent);
+        console.log(3);
+      });
+    });
+  };
+
   var retrieveSpheres = function retrieveSpheres() {
     var selected = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     $.get('/violation/spheres/', function (options) {
@@ -11013,7 +11040,6 @@ return jQuery;
     var selected = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     $.get('/violation/type/' + type + '/checkboxes', function (data) {
       $('#checkboxes').empty();
-      console.log(data);
 
       if (selected[0] == NaN) {
         data.forEach(function (checkbox) {
@@ -11091,7 +11117,10 @@ return jQuery;
       element.empty();
       element.append('<option value="">Виберіть</option>');
       options.forEach(function (option) {
-        if (selected === option.id) {
+        console.log(option.id);
+
+        if (selected == option.id) {
+          console.log("selected");
           element.append('<option value="' + option.id + '" data-type="' + option.type + '" selected>' + option.name + '</option>');
         } else {
           element.append('<option value="' + option.id + '" data-type="' + option.type + '">' + option.name + '</option>');
@@ -11101,8 +11130,14 @@ return jQuery;
   };
 
   window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-  console.log($);
   $(document).ready(function () {
+    if (!!$("#territory_id").val()) {
+      console.log(123);
+      retrieveTerritorySelects();
+    } else {
+      retrieveTerritory($('#territory1'), $('#territory1').data('selected'));
+    }
+
     retrieveSpheres($('#sphere').data('sphereId'));
 
     if ($('#sphere').data('sphereId') != null) {
@@ -11130,10 +11165,7 @@ return jQuery;
         }));
       }
     });
-    retrieveTerritory($('#territory1'), $('#territory1').data('selected'));
     $('#territory1').on('change', function () {
-      console.log($(this).find('option:selected').data('type'));
-
       if ($(this).find('option:selected').data('type') == 'М') {
         $('#territory_id').val($('#territory1').val());
         $('#territory2').empty();
@@ -11143,12 +11175,10 @@ return jQuery;
         $('#territory3').empty();
         retrieveTerritory($('#territory2'), null, $('#territory1').val());
       }
-    });
-    console.log($('#territory2').data('selected'));
-
-    if ($('#territory2').data('selected') !== null) {
-      retrieveTerritory($('#territory2'), $('#territory2').data('selected'), $('#territory1').data('selected'));
-    }
+    }); // if ($('#territory2').data('selected') !== null) {
+    //     retrieveTerritory($('#territory2'), $('#territory2').data('selected'), $('#territory1').data('selected'));
+    //
+    // }
 
     $('#territory2').on('change', function () {
       $('#territory3').empty();
@@ -11158,16 +11188,13 @@ return jQuery;
       } else {
         retrieveTerritory($('#territory3'), null, $('#territory2').val());
       }
-    });
-
-    if ($('#territory3').data('selected')) {
-      retrieveTerritory($('#territory3'), $('#territory3').data('selected'), $('#territory2').data('selected'));
-    }
+    }); // if ($('#territory3').data('selected')) {
+    //     retrieveTerritory($('#territory3'), $('#territory3').data('selected'), $('#territory2').data('selected'));
+    // }
 
     $('#territory3').on('change', function () {
       $('#territory_id').val($('#territory3').val());
     });
-    console.log('Success!');
   });
 } catch (e) {}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
