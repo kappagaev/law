@@ -152,7 +152,6 @@
     }
 
     $(document).ready(function(){
-
         if (!!$("#territory_id").val()) {
 
             retrieveTerritorySelects();
@@ -170,8 +169,9 @@
                 }));
             }
         }
-
+        $('#sphere').select2();
        $('#sphere').on('change',function () {
+           alert('123');
            $('#type').data('typeId', null);
            $('#sphere').data('sphereId', $('#sphere').val());
            retrieveTypes($('#sphere').val());

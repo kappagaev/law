@@ -168,6 +168,5 @@
 
 
     </script>
-    <script src="{{asset('js/request-create.js')}}"></script>
 
 @endsection
