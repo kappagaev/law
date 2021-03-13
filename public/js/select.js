@@ -1,5 +1,4 @@
-$(document).ready(function() {
-    var $eventSelect = $('select');
-console.log($eventSelect);
+
+    var $eventSelect = $('.select2');
     $eventSelect.select2();
     $eventSelect.on("change", function (e) { $(this).trigger('change'); });

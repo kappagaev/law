@@ -1,5 +1,3 @@
-try {
-    window.$ = window.jQuery = require('jquery');
     function retrieveTerritorySelects() {
         let territory_id = $("#territory_id").val();
         let parent =   $.getJSON('/territory/' + territory_id + '/parent', function (parent) {
@@ -43,6 +41,7 @@ try {
             });
         });
     }
+
     function retrieveTypes(sphereId, selected = null) {
         $.get('/violation/sphere/' +  sphereId + '/types', function (options) {
             $('#type').empty();
@@ -59,6 +58,7 @@ try {
             });
         });
     }
+
     function retrieveCheckboxes(type, selected = null) {
         $.get('/violation/type/' +  type + '/checkboxes', function (data) {
             $('#checkboxes').empty();
@@ -128,6 +128,7 @@ try {
     //         });
     //     });
     // }
+
     function retrieveTerritory(element, selected = null, parent = null) {
         let url = '/territory';
         if(parent != null) {
@@ -159,10 +160,10 @@ try {
             retrieveTerritory($('#territory1'), $('#territory1').data('selected'));
         }
         retrieveSpheres($('#sphere').data('sphereId'));
-        if($('#sphere').data('sphereId') != null) {
+        if(!!$('#sphere').data('sphereId')) {
             retrieveTypes($('#sphere').data('sphereId'), $('#type').data('typeId'));
         }
-        if($('#type').data('typeId') != null) {
+        if(!!$('#type').data('typeId')) {
             if($('#checkboxes').length > 0) {
                 retrieveCheckboxes($('#type').data('typeId'), $('#checkboxes').data('checkboxes').split(',').map(function(item) {
                     return parseInt(item, 10);
@@ -220,5 +221,3 @@ try {
         });
 
     });
-
-} catch (e) {}
