@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="violation_sphere_id">Сфера*</label>
-                    <select class="form-control" id="sel1" name="violation_sphere_id" required>
+                    <select class="form-control select2" id="sel1" name="violation_sphere_id" required>
 
                         @foreach ($spheres as $sphere)
                             <option value="{{$sphere->id}}">{{$sphere->description}}</option>
@@ -39,5 +39,5 @@
         </div>
 
 
-
+            <script src="{{asset('js/select.js')}}"></script>
 @endsection

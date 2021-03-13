@@ -21,13 +21,13 @@
 
                     <div class="mb-3">
                         <label for="violation_subj">1.1 Сфера порушення*</label>
-                        <select class="form-control" id="sphere" name="violation_sphere_id" required data-sphere-id="{{old('violation_sphere_id')}}">
+                        <select class="select2 form-control" id="sphere" name="violation_sphere_id" required data-sphere-id="{{old('violation_sphere_id')}}">
                             <option>Виберіть сферу порушення</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="violation_subj">1.2 Вид порушення*</label>
-                        <select class="form-control" id="type" name="violation_type_id" required data-type-id="{{old('violation_type_id')}}">
+                        <select class="select2 form-control" id="type" name="violation_type_id" required data-type-id="{{old('violation_type_id')}}">
 
                         </select>
                     </div>
@@ -61,14 +61,14 @@
                     <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
                     <div class="mb-3">
                         <label for="violation_subj">Область/Місто*</label>
-                        <select class="form-control" id="territory1">
+                        <select class="form-control select2" id="territory1">
 
                         </select>
                     </div>
                     <div class="mb-3">
                         <div class="mb-3">
                             <label for="violation_subj">Район/Місто</label>
-                            <select class="form-control" id="territory2">
+                            <select class="form-control select2" id="territory2">
 
                             </select>
                         </div>
@@ -76,7 +76,7 @@
                     <div class="mb-3">
                         <div class="mb-3">
                             <label for="violation_subj">Село/Селище</label>
-                            <select class="form-control" id="territory3" >
+                            <select class="form-control select2" id="territory3" >
 
                             </select>
                         </div>
@@ -201,4 +201,5 @@
             </div>
 
             <script src="{{asset('js/request-create.js')}}"></script>
+            <script src="{{asset('js/select.js')}}"></script>
 @endsection

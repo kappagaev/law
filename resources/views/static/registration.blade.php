@@ -69,4 +69,5 @@
     Якщо Ви маєте обліковий запис Офіс 365 НаУКМА, ви можете зареєструватись за його допомогою <a href="/auth/office365/redirect" class="btn btn-success">Реєстрація через Office 365</a>
     </p><script src="{{asset('js/request-create.js')}}"></script>
     <script src="{{asset('js/registration.js')}}"></script>
+    <script src="{{asset('js/select.js')}}"></script>
 @endsection

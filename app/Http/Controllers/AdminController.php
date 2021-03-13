@@ -96,4 +96,5 @@ class AdminController extends Controller
         return redirect('/admin/registrations')->with('message', 'Успішно відхилено');
     }
 
+
 }

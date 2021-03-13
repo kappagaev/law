@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10981,11 +10981,8 @@ return jQuery;
   var retrieveTerritorySelects = function retrieveTerritorySelects() {
     var territory_id = $("#territory_id").val();
     var parent = $.getJSON('/territory/' + territory_id + '/parent', function (parent) {
-      console.log(parent);
-
       if (parent.length === 0) {
         retrieveTerritory($("#territory1"), territory_id);
-        console.log(territory_id);
         return;
       }
 
@@ -10993,14 +10990,12 @@ return jQuery;
         if (parentOfParent.length === 0) {
           retrieveTerritory($("#territory1"), parent);
           retrieveTerritory($("#territory2"), territory_id, parent);
-          console.log(2);
           return;
         }
 
         retrieveTerritory($("#territory1"), parentOfParent);
         retrieveTerritory($("#territory2"), parent, parentOfParent);
         retrieveTerritory($("#territory3"), territory_id, parent);
-        console.log(3);
       });
     });
   };
@@ -11117,10 +11112,7 @@ return jQuery;
       element.empty();
       element.append('<option value="">Виберіть</option>');
       options.forEach(function (option) {
-        console.log(option.id);
-
         if (selected == option.id) {
-          console.log("selected");
           element.append('<option value="' + option.id + '" data-type="' + option.type + '" selected>' + option.name + '</option>');
         } else {
           element.append('<option value="' + option.id + '" data-type="' + option.type + '">' + option.name + '</option>');
@@ -11132,7 +11124,6 @@ return jQuery;
   window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
   $(document).ready(function () {
     if (!!$("#territory_id").val()) {
-      console.log(123);
       retrieveTerritorySelects();
     } else {
       retrieveTerritory($('#territory1'), $('#territory1').data('selected'));
@@ -11201,7 +11192,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!**********************************************!*\
   !*** multi ./resources/js/request-create.js ***!
   \**********************************************/

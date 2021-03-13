@@ -97,6 +97,7 @@ class AuthController extends Controller
             }
             return redirect('/')->with(Auth::user()->full_name . ', вітаємо!');
         }
+        $userData['name'] = $user->name;
         $registration = $azureService->getRegistration($userData);
 
         return redirect('/registration/office365/' . $registration->key);

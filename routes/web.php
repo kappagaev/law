@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserEditController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -97,5 +98,7 @@ Route::get('territory/{territoryId}/parent', [\App\Http\Controllers\TerritoryCon
 Route::get('territory/{territory}/similar', [\App\Http\Controllers\TerritoryController::class, 'territoriesWithSimilarNameParents']);
 
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
+Route::get('user/edit', [\App\Http\Controllers\UserEditController::class, 'edit'])->middleware('auth');
+Route::post('user/edit', [UserEditController::class, 'update'])->middleware('auth');
 
 

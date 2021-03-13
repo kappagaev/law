@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/js/registration.js": "/js/registration.js",
     "/js/request-create.js": "/js/request-create.js",
+    "/js/select.js": "/js/select.js",
     "/js/tempusdominus-bootstrap.js": "/js/tempusdominus-bootstrap.js"
 }

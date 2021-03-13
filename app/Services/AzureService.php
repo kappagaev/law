@@ -13,6 +13,10 @@ class AzureService
     {
         $azure = new AzureRegistration($data);
         $azure->key = Str::random(15);
+        $names = explode(' ', $data['name']);
+        $azure->surname = $names[0];
+        $azure->name = $names[1];
+        $azure->patronymic = $names[2];
         $azure->save();
         return $azure;
     }

@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Аудіозапис</label>
                     <p> @foreach($request->audio as $key => $audio)
-                            <a href="/photocopy/{{$audio}}">{{$audio}}</a><br>
+                            <a href="/audio/{{$audio}}">{{$audio}}</a><br>
 
                         @endforeach</p>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Відеозапис</label>
                     <p> @foreach($request->video as $key => $video)
-                            <a href="/photocopy/{{$video}}">{{$video}}</a><br>
+                            <a href="/video/{{$video}}">{{$video}}</a><br>
 
                         @endforeach</p>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Фотокопія установчих та реєстраційних документів</label>
                     <p> @foreach($request->reg_photocopy as $key => $reg_photocopy)
-                            <a href="/photocopy/{{$reg_photocopy}}">{{$reg_photocopy}}</a><br>
+                            <a href="/reg_photocopy/{{$reg_photocopy}}">{{$reg_photocopy}}</a><br>
 
                         @endforeach</p>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Фотокопія акта, підписаного свідками</label>
                     <p> @foreach($request->witness_reg_photo as $key => $witness_reg_photo)
-                            <a href="/photocopy/{{$witness_reg_photo}}">{{$witness_reg_photo}}</a><br>
+                            <a href="/witness_reg_photo/{{$witness_reg_photo}}">{{$witness_reg_photo}}</a><br>
 
                         @endforeach</p>
                 </div>

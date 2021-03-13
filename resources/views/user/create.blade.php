@@ -96,14 +96,14 @@
             <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
             <div class="mb-3">
                 <label for="violation_subj">Місто/Область*</label>
-                <select class="form-control" id="territory1" required data-selected="{{old('territory1')}}">
+                <select class="form-control select2" id="territory1" required data-selected="{{old('territory1')}}">
 
                 </select>
             </div>
             <div class="mb-3">
                 <div class="mb-3">
                     <label for="violation_subj">Місто/Район</label>
-                    <select class="form-control" id="territory2" data-selected="{{old('territory2')}}">
+                    <select class="form-control select2" id="territory2" data-selected="{{old('territory2')}}">
 
                     </select>
                 </div>
@@ -111,7 +111,7 @@
             <div class="mb-3">
                 <div class="mb-3">
                     <label for="violation_subj">Село</label>
-                    <select class="form-control" id="territory3" data-selected="{{old('territory3')}}">
+                    <select class="form-control select2" id="territory3" data-selected="{{old('territory3')}}">
 
                     </select>
                 </div>
@@ -154,7 +154,7 @@
 {{--            </div>--}}
             <div class="form-group">
                 <label for="exampleInputEmail1">Виберіть роль юзера*</label>
-                <select class="form-control" name="role_id" required>
+                <select class="form-control select2" name="role_id" required>
                     <option value="2">
                         Звичайний юзер
                     </option>
@@ -170,4 +170,5 @@
     </div> <!-- ./container -->
     <script src="{{asset('js/registration.js')}}"></script>
     <script src="{{asset('js/request-create.js')}}"></script>
+    <script src="{{asset('js/select.js')}}"></script>
 @endsection

@@ -76,7 +76,7 @@
 {{--            </div>--}}
             <div class="form-group">
                 <label for="exampleInputEmail1">Виберіть роль юзера</label>
-                <select class="form-control form-control-lg" name="role_id" value="{{$user->role_id}}">
+                <select class="form-control select2 form-control-lg" name="role_id" value="{{$user->role_id}}">
                     <option value="2" @if($user->role_id == 2)
                     selected
                         @endif>
@@ -92,7 +92,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Статус</label>
-                <select class="form-control form-control-lg" name="status" >
+                <select class="form-control select2 form-control-lg" name="status" >
                     @if ($user->status)
                         <option value="1" selected>
                             Не забанений
@@ -155,4 +155,5 @@
         </form>
     </div>
     <script src="{{asset('js/request-create.js')}}"></script>
+    <script src="{{asset('js/select.js')}}"></script>
 @endsection
