@@ -70,7 +70,8 @@
 {{--    <!-- Copyright -->--}}
 {{--</footer>--}}
 
-
+<script src="{{asset('js/request-create.js')}}"></script>
 <script src="/js/select.js"></script>
+
 </body>
 </html>
