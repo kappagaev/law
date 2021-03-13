@@ -14,9 +14,9 @@ class AzureService
         $azure = new AzureRegistration($data);
         $azure->key = Str::random(15);
         $names = explode(' ', $data['name']);
-        $azure->surname = $names[0];
-        $azure->name = $names[1];
-        $azure->patronymic = $names[2];
+        $azure->surname = isset($names[0]) ? $names[0] : '';
+        $azure->name = isset($names[1]) ? $names[1] : '';
+        $azure->patronymic = isset($names[2]) ? $names[2] : '';
         $azure->save();
         return $azure;
     }
