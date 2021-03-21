@@ -16,11 +16,11 @@ class StaticPageController extends Controller
 
     public function rules()
     {
-        return view('static/rules');
+        return view('static/rules')->with('title', 'Правила');
     }
 
     public function donate()
     {
-        return view('static/donate');
+        return view('static/donate')->with('title', 'Підтримати проєкт');
     }
 }

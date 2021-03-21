@@ -10,14 +10,14 @@ class UserEditController extends Controller
 {
     public function edit()
     {
-        return view('user/edit', ['user' => Auth::user()]);
+        return view('user/edit', ['user' => Auth::user()])->with('title', 'Редагувати профіль');;
     }
 
     public function update(UserEditRequest $request)
     {
         Auth::user()->update($request->validated());
 
-        return redirect('/')->with('message', 'Користувач успішно змінен!');
+        return redirect('/')->with('message', 'Інформація користувача успішно змінена');
     }
 
 }

@@ -22,7 +22,8 @@ class AzureRegistrationController extends Controller
 
     public function confirmForm(AzureRegistration $registration)
     {
-        return view('azure-registration/confirm')->with('registration', $registration);
+
+        return view('azure-registration/confirm')->with('registration', $registration)->with("fakeLogin", true)->with('title', 'Додайте інформацію');
     }
 
     public function confirm(AzureRegistrationConfirmRequest $request, AzureRegistration $registration)

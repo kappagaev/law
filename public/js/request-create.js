@@ -66,16 +66,16 @@ function retrieveCheckboxes(type, selected = null) {
         if(selected[0] == NaN) {
             data.forEach(function (checkbox) {
                 if (selected.includes(checkbox.id)) {
-                    $('#checkboxes').append('<label><input type="checkbox" name="checkboxes[]" value="' + checkbox.id +'" checked>' + checkbox.description+ '<br>');
+                    $('#checkboxes').append('<label><input type="checkbox" required name="checkboxes[]" value="' + checkbox.id +'" checked>' + checkbox.description+ '<br>');
                 } else {
-                    $('#checkboxes').append('<label><input type="checkbox" name="checkboxes[]" value="' + checkbox.id +'">' + checkbox.description+ '<br>');
+                    $('#checkboxes').append('<label><input type="checkbox" required name="checkboxes[]" value="' + checkbox.id +'">' + checkbox.description+ '<br>');
                 }
 
             });
         } else {
             data.forEach(function (checkbox) {
 
-                $('#checkboxes').append('<label><input type="checkbox" name="checkboxes[]" value="' + checkbox.id +'">' + checkbox.description+ '<br>');
+                $('#checkboxes').append('<label><input type="checkbox" required name="checkboxes[]" value="' + checkbox.id +'">' + checkbox.description+ '<br>');
             });
         }
 

@@ -26,7 +26,7 @@ class Ukrainian implements Rule
      */
     public function passes($attribute, $value)
     {
-        return (bool) preg_match('[а-їґЄ-ЯҐ]', $value);
+        return (bool) preg_match("[а-їґЄ-ЯҐ']", $value);
     }
 
     /**

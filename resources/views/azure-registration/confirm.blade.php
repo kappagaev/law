@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <h1>
-        Реєстрація
+        Щоб отримати повний функціонал сайту, додайте інформацію про себе
     </h1>
     <hr>
     <form action="/registration/office365/{{$registration->key}}" method="post">

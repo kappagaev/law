@@ -28,6 +28,7 @@ class RegistraionNotificationRequest extends FormRequest
             'surname' => 'required|string|max:32',
             'patronymic' => 'string|max:32|nullable',
             'territory_id' => 'required|integer',
+            'email' => 'required|max:32|email',
         ];
     }
 }

@@ -22,27 +22,37 @@
         <a class="p-2 text-dark" href="/about">Про проєкт</a>
         <a class="p-2 text-dark" href="/feedback">Зворотній зв'язок</a>
         <a class="p-2 text-dark" href="/donate">Підтримати проєкт</a>
+        @isset($registration)
 
-        @if( !Auth::check())
-            <a href="/registration" class="btn btn-primary">
-                Реєстрація
-            </a>
-            <a href="/auth/office365/redirect" class="btn btn-success">
-                Логін
-            </a>
+            <a class="p-2 btn btn-primary" href="/">Вийти</a>
+
+        @endisset
+        @if(!isset($fakeLogin))
+            @if( !Auth::check())
+                <a href="/registration" class="btn btn-primary">
+                    Реєстрація
+                </a>
+                <a href="/auth/office365/redirect" class="btn btn-success">
+                    Логін
+                </a>
+            @endif
+
+
+            @auth
+                <a class="p-2 text-dark" href="/profile">Особистий профіль</a>
+                <a class="btn btn-outline-dark" href="/request/create">Подати повідомлення про порушення</a>
+                @if( Auth::user()->role_id == 3)
+                    <a class="p-2 btn btn-info" href="/admin">Адмінка</a>
+
+                @endif
+
+                <a class="p-2 btn btn-primary" href="/logout">Вийти</a>
+            @endauth
+
+
         @endif
 
 
-    @auth
-            <a class="p-2 text-dark" href="/profile">Особистий профіль</a>
-            <a class="btn btn-outline-dark" href="/request/create">Подати повідомлення про порушення</a>
-        @if( Auth::user()->role_id == 3)
-                <a class="p-2 btn btn-info" href="/admin">Адмінка</a>
-
-        @endif
-
-        <a class="p-2 btn btn-primary" href="/logout">Вийти</a>
-    @endauth
     </nav>
 </div>
 @if(session('message'))

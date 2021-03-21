@@ -36,6 +36,13 @@
             <input type="text" id="patronymic" placeholder="По батькові" class="form-control" autofocus name="patronymic" value="{{old('patronymic')}}">
 
         </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Пошта*</label>
+
+            <input type="email" id="email" placeholder="Пошта" class="form-control" autofocus name="email" value="{{old('email')}}" required>
+
+        </div>
+
         <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
         <div class="mb-3">
             <label for="violation_subj">Місто/Область*</label>

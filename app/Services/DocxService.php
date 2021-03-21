@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Request;
+use App\Models\ViolationTypeCheckbox;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 /**
@@ -101,7 +102,7 @@ class DocxService
 
         $violation_type = $rm->violationType->full_description;
 
-        foreach ($rm->checkboxes as $checkbox) {
+        foreach (ViolationTypeCheckbox::where("violation_type_id", $rm->violationType->id)->get() as $checkbox) {
             $violation_type .= ' ' . $checkbox->description;
         }
         //$docx = $fileService->createDocx($rm, $rm->user, $files);

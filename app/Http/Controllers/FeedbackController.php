@@ -12,7 +12,7 @@ class FeedbackController extends Controller
 {
     public function create()
     {
-        return view('feedback/create');
+        return view('feedback/create')->with('title', 'Зворотній зв\'язок');
     }
 
     public function store(FeedbackRequest $request)
