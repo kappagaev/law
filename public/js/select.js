@@ -1,1 +1,3 @@
-$('select').select2();
+$('select').select2({
+    language: "uk"
+});

@@ -1,0 +1,16 @@
+.logo {
+    height: 38px;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+span.badge {
+    padding-left: 0px;
+}
+
+input#created_at, input#violation_time {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}

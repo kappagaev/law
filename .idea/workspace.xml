@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be80cec4-9b01-46ae-bc73-f6e86ceba3d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laguage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laguage.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AzureRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AzureRegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FeedbackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RegistraionNotificationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RegistraionNotificationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RequestStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RequestStoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/Ukrainian.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/Ukrainian.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/DocxService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DocxService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/request-create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/request-create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/azure-registration/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/azure-registration/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/select.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/registration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/registration.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/request/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,6 +174,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -215,6 +211,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

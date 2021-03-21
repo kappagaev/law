@@ -3,19 +3,23 @@
     @isset($title)
         <title>{{$title}}</title>
     @endisset
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/uk.js"></script>
 </head>
 <body>
 
 
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="text-dark" href="/">Mova team</a></h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="text-dark" href="/"><img class="logo" src="/img/logo.png" /></a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Всі повідомлення про порушення</a>
         <a class="p-2 text-dark" href="/rules">Правила</a>
