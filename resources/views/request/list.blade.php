@@ -22,59 +22,42 @@
             </div>
             <div class="row">
                 <input type="hidden" name="territory_id" id="territory_id">
-                <div class="col">
+                <div class="col col-sx-12">
                     <label for="violation_subj">Місто/Область</label>
                     <select class="form-control select2 js-example-basic-single" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
 
                     </select>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
+                <div class="col col-sx-12">
+                    <label for="violation_subj">Місто/Район</label>
+                    <select class="form-control select2 js-example-basic-single" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
 
-                        <label for="violation_subj">Місто/Район</label>
-                        <select class="form-control select2 js-example-basic-single" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
-
-                        </select>
-                    </div>
+                    </select>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="violation_subj">Село</label>
-                        <select class="form-control select2 js-example-basic-single" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
+                <div class="col col-sx-12">
+                    <label for="violation_subj">Село</label>
+                    <select class="form-control select2 js-example-basic-single" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
 
-                        </select>
-                    </div>
+                    </select>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="sm-3">
+                <div class="col col-sm-12">
                         <label for="violation_time">Дата порушення</label>
-                    </div>
-                    <div class="sm-3">
                         <input id="violation_time" autocomplete="off" type="text" class=""  name="violation_time" value="{{request()->input('violation_time')}}" >
 
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
-                    </div>
-
-
                 </div>
-                <div class="col">
-                    <div class="sm-3">
+                <div class="col col-sm-12">
                         <label for="created_at">Дата реєстрації звернення</label>
-
-                    </div>
-                    <div class="sm-3">
                         <input id="created_at" autocomplete="off" type="text" class=""  name="created_at" value="{{request()->input('created_at')}}" >
-
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
-                    </div>
                 </div>
-                <div class="col">
+                <div class="col col-sm-12">
                     <br>
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Шукати</button>
                 </div>
