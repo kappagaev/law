@@ -34,10 +34,6 @@
                 <li class="nav-item active"> <a class="p-2 text-dark nav-link" href="/feedback">Зворотній зв'язок</a> </li>
                 <li class="nav-item active"> <a class="p-2 text-dark nav-link" href="/donate">Підтримати проєкт</a> </li>
 
-            <!--a class="p-2 text-dark" href="/rules">Правила</a>
-            <a class="p-2 text-dark" href="/about">Про проєкт</a>
-            <a class="p-2 text-dark" href="/feedback">Зворотній зв'язок</a>
-            <a class="p-2 text-dark" href="/donate">Підтримати проєкт</a-->
             @isset($registration)
 
                 <li class="nav-item active"><a class="p-2 btn btn-primary" href="/">Вийти</a></li>
@@ -45,18 +41,18 @@
             @endisset
             @if(!isset($fakeLogin))
                 @if( !Auth::check())
-                <li class="nav-item active"><a href="/registration" class="btn btn-primary mr-2 mb-2 mb-sm-0">
+                <li class="nav-item active"><a href="/registration" class="p-2 btn btn-primary mr-2 mb-2 mb-sm-0">
                         Реєстрація
                     </a></li>
-                <li class="nav-item active"><a href="/auth/office365/redirect" class="btn btn-success">
+                <li class="nav-item active"><a href="/auth/office365/redirect" class="p-2 btn btn-success">
                         Логін
                     </a></li>
                 @endif
 
 
                 @auth
-                <li class="nav-item active"> <a class="p-2 text-dark" href="/profile">Особистий профіль</a></li>
-                <li class="nav-item active"> <a class="btn btn-outline-dark mr-2 mb-2 mb-sm-0" href="/request/create">Подати повідомлення про порушення</a></li>
+                <li class="nav-item active"> <a class="p-2 text-dark nav-link" href="/profile">Особистий профіль</a></li>
+                <li class="nav-item active"> <a class="p-2 btn btn-outline-dark mr-2 mb-2 mb-sm-0" href="/request/create">Подати повідомлення про порушення</a></li>
                     @if( Auth::user()->role_id == 3)
                 <li class="nav-item active"> <a class="p-2 btn btn-info mr-2 mb-2 mb-sm-0" href="/admin">Адмінка</a></li>
 
