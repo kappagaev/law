@@ -6,8 +6,8 @@ body {
     background-color: #f9f9f9;
 }
 
-.navbar-collapse.show{
-    background-color: #fff;
+.navbar-collapse {
+    background-color: #fff !important;
 }
 
 span.badge {
@@ -65,6 +65,9 @@ ul.navbar-nav.ml-auto.navbar-right {
     visibility: visible;
     left: 0px;
 }*/
+    ul.navbar-nav.ml-auto.navbar-right a.btn {
+        width: 50%;
+    }
 }
 
 button.navbar-toggler.btn-primary.btn {
