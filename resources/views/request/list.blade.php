@@ -8,12 +8,12 @@
         <form action="/" method="get">
             <div class="row">
                 <div class="col col-12 col-sm-6 mb-3">
-                    <label for="violation_subj">Сфера порушення</label>
+                    <label for="sphere">Сфера порушення</label>
                     <select class="js-example-basic-single select2 form-control"  id="sphere" name="violation_sphere_id" data-sphere-id="{{request()->input('violation_sphere_id')}}"  value="{{request()->input('violation_sphere_id')}}">
                     </select>
                 </div>
                 <div class="col col-12 col-sm-6 mb-3">
-                    <label for="violation_subj">Вид порушення</label>
+                    <label for="type">Вид порушення</label>
                     <select class="form-control select2 js-example-basic-single" id="type" name="violation_type_id" data-type-id="{{request()->input('violation_type_id')}}"  value="{{request()->input('violation_type_id')}}">
 
                     </select>
@@ -23,19 +23,19 @@
             <div class="row">
                 <input type="hidden" name="territory_id" id="territory_id">
                 <div class="col col-12 col-sm-4 mb-3">
-                    <label for="violation_subj">Місто/Область</label>
+                    <label for="territory1">Місто/Область</label>
                     <select class="form-control select2 js-example-basic-single" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
 
                     </select>
                 </div>
                 <div class="col col-12 col-sm-4 mb-3">
-                    <label for="violation_subj">Місто/Район</label>
+                    <label for="territory2">Місто/Район</label>
                     <select class="form-control select2 js-example-basic-single" id="territory2" name="territory2" data-selected="{{request()->input('territory2')}}">
 
                     </select>
                 </div>
                 <div class="col col-12 col-sm-4 mb-3">
-                    <label for="violation_subj">Село</label>
+                    <label for="territory3">Село</label>
                     <select class="form-control select2 js-example-basic-single" id="territory3" name="territory3" data-selected="{{request()->input('territory3')}}">
 
                     </select>
