@@ -12,4 +12,9 @@ class ViolationTypeCheckbox extends Model
     public $guarded = false;
 
     public $timestamps = false;
+
+    public function violationType()
+    {
+        return $this->belongsTo(ViolationType::class, 'violation_type_id');
+    }
 }

@@ -24,4 +24,26 @@ class RequestCheckboxController extends Controller
 
         return back()->with('message', 'Успішно створено!');
     }
+
+    public function edit(ViolationTypeCheckbox $checkbox)
+    {
+        return view('violation_type_checkbox/edit', [
+            'checkbox' => $checkbox
+        ]);
+    }
+
+    public function update(Request $request, ViolationTypeCheckbox $checkbox)
+    {
+        $checkbox->update($request->all());
+
+        return redirect('admin/violation/type/' . $checkbox->violationType->id)->with('message', 'Успіншо редаговано!');
+    }
+
+
+    public function destroy(ViolationTypeCheckbox $checkbox)
+    {
+        $checkbox->delete();
+
+        return back()->with('message', 'Успіншо видалено!');
+    }
 }

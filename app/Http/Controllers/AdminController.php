@@ -53,6 +53,7 @@ class AdminController extends Controller
     public function requestApprove(Request $request, RequestMailService $requestMailService)
     {
         $request->status = 1;
+        $request->approve_at = now();
         $request->save();
 
         Mail::to($request->user->email)->send(new RequestApproveMail($request));
