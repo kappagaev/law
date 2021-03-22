@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be80cec4-9b01-46ae-bc73-f6e86ceba3d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/request_type/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/violation_type_checkbox/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laguage.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequestCheckboxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequestCheckboxController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ViolationSphereController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ViolationSphereController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ViolationTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ViolationTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RequestStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RequestStoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ViolationTypeCheckbox.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ViolationTypeCheckbox.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/request_sphere/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request_sphere/panel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/request_type/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request_type/panel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/request_type/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request_type/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Rules/Ukrainian.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/Ukrainian.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/request/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/request/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,9 +204,7 @@
       <workItem from="1616213181295" duration="1021000" />
       <workItem from="1616302880002" duration="2160000" />
       <workItem from="1616306659871" duration="1570000" />
-      <workItem from="1616308435410" duration="2754000" />
-      <workItem from="1616343457210" duration="6941000" />
-      <workItem from="1616373544014" duration="1488000" />
+      <workItem from="1616308435410" duration="2356000" />
     </task>
     <servers />
   </component>
@@ -211,15 +212,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
