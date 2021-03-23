@@ -85,8 +85,8 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col"><img src="{{asset('img/fido.jpg')}}"class="img-thumbnail" alt=""></div>
-            <div class="col"><img src="{{asset('img/axon.jpg')}}"class="img-thumbnail" alt=""></div>
+            <div class="col"><img src="{{asset('img/fido.png')}}"class="img-thumbnail" alt=""></div>
+            <div class="col"><img src="{{asset('img/axon.png')}}"class="img-thumbnail" alt=""></div>
         </div>
     </div>
 
