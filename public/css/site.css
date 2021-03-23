@@ -92,3 +92,7 @@ a.p-2.text-dark.nav-link {
 .collapse.w-100.order-3.dual-collapse2 {
     display: block !important;
 }
+
+.container {
+    margin-bottom: 100px;
+}

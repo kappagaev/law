@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "nuovo/spreadsheet-reader": "^0.5.11",
         "phpoffice/phpword": "^0.17.0",
+        "proengsoft/laravel-jsvalidation": "^4.4",
         "propaganistas/laravel-phone": "^4.2",
         "socialiteproviders/microsoft-azure": "^4.2",
         "socialiteproviders/zoho": "^4.1",
