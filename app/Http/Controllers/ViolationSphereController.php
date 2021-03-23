@@ -20,6 +20,26 @@ class ViolationSphereController extends Controller
         return back()->with('message', 'Успіншо створенно!');
     }
 
+    public function edit(ViolationSphere $sphere)
+    {
+        return view('request_sphere/edit', ['sphere' => $sphere]);
+    }
+
+    public function update(Request $request, ViolationSphere $sphere)
+    {
+        $sphere->update($request->all());
+
+        return redirect('admin/violation/sphere')->with('message', 'Успіншо редаговано!');
+    }
+
+
+    public function destroy(ViolationSphere $sphere)
+    {
+        $sphere->delete();
+
+        return redirect('admin/violation/sphere')->with('message', 'Успіншо видалено!');
+    }
+
     public function index()
     {
         $spheres = ViolationSphere::paginate(32);

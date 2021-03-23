@@ -2,11 +2,11 @@
 
 namespace App\Rules;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
 
-class Ukrainian implements Rule
+class LawApproveTimecheck implements Rule
 {
-    protected $key = 'uk';
     /**
      * Create a new rule instance.
      *
@@ -26,7 +26,10 @@ class Ukrainian implements Rule
      */
     public function passes($attribute, $value)
     {
-        return (bool) preg_match("/[а-їґЄ-ЯҐ']+/", $value);
+        $timestamp = Carbon::parse($value);
+        $lawApproved = Carbon::create(2021, 1, 16);
+
+        return $timestamp > $lawApproved;
     }
 
     /**
@@ -36,6 +39,6 @@ class Ukrainian implements Rule
      */
     public function message()
     {
-        return 'Поле :attribute повенне бути написане українською мовою.';
+        return 'Закон про мову вступив в дію лише 16 січня 2021 року, тому ми не можемо прийняти вашу скаргу на подію, що трапилась до цього часу';
     }
 }

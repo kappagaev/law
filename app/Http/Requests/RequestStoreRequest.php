@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\LawApproveTimecheck;
+use App\Rules\LawAproveTimechack;
 use App\Rules\RequestTimeLimit;
 use App\Rules\TimestampBeforeNow;
 use Illuminate\Foundation\Http\FormRequest;
@@ -45,7 +47,7 @@ class RequestStoreRequest extends FormRequest
             'place' => 'required|string|max:64',
             'place_code' => 'digits_between:0,20',
             'place_address' => 'required|string|max:64',
-            'violation_time' => ['required', 'date_format:Y-m-d H:i:s', new TimestampBeforeNow(), new RequestTimeLimit()],
+            'violation_time' => ['required', 'date_format:Y-m-d H:i:s', new TimestampBeforeNow(), new RequestTimeLimit(), new LawApproveTimecheck()],
             'territory_id' => 'required|integer',
             'filesFields' => 'required_without_all:audio,video,reg_photocopy,witness_reg_photo,photocopy',
             'photocopy' => 'array',
@@ -82,7 +84,7 @@ class RequestStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'filesFields' => 'Це поле є обов’язковим для заповнення! Будь ласка, додайте до скарги Фотокопія документа/Аудіозапис/Відеозапис/Фотокопія установчих та реєстраційних документів/Фотокопія акта, підписаного свідками '
+            'filesFields' => 'До скарги має бути прикріплене хоча б одне медіа-підтвердження'
         ];
     }
 

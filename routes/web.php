@@ -31,8 +31,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/request/{request}/disprove',[\App\Http\Controllers\AdminController::class, 'requestDisprove']);
     Route::get('/request/{request}/approve',[\App\Http\Controllers\AdminController::class, 'requestApprove']);
 
-
-    Route::get('violation/sphere/create', [\App\Http\Controllers\ViolationSphereController::class, 'create']);
+    Route::resource('violation/sphere', \App\Http\Controllers\ViolationSphereController::class);
     Route::post('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'store']);
     Route::get('violation/sphere', [\App\Http\Controllers\ViolationSphereController::class, 'index']);
     Route::get('/registrations',[\App\Http\Controllers\AdminController::class, 'userRegistrations']);
@@ -40,13 +39,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/registration/{registration}/prove',[\App\Http\Controllers\AdminController::class, 'userRegistrationProve']);
     Route::get('/registration/{registration}/disprove',[\App\Http\Controllers\AdminController::class, 'userRegistrationDisprove']);
 
-    Route::get('violation/type/create', [\App\Http\Controllers\ViolationTypeController::class, 'create']);
-    Route::post('violation/type', [\App\Http\Controllers\ViolationTypeController::class, 'store']);
-    Route::get('violation/type', [\App\Http\Controllers\ViolationTypeController::class, 'index']);
-    Route::get('violation/type/{violationType}', [\App\Http\Controllers\ViolationTypeController::class, 'show']);
+    Route::resource('violation/type', \App\Http\Controllers\ViolationTypeController::class);
     Route::get('violation/type/{violationType}/checkbox/create', [\App\Http\Controllers\RequestCheckboxController::class, 'create']);
     Route::post('violation/type/checkbox', [\App\Http\Controllers\RequestCheckboxController::class, 'store']);
-
+    Route::resource('violation/type/checkbox', \App\Http\Controllers\RequestCheckboxController::class);
     Route::resource('user', UserController::class);
 });
 //Route::post('/loging/submit', function () {
