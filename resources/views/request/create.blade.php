@@ -200,6 +200,7 @@
                 </form>
             </div>
 
-            <script src="{{asset('js/request-create.js')}}"></script>
-            <script src="{{asset('js/select.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jsvalidation.js')}}"></script>
+
+        {!! JsValidator::formRequest('App\Http\Requests\RequestStoreRequest') !!}
 @endsection
