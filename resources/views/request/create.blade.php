@@ -199,7 +199,7 @@
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Відправити</button>
                 </form>
             </div>
-
+            {!! JsValidator::formRequest('App\Http\Requests\RequestStoreRequest') !!}
             <script src="{{asset('js/request-create.js')}}"></script>
             <script src="{{asset('js/select.js')}}"></script>
 @endsection

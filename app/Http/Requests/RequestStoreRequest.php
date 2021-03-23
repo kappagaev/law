@@ -40,13 +40,13 @@ class RequestStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string|max:300',
+            'content' => 'required|string|max:300|alpha_spaces',
             'violation_sphere_id' => 'required|integer',
             'violation_type_id' => 'required|integer',
             'violator' => 'nullable|string|max:64',
-            'place' => 'required|string|max:64',
+            'place' => 'required|string|max:64|alpha_spaces',
             'place_code' => 'digits_between:0,20',
-            'place_address' => 'required|string|max:64',
+            'place_address' => 'required|string|max:64|alpha_spaces',
             'violation_time' => ['required', 'date_format:Y-m-d H:i:s', new TimestampBeforeNow(), new RequestTimeLimit(), new LawApproveTimecheck()],
             'territory_id' => 'required|integer',
             'filesFields' => 'required_without_all:audio,video,reg_photocopy,witness_reg_photo,photocopy',

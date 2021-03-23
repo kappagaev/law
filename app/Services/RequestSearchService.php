@@ -67,4 +67,10 @@ class RequestSearchService
         }
         return $this;
     }
+
+    public function sort($sort)
+    {
+        $this->model->orderBy($sort);
+        return $this;
+    }
 }

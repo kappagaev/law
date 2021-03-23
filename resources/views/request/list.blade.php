@@ -21,7 +21,7 @@
 
             </div>
             <div class="row">
-                <input type="hidden" name="territory_id" id="territory_id">
+                <input type="hidden" name="territory_id" id="territory_id" value="{{request()->input('territory_id')}}">
                 <div class="col col-12 col-sm-4 mb-3">
                     <label for="territory1">Місто/Область</label>
                     <select class="form-control select2 js-example-basic-single" id="territory1" name="territory1" data-selected="{{request()->input('territory1')}}">
@@ -58,22 +58,41 @@
                         </div>
                 </div>
                 <div class="col col-12 col-sm-4 mb-3">
+                    <label for="sort">Сортувати за</label>
+                    <select class="form-control select2 js-example-basic-single" id="sort" name="sort">
+                        <option value="created_at" {{request()->input('sort') == "created_at"?"selected":""}}>За датою створення</option>
+                        <option value="approve_at" {{request()->input('sort') == "approve_at"?"selected":""}}>За датою підтвердження</option>
+                        <option value="violation_time" {{request()->input('sort') == "violation_time"?"selected":""}}>За датою порушення</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col col-12 col-sm-4 mb-3">
                     <button class="btn btn-primary btn-lg btn-block " type="submit">Шукати</button>
                 </div>
             </div>
+
         </form>
 
         <h1>
             Головна
         </h1>
-        @foreach ($requests as $request)
-            <h2><a href="/request/{{$request->id}}" class="">{{ $request->place }}</a></h2>
-            <p>{{$request->violationSphere->description }}</p>
-            <div>
-                <span class="badge">Дата порушення: {{  Carbon\Carbon::parse($request->violation_time)->format('Y-m-d') }}</span>
-            </div>
-            <hr>
-        @endforeach
+        @if($requests->isEmpty())
+            <p class="align-content">
+                Не знайдено жодної скарги
+            </p>
+
+        @else
+            @foreach ($requests as $request)
+                <h2><a href="/request/{{$request->id}}" class="">{{ $request->place }}</a></h2>
+                <p>{{$request->violationSphere->description }}</p>
+                <div>
+                    <span class="badge">Дата порушення: {{  Carbon\Carbon::parse($request->violation_time)->format('Y-m-d') }}</span>
+                </div>
+                <hr>
+            @endforeach
+        @endif
 
 
     </div>

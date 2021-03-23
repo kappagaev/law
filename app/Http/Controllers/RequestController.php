@@ -46,6 +46,7 @@ class RequestController extends Controller
                         ->setTerritory($request->only(
                                ['territory1', 'territory2', 'territory2']
                         ))
+                        ->sort($request->sort?$request->sort:"approve_at")
                         ->get();
 
 

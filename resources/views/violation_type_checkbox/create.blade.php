@@ -18,7 +18,7 @@
                 <input type="hidden" name="violation_type_id" value="{{$violationType->id}}">
                 <div class="mb-3">
                     <label for="description">Опис</label>
-                    <textarea class="form-control" rows="4" name="description" value="{{old('description')}}"></textarea>
+                    <textarea class="form-control" rows="4" name="description" value="{{old('description')}}" required></textarea>
 
                 </div>
 

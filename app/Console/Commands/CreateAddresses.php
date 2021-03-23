@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Territory;
+use App\Models\ViolationType;
 use App\Services\CSVService;
 use Illuminate\Console\Command;
 
@@ -159,12 +160,22 @@ class CreateAddresses extends Command
 //        Territory::where('name', 'Херсон')->update(['type' => 'М']);
 //        Territory::where('name', 'Черкаси')->update(['type' => 'М']);
 //        Territory::where('name', 'Чернігів')->update(['type' => 'М']);
-        $territories = Territory::where('name', 'like', '%-%')->get();
-        foreach ($territories as $territory) {
-            $name = explode('-', $territory->name);
-            $name[1] = mb_strtoupper(mb_substr($name[1], 0, 1, 'UTF-8'), 'UTF-8') . mb_strtolower(mb_substr($name[1], 1, mb_strlen($name[1], 'UTF-8'), 'UTF-8'));
-            $territory->name = implode('-', $name);
-            $territory->save();
+//        $territories = Territory::where('name', 'like', '%-%')->get();
+//        foreach ($territories as $territory) {
+//            $name = explode('-', $territory->name);
+//            $name[1] = mb_strtoupper(mb_substr($name[1], 0, 1, 'UTF-8'), 'UTF-8') . mb_strtolower(mb_substr($name[1], 1, mb_strlen($name[1], 'UTF-8'), 'UTF-8'));
+//            $territory->name = implode('-', $name);
+//            $territory->save();
+//        }
+
+        $types = ViolationType::all();
+        foreach ($types as $type) {
+            echo($type->description[-1]);
+            if($type->description[-1] != '.') {
+                echo 123;
+                $type->description .= '.';
+                $type->save();
+            }
         }
         return 0;
     }

@@ -80,7 +80,7 @@
                     <option value="2" @if($user->role_id == 2)
                     selected
                         @endif>
-                        Звичайний юзер
+                        Звичайний користувач
                     </option>
                     <option value="3"
                             @if($user->role_id == 3)

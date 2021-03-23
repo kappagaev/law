@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::prefix('admin')->middleware('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->middleware('admin')->group(function () {
     Route::get('/',[\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('/requests',[\App\Http\Controllers\AdminController::class, 'requests']);
     Route::get('/requests/approve',[\App\Http\Controllers\AdminController::class, 'requestsApprove']);
@@ -52,7 +52,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 //Route::get('login', [\App\Http\Controllers\AuthController::class, 'create'])->name('login');
 
-Route::get('/', [\App\Http\Controllers\RequestController::class, 'index'])->name('requests');
+Route::get('/', [\App\Http\Controllers\RequestController::class, 'index'])->name('home');
 Route::resource('request', \App\Http\Controllers\RequestController::class)->except(['index']);
 
 Route::get('violation/type/{violationType}/checkboxes', [\App\Http\Controllers\RequestCheckboxController::class, 'get']);
