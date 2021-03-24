@@ -191,6 +191,7 @@ $(document).ready(function(){
             $('#territory3').empty();
         } else {
             $('#territory2').empty();
+            $('#territory_id').val("");
             $('#territory3').empty();
             retrieveTerritory($('#territory2'), null, $('#territory1').val());
         }
@@ -205,7 +206,7 @@ $(document).ready(function(){
         if($(this).find('option:selected').data('type') !== '') {
             $('#territory_id').val($('#territory2').val());
         } else {
-
+            $('#territory_id').val("");
             retrieveTerritory($('#territory3'), null, $('#territory2').val());
         }
     });

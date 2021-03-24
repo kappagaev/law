@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="territory_id" id="territory_id" value="{{old('territory_id')}}">
+                    <input type="number" id="territory_id" name="territory_id" value="{{old('territory_id')}}" style="display: none">
                     <div class="mb-3">
                         <label for="violation_subj">Область/Місто*</label>
                         <select class="form-control select2" id="territory1">
@@ -112,7 +112,6 @@
                     </div>
                     <div class="mb-3">
                         <input id="datetimepicker" type="text" class=""  name="violation_time" value="{{old('violation_time')}}" >
-
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -131,6 +130,7 @@
                     <div class="input-group mb-3">
                         <div class="form-group">
                             <b>Обов'язково має бути прикріплене хоча б одне медіа</b>
+                            <input type="hidden" id="filesFields" name="filesFields">
                         </div>
 
                     </div>

@@ -121,8 +121,9 @@
             setEndDate: tommorow,
             setStartDate: "2020-01-01",
             format: 'Y-m-d'
+        }).on('change', function(ev){
+            $('#created_at').value(ev.target.value);
         });
-
 
     </script>
 
