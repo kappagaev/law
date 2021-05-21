@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Rules\LawApproveTimecheck;
-use App\Rules\LawAproveTimechack;
 use App\Rules\RequestTimeLimit;
 use App\Rules\TimestampBeforeNow;
 use Illuminate\Foundation\Http\FormRequest;
@@ -49,7 +48,7 @@ class RequestStoreRequest extends FormRequest
             'place_address' => 'required|string|max:64',
             'violation_time' => ['required', 'date_format:Y-m-d H:i:s', new TimestampBeforeNow(), new RequestTimeLimit(), new LawApproveTimecheck()],
             'territory_id' => 'required|integer',
-            'filesFields' => 'required_without_all:audio,video,reg_photocopy,witness_reg_photo,photocopy',
+//            'filesFields' => 'required_without_all:audio,video,reg_photocopy,witness_reg_photo,photocopy',
             'photocopy' => 'array',
             'audio' => 'array',
             'video' => 'array',

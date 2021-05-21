@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Request;
 use App\Models\Request as RM;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 /**
@@ -33,7 +32,7 @@ class RequestService
     {
         $rm = new RM($request->validated());
 
-        $files = $this->fileService->storeRequestFiles($request, Request::$files,Str::random());
+        $files = $this->fileService->storeRequestFiles($request, Request::$files, Str::random());
         $rm->user_id = $user_id;
         $rm->fill($files);
         $rm->save();
