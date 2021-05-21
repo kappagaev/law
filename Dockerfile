@@ -1,49 +1,107 @@
-FROM php:7.2-fpm
 
-# Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/
+FROM php:7.4-apache
 
-# Set working directory
-WORKDIR /var/www
+# set main params
+ARG BUILD_ARGUMENT_DEBUG_ENABLED=false
+ENV DEBUG_ENABLED=$BUILD_ARGUMENT_DEBUG_ENABLED
+ARG BUILD_ARGUMENT_ENV=dev
+ENV ENV=$BUILD_ARGUMENT_ENV
+ENV APP_HOME /var/www/html
+ARG UID=1000
+ARG GID=1000
+ENV USERNAME=www-data
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
-    unzip \
-    git \
-    curl
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# check environment
+RUN if [ "$BUILD_ARGUMENT_ENV" = "default" ]; then echo "Set BUILD_ARGUMENT_ENV in docker build-args like --build-arg BUILD_ARGUMENT_ENV=dev" && exit 2; \
+    elif [ "$BUILD_ARGUMENT_ENV" = "dev" ]; then echo "Building development environment."; \
+    elif [ "$BUILD_ARGUMENT_ENV" = "test" ]; then echo "Building test environment."; \
+    elif [ "$BUILD_ARGUMENT_ENV" = "staging" ]; then echo "Building staging environment."; \
+    elif [ "$BUILD_ARGUMENT_ENV" = "prod" ]; then echo "Building production environment."; \
+    else echo "Set correct BUILD_ARGUMENT_ENV in docker build-args like --build-arg BUILD_ARGUMENT_ENV=dev. Available choices are dev,test,staging,prod." && exit 2; \
+    fi
 
-# Install extensions
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
-RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
-RUN docker-php-ext-install gd
+# install all the dependencies and enable PHP modules
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+      procps \
+      nano \
+      git \
+      unzip \
+      libicu-dev \
+      zlib1g-dev \
+      libxml2 \
+      libxml2-dev \
+      libreadline-dev \
+      supervisor \
+      cron \
+      sudo \
+      libzip-dev \
+    && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install \
+      pdo_mysql \
+      sockets \
+      intl \
+      opcache \
+      zip \
+    && rm -rf /tmp/* \
+    && rm -rf /var/list/apt/* \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# disable default site and delete all default files inside APP_HOME
+RUN a2dissite 000-default.conf
+RUN rm -r $APP_HOME
 
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+# create document root, fix permissions for www-data user and change owner to www-data
+RUN mkdir -p $APP_HOME/public && \
+    mkdir -p /home/$USERNAME && chown $USERNAME:$USERNAME /home/$USERNAME \
+    && usermod -u $UID $USERNAME -d /home/$USERNAME \
+    && groupmod -g $GID $USERNAME \
+    && chown -R ${USERNAME}:${USERNAME} $APP_HOME
 
-# Copy existing application directory contents
-COPY . /var/www
+# put apache and php config for Laravel, enable sites
+COPY ./docker/general/laravel.conf /etc/apache2/sites-available/laravel.conf
+COPY ./docker/general/laravel-ssl.conf /etc/apache2/sites-available/laravel-ssl.conf
+RUN a2ensite laravel.conf && a2ensite laravel-ssl
+COPY ./docker/$BUILD_ARGUMENT_ENV/php.ini /usr/local/etc/php/php.ini
 
-# Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+# enable apache modules
+RUN a2enmod rewrite
+RUN a2enmod ssl
 
-# Change current user to www
-USER www
+# install Xdebug in case development or test environment
+COPY ./docker/general/do_we_need_xdebug.sh /tmp/
+COPY ./docker/dev/xdebug.ini /tmp/
+RUN chmod u+x /tmp/do_we_need_xdebug.sh && /tmp/do_we_need_xdebug.sh
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# install composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN chmod +x /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+# add supervisor
+RUN mkdir -p /var/log/supervisor
+COPY --chown=root:root ./docker/general/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY --chown=root:crontab ./docker/general/cron /var/spool/cron/crontabs/root
+RUN chmod 0600 /var/spool/cron/crontabs/root
+
+# generate certificates
+# TODO: change it and make additional logic for production environment
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/C=AT/ST=Vienna/L=Vienna/O=Security/OU=Development/CN=example.com"
+
+# set working directory
+WORKDIR $APP_HOME
+
+USER ${USERNAME}
+
+# copy source files and config file
+COPY --chown=${USERNAME}:${USERNAME} . $APP_HOME/
+COPY --chown=${USERNAME}:${USERNAME} .env.$ENV $APP_HOME/.env
+
+# install all PHP dependencies
+RUN if [ "$BUILD_ARGUMENT_ENV" = "dev" ] || [ "$BUILD_ARGUMENT_ENV" = "test" ]; then COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction --no-progress; \
+    else COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction --no-progress --no-dev; \
+    fi
+
+USER root
